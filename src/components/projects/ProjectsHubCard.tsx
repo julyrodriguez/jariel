@@ -9,8 +9,7 @@ import {
   ShoppingBag, 
   Film, 
   Building2, 
-  ArrowRight, 
-  ShieldCheck 
+  ArrowRight
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { sound } from "@/lib/sound";
@@ -28,32 +27,32 @@ export function ProjectsHubCard() {
     {
       id: "vacas-locas",
       icon: <Gamepad2 className="w-5 h-5 text-emerald-400" />,
-      highlight: "Motor determinista de pronósticos deportivos y simulación en tiempo real.",
-      quickStats: "< 45ms API • 3+ Torneos"
+      highlight: "Futbol y estadisticas EN VIVO y competencia de puntos por partidos acertados en +10 competencias.",
+      quickStats: "En Vivo • +10 Torneos"
     },
     {
       id: "demoPilates",
       icon: <Calendar className="w-5 h-5 text-purple-400" />,
-      highlight: "Gestión de turnos de Reformer con cancelación segura por token sin login.",
-      quickStats: "-40% Ausentismo • LocalCache"
+      highlight: "Gestion de turnos, reservas (sin login, utilizado por las clientas) y estadisticas actualmente en uso por Selene Pilates.",
+      quickStats: "Sin Login • En Uso"
     },
     {
       id: "tienda",
       icon: <ShoppingBag className="w-5 h-5 text-[#f5e6d3]" />,
-      highlight: "E-Commerce Headless desacoplado en tono cremita con físicas de resortes a 120 FPS.",
-      quickStats: "0.2s Carga • +28% Conversión"
+      highlight: "E-commerce 100% personalizado al estilo tiendanube.",
+      quickStats: "Estilo Tiendanube"
     },
     {
       id: "cinemark-app",
       icon: <Film className="w-5 h-5 text-red-500" />,
-      highlight: "Control de 12+ salas, averías de 3,000+ butacas y telemetría xenón.",
-      quickStats: "12 Auditorios • -65% Fallas"
+      highlight: "Gestion diario de entradas, stock y necesidades de la proyeccion. Actualmente utilizado por algunos cines de Buenos aires.",
+      quickStats: "Salas & Stock • Cines BA"
     },
     {
       id: "finanzas",
       icon: <Building2 className="w-5 h-5 text-blue-500" />,
-      highlight: "Tesorería corporativa, firma de órdenes por lotes y pagos bancarios.",
-      quickStats: "+$120M ARS/mes • 3.5x Veloz"
+      highlight: "Pagina 100% personalizada para el area de compras de la oficina corporativa de Cinemark, automatiza y procesa excels/pdf con IA para ahorro de tiempo entre otras funciones.",
+      quickStats: "IA & Excels • Corporativo"
     }
   ];
 
@@ -79,21 +78,11 @@ export function ProjectsHubCard() {
         {/* Top Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-indigo-950 text-indigo-300 border border-indigo-500/30">
-                ECOSISTEMA DE DESARROLLOS
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                5 Sistemas en Producción
-              </span>
-            </div>
-            
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
               Hub Central de Proyectos
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
-              Selecciona una tarjeta para navegar directamente a la arquitectura detallada, desafíos técnicos resueltos y sandbox interactivo de cada sistema.
+              Selecciona una tarjeta para navegar directamente a cada sistema y probar su demostración interactiva en vivo.
             </p>
           </div>
 
@@ -113,14 +102,15 @@ export function ProjectsHubCard() {
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
             Desliza horizontalmente
           </span>
-          <span>5 Desarrollos + Estándares →</span>
+          <span>5 Desarrollos →</span>
         </div>
 
-        {/* 5 Interactive Mini Cards: Horizontal Swipe Deck on Mobile, 3x2 Grid on Desktop */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-2 pt-1 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:pb-0 scroll-smooth">
-          {projectList.map((item) => {
+        {/* 5 Interactive Mini Cards: Horizontal Swipe Deck on Mobile, Balanced Grid on Desktop */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-2 pt-1 md:grid md:grid-cols-2 lg:grid-cols-6 md:gap-4.5 md:overflow-visible md:pb-0 scroll-smooth">
+          {projectList.map((item, index) => {
             const project = PROJECTS_DATA[item.id];
             const isHovered = hoveredProjectId === item.id;
+            const colSpanClass = index < 3 ? "md:col-span-1 lg:col-span-2" : (index === 3 ? "md:col-span-1 lg:col-span-3" : "md:col-span-2 lg:col-span-3");
 
             return (
               <div
@@ -130,7 +120,7 @@ export function ProjectsHubCard() {
                   setHoveredProjectId(item.id);
                 }}
                 onMouseLeave={() => setHoveredProjectId(null)}
-                className={`min-w-[85vw] sm:min-w-[72vw] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl glass-panel border transition-all duration-300 flex flex-col justify-between space-y-3.5 relative overflow-hidden group hover:scale-[1.02] shadow-xl ${
+                className={`min-w-[85vw] sm:min-w-[72vw] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl glass-panel border transition-all duration-300 flex flex-col justify-between space-y-3.5 relative overflow-hidden group hover:scale-[1.02] shadow-xl ${colSpanClass} ${
                   isHovered ? "shadow-2xl" : ""
                 }`}
                 style={{
@@ -206,62 +196,12 @@ export function ProjectsHubCard() {
                     backgroundColor: project.theme.primary,
                   }}
                 >
-                  <span>Ver Arquitectura & Sandbox</span>
+                  <span>Ver Proyecto & Sandbox</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             );
           })}
-
-          {/* Quick Technical Overview Card (Fill 6th slot for 2x3 or 3x2 grid balance) */}
-          <div className="min-w-[85vw] sm:min-w-[72vw] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl glass-panel border border-white/10 flex flex-col justify-between space-y-3 shadow-xl bg-slate-950/50">
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-bold flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                Criterios de Excelencia Técnica
-              </span>
-              <h4 className="text-sm font-bold text-white">
-                Rigor de Arquitectura en Cada Sistema
-              </h4>
-              <p className="text-xs text-slate-400 leading-snug">
-                Cada desarrollo implementa separación de responsabilidades, tipado estático, observabilidad y manejo atómico de concurrencia.
-              </p>
-            </div>
-
-            <div className="space-y-1.5 text-[11px] font-mono text-slate-300">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                <span>Vacas Locas: Microservicios & Simulación</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-purple-400" />
-                <span>Pilates: Transacciones ACID & Token Url</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#f5e6d3]" />
-                <span>AURA: Headless Cremita & Spring Physics</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-red-500" />
-                <span>Cinemark: Telemetría de Salas & Butacas</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-blue-500" />
-                <span>Finanzas: Flujo Multi-Divisa & Interbanking</span>
-              </div>
-            </div>
-
-            <button
-              onClick={() => {
-                sound.playPop();
-                scrollToSection("vacas-locas");
-              }}
-              className="w-full py-2 px-3 rounded-xl text-xs font-semibold glass-panel border border-white/20 text-white hover:border-white/40 transition-all flex items-center justify-center gap-1.5"
-            >
-              <span>Comenzar Recorrido Progresivo</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
         </div>
 
       </div>

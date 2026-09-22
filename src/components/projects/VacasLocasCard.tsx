@@ -341,7 +341,7 @@ export function VacasLocasCard() {
                     Sandbox Interactivo: Simulador de Pronósticos & Algoritmo de Puntuación
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 block">
-                    Prueba en vivo la lógica de cálculo ponderado de Vacas Locas
+                    Prueba en vivo la lógica de cálculo ponderado de Prode
                   </span>
                 </div>
               </div>

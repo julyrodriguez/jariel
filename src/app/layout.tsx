@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     "Node.js",
     "Tecnicatura Universitaria en Programación",
     "Portafolio",
-    "Vacas Locas Prode",
-    "Demo Pilates",
-    "AURA Tienda",
-    "Cinemark App",
-    "Finanzas Enterprise"
+    "Prode",
+    "Pilates Studio",
+    "Aura TM",
+    "Cinemark",
+    "Finanzas"
   ],
   authors: [{ name: "Julián Ariel Rodríguez", url: "https://github.com/julyrodriguez" }],
   creator: "Julián Ariel Rodríguez",

@@ -81,8 +81,8 @@ export const CERTIFICATES_DATA: CertificateItem[] = [
 export const PROJECTS_DATA: Record<string, ProjectData> = {
   "vacas-locas": {
     id: "vacas-locas",
-    title: "Vacas Locas Prode",
-    subtitle: "Plataforma de Predicciones Deportivas y Simulación Competitiva en Tiempo Real",
+    title: "Prode",
+    subtitle: "Fútbol y estadísticas EN VIVO y competencia de puntos por partidos acertados en +10 competencias.",
     category: "Full Stack Sports Tech & Gamification",
     year: "2024 - 2026",
     role: "Tech Lead & Full Stack Architect",
@@ -98,9 +98,9 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { name: "Node.js & PM2", category: "infra" }
     ],
     overview:
-      "Ecosistema web competitivo de alta concurrencia diseñado para la gestión y simulación de pronósticos en torneos deportivos de primer nivel (fútbol internacional, copas continentales y torneos de esports como CS2). Incorpora motor de resolución en tiempo real, cálculo de puntos ponderados por etapa y tablas de posiciones automatizadas.",
+      "Fútbol y estadísticas EN VIVO y competencia de puntos por partidos acertados en +10 competencias.",
     whatItDoes:
-      "Permite a cientos de usuarios cargar y modificar sus pronósticos de partidos, competir en ligas privadas y públicas con tablas de posiciones en vivo, participar en minijuegos temáticos y visualizar clasificaciones de torneos simuladas en tiempo real a medida que ocurren los goles.",
+      "Fútbol y estadísticas EN VIVO y competencia de puntos por partidos acertados en +10 competencias.",
     solutionProvided:
       "Eliminó el colapso de servidores y la divergencia en el cálculo de puntos durante picos de cierre simultáneo de fechas. Implementó una API REST dedicada (apivacas.jariel.com.ar) con micro-caché y un motor matemático determinista que procesa rankings y diferencias de gol en menos de 45 ms.",
     deepTechnicalData: {
@@ -150,14 +150,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(16, 185, 129, 0.16) 0%, rgba(139, 92, 246, 0.05) 50%, #07090e 100%)",
       badgeBg: "rgba(16, 185, 129, 0.15)",
       badgeText: "#34d399",
-      tag: "SPORTS TECH & GAMING"
+      tag: "PRODE"
     }
   },
 
   demoPilates: {
     id: "demoPilates",
-    title: "Demo Pilates Studio",
-    subtitle: "Sistema Integral de Gestión de Clases, Reservas Online y Control de Asistencia",
+    title: "Pilates Studio",
+    subtitle: "Gestión de turnos, reservas (sin login, utilizado por las clientas) y estadísticas actualmente en uso por Selene Pilates.",
     category: "SaaS Wellness & Studio Management",
     year: "2024 - 2026",
     role: "Full Stack Engineer & UX Architect",
@@ -174,9 +174,9 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { name: "Canvas Confetti", category: "frontend" }
     ],
     overview:
-      "Plataforma completa para estudios de Pilates Reformer y centros de entrenamiento funcional. Integra portal público de autogestión de turnos para alumnos, asignación de cupos por cama/máquina en tiempo real, gestión de instructores y módulo de cancelaciones automatizadas con link único de seguridad.",
+      "Gestión de turnos, reservas (sin login, utilizado por las clientas) y estadísticas actualmente en uso por Selene Pilates.",
     whatItDoes:
-      "Permite a los alumnos reservar turnos de Pilates Reformer por fecha y cama disponible, recibir confirmaciones automáticas por email/WhatsApp y cancelar su asistencia de manera autónoma con un solo clic. A la administración le brinda un control integral de ocupación, asistencias y nómina de instructores.",
+      "Gestión de turnos, reservas (sin login, utilizado por las clientas) y estadísticas actualmente en uso por Selene Pilates.",
     solutionProvided:
       "Resolvió la fricción de reservas manuales por mensajería y la tasa de ausentismo no avisado. Gracias al link de cancelación con token criptográfico directo, las camas liberadas vuelven a estar disponibles inmediatamente para otros alumnos, logrando una reducción del 40% en inasistencias.",
     deepTechnicalData: {
@@ -226,14 +226,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(168, 85, 247, 0.18) 0%, rgba(236, 72, 153, 0.05) 50%, #07090e 100%)",
       badgeBg: "rgba(168, 85, 247, 0.18)",
       badgeText: "#d8b4fe",
-      tag: "WELLNESS & SAAS MANAGEMENT"
+      tag: "PILATES STUDIO"
     }
   },
 
   tienda: {
     id: "tienda",
-    title: "AURA™ Headless Commerce",
-    subtitle: "Prototipo de Tienda Cloud de Próxima Generación de Ultra Alto Rendimiento",
+    title: "Aura TM",
+    subtitle: "E-commerce 100% personalizado al estilo tiendanube.",
     category: "Next-Gen Headless E-Commerce",
     year: "2024 - 2026",
     role: "Frontend Architect & Interaction Designer",
@@ -248,9 +248,9 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { name: "Headless API Spec", category: "infra" }
     ],
     overview:
-      "Plataforma de comercio electrónico de vanguardia inspirada en la ingeniería y minimalismo de marcas de diseño como Teenage Engineering y Apple. Diseñada bajo el paradigma Headless Commerce con carga instantánea (0ms de transición de vista), físicas de rebote fluidas y conversión optimizada para Latinoamérica.",
+      "E-commerce 100% personalizado al estilo tiendanube.",
     whatItDoes:
-      "Brinda una experiencia de compra fluida de nivel de aplicación nativa: catálogo de productos con hero 3D ambiental, selector de variantes de color en vivo, cálculo en tiempo real de cuotas sin interés y descuentos por transferencia bancaria, carrito deslizable con meta de envío gratis y checkout en 3 pasos con confirmación por WhatsApp.",
+      "E-commerce 100% personalizado al estilo tiendanube.",
     solutionProvided:
       "Superó la lentitud y rigidez visual de los motores tradicionales basados en plantillas monolíticas (como Tiendanube tradicional o Shopify estándar). Al desacoplar el frontend con React y Framer Motion, logró tiempos de respuesta inmediatos (0.2s) y un aumento del 28% en conversión.",
     deepTechnicalData: {
@@ -300,14 +300,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(245, 230, 211, 0.18) 0%, rgba(217, 119, 6, 0.05) 50%, #07090e 100%)",
       badgeBg: "rgba(245, 230, 211, 0.18)",
       badgeText: "#fef3c7",
-      tag: "AURA LUXURY CREAM & COMMERCE"
+      tag: "AURA TM"
     }
   },
 
   "cinemark-app": {
     id: "cinemark-app",
-    title: "Cinemark Proyección & Salas Suite",
-    subtitle: "Sistema Operativo de Cabina de Proyección, Telemetría de Auditorios y Mantenimiento",
+    title: "Cinemark",
+    subtitle: "Gestión diaria de entradas, stock y necesidades de la proyección. Actualmente utilizado por algunos cines de Buenos Aires.",
     category: "Enterprise Infrastructure & Mobile Web",
     year: "2024 - 2026",
     role: "Lead Software Engineer & Operations Tech",
@@ -322,9 +322,9 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { name: "Print & PDF Engine", category: "infra" }
     ],
     overview:
-      "Plataforma empresarial de misión crítica construida para la gestión integral de complejos cinematográficos multicomplejo (más de 12 salas por sede). Centraliza el control de salas, mapa de butacas con diagnóstico de incidencias físicas (respaldo/asiento), programación semanal de contenidos DCP y telemetría de horas útiles de lámparas xenón de proyectores.",
+      "Gestión diaria de entradas, stock y necesidades de la proyección. Actualmente utilizado por algunos cines de Buenos Aires.",
     whatItDoes:
-      "Ofrece una cuadrícula interactiva de asientos para auditorios de cine con clasificación de fallas mecánicas en butacas, monitorea la vida útil en horas de las lámparas de xenón de proyectores Christie/Barco, administra la ingesta de paquetes digitales DCP y sincroniza la programación semanal cruzando créditos de películas para la automatización de iluminación.",
+      "Gestión diaria de entradas, stock y necesidades de la proyección. Actualmente utilizado por algunos cines de Buenos Aires.",
     solutionProvided:
       "Sustituyó los reportes en papel y planillas manuales propensas a extravío en complejos de cine con más de 3,000 butacas. Centralizó la telemetría técnica en una sola aplicación móvil/web, reduciendo las fallas técnicas no detectadas en salas en un 65% y sincronizando el encendido de luces con precisión de un segundo.",
     deepTechnicalData: {
@@ -374,14 +374,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(229, 9, 20, 0.16) 0%, rgba(245, 158, 11, 0.04) 50%, #07090e 100%)",
       badgeBg: "rgba(229, 9, 20, 0.15)",
       badgeText: "#f87171",
-      tag: "CINEMA OPERATIONS & IOT"
+      tag: "CINEMARK"
     }
   },
 
   finanzas: {
     id: "finanzas",
-    title: "Finanzas Enterprise Suite",
-    subtitle: "Sistema de Control de Órdenes de Compra, Interbanking y Workflow de Aprobación",
+    title: "Finanzas",
+    subtitle: "Página 100% personalizada para el área de compras de la oficina corporativa de Cinemark, automatiza y procesa excels/pdf con IA para ahorro de tiempo entre otras funciones.",
     category: "Fintech & Enterprise Operations",
     year: "2024 - 2026",
     role: "Full Stack Financial Systems Architect",
@@ -397,9 +397,9 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { name: "Interbanking Batch Processing", category: "infra" }
     ],
     overview:
-      "Plataforma integral de tesorería y finanzas corporativas para la gestión y trazabilidad del ciclo de vida de órdenes de compra, control presupuestario y emisión de transferencias masivas bancarias (Interbanking). Integra cotizaciones de divisas en tiempo real y módulo de análisis de cotizaciones asistido por IA.",
+      "Página 100% personalizada para el área de compras de la oficina corporativa de Cinemark, automatiza y procesa excels/pdf con IA para ahorro de tiempo entre otras funciones.",
     whatItDoes:
-      "Gestiona el flujo completo de compras de la empresa: creación de órdenes, asignación presupuestaria por centro de costo, autorización escalonada con firma electrónica por lotes, extracción automática de datos de facturas PDF mediante IA y generación de planillas normalizadas para Interbanking bancario.",
+      "Página 100% personalizada para el área de compras de la oficina corporativa de Cinemark, automatiza y procesa excels/pdf con IA para ahorro de tiempo entre otras funciones.",
     solutionProvided:
       "Reemplazó cadenas de emails desordenadas y procesos contables manuales propensos a errores en pagos millonarios. Centralizó la autorización jerárquica y la liquidación multimoneda en tiempo real (Oficial, Blue, MEP, CCL), acelerando el ciclo de aprobación 3.5 veces con 100% de conciliación bancaria.",
     deepTechnicalData: {
@@ -449,7 +449,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(37, 99, 235, 0.18) 0%, rgba(245, 158, 11, 0.04) 50%, #07090e 100%)",
       badgeBg: "rgba(37, 99, 235, 0.18)",
       badgeText: "#93c5fd",
-      tag: "ROYAL FINTECH & TREASURY"
+      tag: "FINANZAS"
     }
   }
 };

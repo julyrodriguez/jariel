@@ -14,11 +14,11 @@ interface NavItem {
 const SECTIONS: NavItem[] = [
   { id: "profile", label: "Perfil & Certificados", badge: "01" },
   { id: "projects-hub", label: "Hub de Proyectos", badge: "02" },
-  { id: "vacas-locas", label: "Vacas Locas", badge: "03" },
-  { id: "demoPilates", label: "Demo Pilates", badge: "04" },
-  { id: "tienda", label: "AURA™ Tienda", badge: "05" },
-  { id: "cinemark-app", label: "Cinemark Suite", badge: "06" },
-  { id: "finanzas", label: "Finanzas Suite", badge: "07" },
+  { id: "vacas-locas", label: "Prode", badge: "03" },
+  { id: "demoPilates", label: "Pilates Studio", badge: "04" },
+  { id: "tienda", label: "Aura TM", badge: "05" },
+  { id: "cinemark-app", label: "Cinemark", badge: "06" },
+  { id: "finanzas", label: "Finanzas", badge: "07" },
 ];
 
 export function ScrollIndicator() {
