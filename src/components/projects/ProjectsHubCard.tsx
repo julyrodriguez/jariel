@@ -9,7 +9,8 @@ import {
   ShoppingBag, 
   Film, 
   Building2, 
-  ArrowRight
+  ArrowRight,
+  Sparkles
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { sound } from "@/lib/sound";
@@ -53,6 +54,12 @@ export function ProjectsHubCard() {
       icon: <Building2 className="w-5 h-5 text-blue-500" />,
       highlight: "Pagina 100% personalizada para el area de compras de la oficina corporativa de Cinemark, automatiza y procesa excels/pdf con IA para ahorro de tiempo entre otras funciones.",
       quickStats: "IA & Excels • Corporativo"
+    },
+    {
+      id: "caronails",
+      icon: <Sparkles className="w-5 h-5 text-rose-400" />,
+      highlight: "Gestion integral de turnos, clientas, insumos y facturacion. Actualmente utilizado y en produccion por Studio Caro Nails.",
+      quickStats: "Produccion • Studio Caro Nails"
     }
   ];
 
@@ -102,15 +109,15 @@ export function ProjectsHubCard() {
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
             Desliza horizontalmente
           </span>
-          <span>5 Desarrollos →</span>
+          <span>6 Desarrollos →</span>
         </div>
 
-        {/* 5 Interactive Mini Cards: Horizontal Swipe Deck on Mobile, Balanced Grid on Desktop */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-2 pt-1 md:grid md:grid-cols-2 lg:grid-cols-6 md:gap-4.5 md:overflow-visible md:pb-0 scroll-smooth">
-          {projectList.map((item, index) => {
+        {/* 6 Interactive Mini Cards: Horizontal Swipe Deck on Mobile, Balanced 3x2 Grid on Desktop */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-2 pt-1 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4.5 md:overflow-visible md:pb-0 scroll-smooth">
+          {projectList.map((item) => {
             const project = PROJECTS_DATA[item.id];
             const isHovered = hoveredProjectId === item.id;
-            const colSpanClass = index < 3 ? "md:col-span-1 lg:col-span-2" : (index === 3 ? "md:col-span-1 lg:col-span-3" : "md:col-span-2 lg:col-span-3");
+            const colSpanClass = "md:col-span-1 lg:col-span-1";
 
             return (
               <div

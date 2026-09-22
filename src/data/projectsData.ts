@@ -238,6 +238,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     year: "2024 - 2026",
     role: "Frontend Architect & Interaction Designer",
     status: "Deploy Live",
+    liveUrl: "https://tienda.jariel.com.ar",
     githubUrl: "https://github.com/julyrodriguez/tienda",
     techStack: [
       { name: "React 18 & TypeScript", category: "frontend" },
@@ -451,6 +452,80 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       badgeText: "#93c5fd",
       tag: "FINANZAS"
     }
+  },
+
+  caronails: {
+    id: "caronails",
+    title: "Caro Nails",
+    subtitle: "Gestión integral de turnos, clientas, insumos y facturación. Actualmente utilizado y en producción por Studio Caro Nails.",
+    category: "Beauty Tech & Studio Management PWA",
+    year: "2024 - 2026",
+    role: "Full Stack Architect & Developer",
+    status: "Producción",
+    githubUrl: "https://github.com/julyrodriguez/caronails",
+    techStack: [
+      { name: "React 19 & TypeScript", category: "frontend" },
+      { name: "Vite 6 & Tailwind CSS v4", category: "frontend" },
+      { name: "Firebase Firestore (Realtime)", category: "backend" },
+      { name: "Firebase Auth", category: "backend" },
+      { name: "Web Push (FCM)", category: "infra" },
+      { name: "Vercel Cron Reminders", category: "infra" }
+    ],
+    overview:
+      "Aplicación web progresiva (PWA) de gestión integral de turnos, clientas, agenda y balance financiero para estudios de manicuría y estética. Diseñada con un estilo premium Deep Plum & Rose Gold.",
+    whatItDoes:
+      "Administración en tiempo real de turnos y agenda, historial de tratamientos por clienta, balance mensual automático (ingresos cobrados, pendientes, insumos y ganancia neta) y recordatorios automáticos por notificaciones push.",
+    solutionProvided:
+      "Digitalizó el 100% de la operación diaria de Studio Caro Nails, reemplazando libretas y mensajes dispersos por una plataforma ágil, con cálculo en vivo de ganancias, control de insumos y cero turnos solapados.",
+    deepTechnicalData: {
+      architecture:
+        "PWA desarrollada con React 19, Vite y TypeScript, conectada a Firebase Firestore con listeners en tiempo real y reglas de seguridad multi-tenant por accountId.",
+      algorithmsAndConcurrency:
+        "Indexación de fechas y turnos mediante keys compuestas (YYYY-MM-DD y YYYY-MM) que evitan escaneos masivos en Firestore y garantizan detección instantánea de colisiones de horarios.",
+      databaseAndTelemetry:
+        "Colecciones optimizadas de turnos, clientas y balance mensual con agregaciones automáticas de insumos y cálculo de margen neto en tiempo real.",
+      securityAndPerformance:
+        "Autenticación segura con Firebase Auth, tokens VAPID para Web Push FCM y endpoints autorizados con CRON_SECRET para recordatorios programados 30 minutos antes."
+    },
+    challenges: [
+      "Sincronización bidireccional en tiempo real de la agenda diaria para evitar solapamientos de turnos entre profesionales.",
+      "Pipeline de notificaciones push Web PWA con Service Workers y Firebase Cloud Messaging programados 30 minutos antes de cada turno.",
+      "Balance financiero automático que descuenta compras de insumos sobre ingresos cobrados para calcular la rentabilidad neta real de cada mes."
+    ],
+    keyModules: [
+      {
+        title: "Agenda de Turnos & Calendario Dinámico",
+        description:
+          "Visualización diaria y mensual con bloques de horarios, estados de pago (cobrado / pendiente) y asignación rápida de servicios."
+      },
+      {
+        title: "Ficha & Historial de Clientas",
+        description:
+          "Registro de tratamientos anteriores, preferencias de diseño, tipos de uña/piel y notas específicas de cada sesión."
+      },
+      {
+        title: "Balance Financiero & Control de Insumos",
+        description:
+          "Dashboard mensual con métricas en vivo de ingresos cobrados, pendientes de cobro, costos de materiales y ganancia neta."
+      }
+    ],
+    metrics: [
+      { label: "Tiempo de Asignación", value: "< 15 seg" },
+      { label: "Reducción de Inasistencias", value: "-45%" },
+      { label: "Disponibilidad del Sistema", value: "99.9%" },
+      { label: "Sincronización de Agenda", value: "En Vivo" }
+    ],
+    theme: {
+      primary: "#f43f5e",
+      secondary: "#d946ef",
+      accent: "#fb7185",
+      glow: "rgba(244, 63, 94, 0.3)",
+      border: "rgba(244, 63, 94, 0.45)",
+      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(244, 63, 94, 0.18) 0%, rgba(217, 70, 239, 0.05) 50%, #07090e 100%)",
+      badgeBg: "rgba(244, 63, 94, 0.18)",
+      badgeText: "#fda4af",
+      tag: "BEAUTY TECH & GESTIÓN"
+    }
   }
 };
 
@@ -569,7 +644,7 @@ export const PROFILE_INFO = {
     email: "rodriguez.jariel01@gmail.com"
   },
   stats: [
-    { label: "Sistemas Funcionando", value: "5+" },
+    { label: "Sistemas Funcionando", value: "6+" },
     { label: "Años Desarrollando", value: "4+" },
     { label: "Soluciones", value: "A Medida" },
     { label: "Experiencia", value: "Simple & Ágil" }

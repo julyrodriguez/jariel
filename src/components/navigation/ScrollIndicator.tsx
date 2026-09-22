@@ -20,6 +20,7 @@ const SECTIONS: NavItem[] = [
   { id: "tienda", label: "Aura TM", badge: "06" },
   { id: "cinemark-app", label: "Cinemark", badge: "07" },
   { id: "finanzas", label: "Finanzas", badge: "08" },
+  { id: "caronails", label: "Caro Nails", badge: "09" },
 ];
 
 export function ScrollIndicator() {

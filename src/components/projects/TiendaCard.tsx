@@ -13,7 +13,8 @@ import {
   Database,
   ShieldCheck,
   ArrowRight,
-  ArrowLeft
+  ArrowLeft,
+  ExternalLink
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import confetti from "canvas-confetti";
@@ -101,8 +102,21 @@ export function TiendaCard() {
             </p>
           </div>
 
-          {/* External Code Links */}
-          <div className="flex items-center gap-2.5">
+          {/* External Code & Live Links */}
+          <div className="flex items-center gap-2.5 flex-wrap">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => sound.playSuccess()}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-stone-950 bg-gradient-to-r from-[#f5e6d3] to-[#e6d0b8] hover:shadow-lg hover:shadow-[#f5e6d3]/25 hover:scale-105 transition-all shadow-md"
+              >
+                <ExternalLink className="w-4 h-4 text-stone-950" />
+                <span>Abrir Demo</span>
+              </a>
+            )}
+
             {project.githubUrl && (
               <a
                 href={project.githubUrl}

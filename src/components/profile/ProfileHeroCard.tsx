@@ -207,7 +207,7 @@ export function ProfileHeroCard() {
         >
           <div className="text-left space-y-0.5">
             <span className="text-xs sm:text-sm font-bold text-white block">
-              Descubrí mis 5 sistemas funcionando
+              Descubrí mis 6 sistemas funcionando
             </span>
             <span className="text-[11px] sm:text-xs text-slate-400 block">
               Cada proyecto cuenta con una demostración interactiva que podés probar vos mismo.

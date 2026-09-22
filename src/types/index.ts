@@ -3,7 +3,8 @@ export type ProjectId =
   | "demoPilates" 
   | "tienda" 
   | "cinemark-app" 
-  | "finanzas";
+  | "finanzas"
+  | "caronails";
 
 export type SectionId = "profile" | "education" | "projects-hub" | ProjectId;
 

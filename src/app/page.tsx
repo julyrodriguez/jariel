@@ -12,6 +12,7 @@ import { DemoPilatesCard } from "@/components/projects/DemoPilatesCard";
 import { TiendaCard } from "@/components/projects/TiendaCard";
 import { CinemarkCard } from "@/components/projects/CinemarkCard";
 import { FinanzasCard } from "@/components/projects/FinanzasCard";
+import { CaroNailsCard } from "@/components/projects/CaroNailsCard";
 import { useTheme } from "@/context/ThemeContext";
 import { SectionId } from "@/types";
 
@@ -23,7 +24,8 @@ const SECTION_IDS: SectionId[] = [
   "demoPilates",
   "tienda",
   "cinemark-app",
-  "finanzas"
+  "finanzas",
+  "caronails"
 ];
 
 export default function Home() {
@@ -116,6 +118,10 @@ export default function Home() {
         {/* Separador Mobile: Proyecto Finanzas */}
         <MobileSectionDivider number="08" label="FINANZAS" color="#2563eb" />
         <FinanzasCard />
+
+        {/* Separador Mobile: Proyecto Caro Nails */}
+        <MobileSectionDivider number="09" label="CARO NAILS" color="#f43f5e" />
+        <CaroNailsCard />
       </main>
     </div>
   );
