@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { PROJECTS_DATA } from "@/data/projectsData";
 import { 
-  Building2, 
   TrendingUp, 
   CheckCircle2, 
   FileSpreadsheet, 
   ShieldCheck, 
-  Zap 
+  Layers,
+  Cpu,
+  Database
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import confetti from "canvas-confetti";
@@ -26,7 +27,7 @@ interface Order {
 export function FinanzasCard() {
   const project = PROJECTS_DATA["finanzas"];
 
-  // Exchange rate quotes
+  const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
   const [selectedCurrency, setSelectedCurrency] = useState<"oficial" | "blue" | "mep" | "ccl">("mep");
   
   const exchangeRates = {
@@ -79,7 +80,6 @@ export function FinanzasCard() {
     setTimeout(() => setBatchActionFeedback(null), 3000);
   };
 
-  // Calculate totals
   const totalUsd = orders.reduce((acc, curr) => acc + curr.amountUsd, 0);
   const totalArs = totalUsd * activeRate;
 
@@ -94,7 +94,7 @@ export function FinanzasCard() {
         style={{ background: project.theme.bgGradient }}
       />
 
-      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-6">
+      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -118,7 +118,7 @@ export function FinanzasCard() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
               {project.title}
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
               {project.subtitle}
             </p>
           </div>
@@ -141,57 +141,159 @@ export function FinanzasCard() {
         </div>
 
         {/* Main Grid: Architecture Details on Left, Interactive Finance Sandbox on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Left Column: Specs & Financial Features (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
-            {/* Overview & Enterprise Specs */}
-            <div className="glass-panel p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400 flex items-center gap-2">
-                <Building2 className="w-4 h-4" />
-                <span>Tesorería, Aprobaciones & Interbanking</span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {project.overview}
-              </p>
-
-              {/* Technical Features Breakdown */}
-              <div className="pt-2 border-t border-white/5 space-y-2.5">
-                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-sky-500/20 text-xs">
-                  <div className="font-semibold text-sky-300 flex items-center gap-1.5 mb-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-sky-400" />
-                    <span>Firma por Lotes & Liberación Segura</span>
-                  </div>
-                  <p className="text-[11px] text-slate-400 leading-tight">
-                    Workflow estricto con separación de roles: los gerentes de área autorizan firmas y tesorería ejecuta la liberación masiva en Interbanking.
-                  </p>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-sky-500/20 text-xs">
-                  <div className="font-semibold text-sky-300 flex items-center gap-1.5 mb-1">
-                    <Zap className="w-3.5 h-3.5 text-sky-400" />
-                    <span>IA para Parseo de Cotizaciones PDF</span>
-                  </div>
-                  <p className="text-[11px] text-slate-400 leading-tight">
-                    Módulo inteligente que extrae automáticamente proveedores, CUITs, montos e IVA desde archivos de presupuesto o facturas digitales.
-                  </p>
-                </div>
+            {/* Interactive Tabs */}
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-sky-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+              
+              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("whatItDoes");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "whatItDoes"
+                      ? "bg-sky-400 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  ¿Qué hace?
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("solution");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "solution"
+                      ? "bg-sky-400 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Solución
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("deepTech");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "deepTech"
+                      ? "bg-sky-400 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Datos Técnicos
+                </button>
               </div>
-            </div>
 
-            {/* Metrics Ribbon */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {project.metrics.map((m, idx) => (
-                <div key={idx} className="p-3 rounded-xl glass-card border border-white/5 text-center">
-                  <span className="block text-sm sm:text-base font-black text-sky-400 font-mono">
-                    {m.value}
-                  </span>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
-                    {m.label}
-                  </span>
-                </div>
-              ))}
+              {/* Tab Content Display */}
+              <div className="space-y-2 text-xs">
+                {techTab === "whatItDoes" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-sky-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Tesorería & Pipeline de Compras
+                    </span>
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.whatItDoes}
+                    </p>
+                    <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
+                      {project.keyModules.map((m, idx) => (
+                        <div key={idx} className="flex items-start gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0 mt-0.5" />
+                          <div>
+                            <strong className="text-white">{m.title}:</strong>{" "}
+                            <span className="text-slate-400 text-[11px]">{m.description}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {techTab === "solution" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-sky-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Firma de Lotes & Eliminación de Cuellos de Botella
+                    </span>
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.solutionProvided}
+                    </p>
+                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-sky-500/20 text-[11px] text-slate-300 space-y-1">
+                      <strong className="text-sky-400 block font-mono">
+                        Desafíos Corporativos Superados:
+                      </strong>
+                      <ul className="list-disc pl-4 space-y-1 text-slate-400">
+                        {project.challenges.map((c, idx) => (
+                          <li key={idx}>{c}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {techTab === "deepTech" && (
+                  <div className="space-y-2 animate-fadeIn max-h-[220px] overflow-y-auto pr-1">
+                    <span className="text-sky-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Auditoría Inmutable & Conciliación Bancaria
+                    </span>
+                    
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                        <Layers className="w-3 h-3" /> Next.js 16 + Firestore + SheetJS (XLSX)
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.architecture}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                        <Cpu className="w-3 h-3" /> Conciliación Multimoneda & Bloqueo Optimista
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.algorithmsAndConcurrency}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                        <Database className="w-3 h-3" /> Trazabilidad de Auditoría Inmutable
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.databaseAndTelemetry}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3" /> PIN de Tesorería & Batch Signing
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.securityAndPerformance}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Metrics Ribbon */}
+              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+                {project.metrics.map((m, idx) => (
+                  <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
+                    <span className="block text-xs sm:text-sm font-black text-sky-400 font-mono">
+                      {m.value}
+                    </span>
+                    <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
+                      {m.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Tech Stack Chips */}
@@ -199,7 +301,7 @@ export function FinanzasCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-slate-900/80 border border-sky-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-sky-500/20 text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -208,10 +310,10 @@ export function FinanzasCard() {
           </div>
 
           {/* Right Column: Interactive Financial Analytics & Batch Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 sm:p-6 rounded-2xl border border-sky-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-sky-500/30 flex flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden">
             
             {/* Header with Live Currency Ticker */}
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
                 <div className="p-1.5 rounded-lg bg-sky-500/20 text-sky-400">
                   <TrendingUp className="w-4 h-4" />
@@ -227,7 +329,7 @@ export function FinanzasCard() {
               </div>
 
               {/* Currency Selector */}
-              <div className="flex items-center gap-1 p-0.5 rounded-lg bg-slate-950/80 border border-white/10 text-[11px] font-mono">
+              <div className="flex items-center gap-1 p-0.5 rounded-lg bg-slate-950/80 border border-white/10 text-[10px] font-mono">
                 {(Object.keys(exchangeRates) as Array<keyof typeof exchangeRates>).map((cur) => (
                   <button
                     key={cur}
@@ -248,53 +350,53 @@ export function FinanzasCard() {
             </div>
 
             {/* Live Financial Totals Card */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <div className="p-3 rounded-xl bg-slate-950/70 border border-white/5">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5">
+                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider block">
                   Cotización {exchangeRates[selectedCurrency].name}
                 </span>
-                <span className="text-lg font-black text-white font-mono block mt-0.5">
+                <span className="text-base font-black text-white font-mono block mt-0.5">
                   ${activeRate.toLocaleString("es-AR")}
                 </span>
-                <span className="text-[10px] text-emerald-400 font-mono">
+                <span className="text-[9px] text-emerald-400 font-mono">
                   {exchangeRates[selectedCurrency].trend} hoy
                 </span>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-950/70 border border-white/5">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
+              <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5">
+                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider block">
                   Total Lote en USD
                 </span>
-                <span className="text-lg font-black text-sky-400 font-mono block mt-0.5">
+                <span className="text-base font-black text-sky-400 font-mono block mt-0.5">
                   ${totalUsd.toLocaleString("en-US")} USD
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">
+                <span className="text-[9px] text-slate-400 font-mono">
                   {orders.length} órdenes activas
                 </span>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-950/70 border border-white/5">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
+              <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5">
+                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider block">
                   Conversión Liquidación ARS
                 </span>
-                <span className="text-lg font-black text-emerald-400 font-mono block mt-0.5">
+                <span className="text-base font-black text-emerald-400 font-mono block mt-0.5">
                   ${totalArs.toLocaleString("es-AR")}
                 </span>
-                <span className="text-[10px] text-emerald-300 font-mono">
+                <span className="text-[9px] text-emerald-300 font-mono">
                   Conciliado 100%
                 </span>
               </div>
             </div>
 
             {/* Interactive Orders Table */}
-            <div className="p-3 rounded-xl bg-slate-950/80 border border-white/5 space-y-2">
-              <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pb-1 border-b border-white/5">
+            <div className="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 space-y-1.5">
+              <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pb-1 border-b border-white/5">
                 <span>Orden / Proveedor</span>
                 <span>Monto USD / ARS</span>
                 <span>Estado (Clic para avanzar)</span>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 {orders.map((order) => {
                   let statusColor = "bg-amber-500/20 text-amber-300 border-amber-500/40";
                   if (order.status === "Firmado") statusColor = "bg-sky-500/20 text-sky-300 border-sky-500/40";
@@ -303,30 +405,30 @@ export function FinanzasCard() {
                   return (
                     <div
                       key={order.id}
-                      className="p-2.5 rounded-lg bg-slate-900/90 border border-white/5 flex items-center justify-between gap-2 hover:border-sky-500/30 transition-all text-xs"
+                      className="p-2 rounded-lg bg-slate-900/90 border border-white/5 flex items-center justify-between gap-2 hover:border-sky-500/30 transition-all text-xs"
                     >
                       <div>
-                        <div className="font-bold text-white flex items-center gap-2">
+                        <div className="font-bold text-white flex items-center gap-1.5 text-[11px]">
                           <span className="font-mono text-sky-400">{order.id}</span>
                           <span>{order.provider}</span>
                         </div>
-                        <span className="text-[10px] text-slate-400 block mt-0.5">
+                        <span className="text-[9px] text-slate-400 block mt-0.5">
                           {order.concept}
                         </span>
                       </div>
 
                       <div className="text-right font-mono">
-                        <span className="font-bold text-white block">
+                        <span className="font-bold text-white block text-[11px]">
                           ${order.amountUsd.toLocaleString("en-US")} USD
                         </span>
-                        <span className="text-[10px] text-slate-400 block">
+                        <span className="text-[9px] text-slate-400 block">
                           ${(order.amountUsd * activeRate).toLocaleString("es-AR")} ARS
                         </span>
                       </div>
 
                       <button
                         onClick={() => handleAdvanceStatus(order.id)}
-                        className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold border transition-all hover:scale-105 ${statusColor}`}
+                        className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold border transition-all hover:scale-105 ${statusColor}`}
                         title="Haz clic para avanzar estado"
                       >
                         {order.status} →
@@ -338,7 +440,7 @@ export function FinanzasCard() {
             </div>
 
             {/* Batch Release Action Strip */}
-            <div className="p-3 rounded-xl bg-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="p-2.5 rounded-xl bg-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-2">
               {batchActionFeedback ? (
                 <div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 animate-fadeIn">
                   <CheckCircle2 className="w-4 h-4" />
@@ -346,10 +448,10 @@ export function FinanzasCard() {
                 </div>
               ) : (
                 <div className="text-xs text-slate-300 text-center sm:text-left">
-                  <span className="font-semibold text-white block">
+                  <span className="font-semibold text-white block text-[11px]">
                     Acciones Masivas de Tesorería
                   </span>
-                  <span className="text-[11px] text-slate-400">
+                  <span className="text-[10px] text-slate-400">
                     Firma digital múltiple y exportación bancaria en un solo clic
                   </span>
                 </div>
@@ -357,9 +459,9 @@ export function FinanzasCard() {
 
               <button
                 onClick={handleBatchLiberate}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-emerald-400 hover:shadow-lg hover:shadow-sky-500/25 hover:scale-105 transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-3.5 py-1.5 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-emerald-400 hover:shadow-lg hover:shadow-sky-500/25 hover:scale-105 transition-all flex items-center justify-center gap-1.5"
               >
-                <FileSpreadsheet className="w-4 h-4" />
+                <FileSpreadsheet className="w-3.5 h-3.5" />
                 <span>Liberar Lote en Interbanking</span>
               </button>
             </div>
@@ -367,7 +469,7 @@ export function FinanzasCard() {
             {/* Footer Stack Note */}
             <div className="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-white/5">
               <span>Stack: Next.js 16 + Firebase Firestore + SheetJS (XLSX)</span>
-              <span className="text-sky-400 font-mono text-[11px]">Finanzas Treasury Suite</span>
+              <span className="text-sky-400 font-mono text-[10px]">Finanzas Treasury Suite</span>
             </div>
 
           </div>

@@ -3,13 +3,15 @@
 import React, { useState } from "react";
 import { PROJECTS_DATA } from "@/data/projectsData";
 import { 
-  Film, 
   Tv, 
   AlertTriangle, 
   QrCode, 
-  Wrench, 
   Radio, 
-  Sliders 
+  Sliders,
+  CheckCircle2,
+  Cpu,
+  Layers,
+  ShieldCheck
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import confetti from "canvas-confetti";
@@ -27,7 +29,7 @@ interface Seat {
 export function CinemarkCard() {
   const project = PROJECTS_DATA["cinemark-app"];
 
-  // Cinema Sandbox State
+  const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
   const selectedMovie = "Dune: Parte Dos (IMAX XD)";
   const [selectedSala, setSelectedSala] = useState<number>(4);
   const [selectedSeat, setSelectedSeat] = useState<Seat | null>({
@@ -101,7 +103,7 @@ export function CinemarkCard() {
         style={{ background: project.theme.bgGradient }}
       />
 
-      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-6">
+      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -125,7 +127,7 @@ export function CinemarkCard() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
               {project.title}
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
               {project.subtitle}
             </p>
           </div>
@@ -148,80 +150,182 @@ export function CinemarkCard() {
         </div>
 
         {/* Main Grid: Architecture Details on Left, Interactive Cinema Sandbox on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Left Column: Tech Stack, Modules & Telemetry (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
-            {/* Overview & Mission-Critical Specs */}
-            <div className="glass-panel p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-red-400 flex items-center gap-2">
-                <Film className="w-4 h-4" />
-                <span>Infraestructura de Cabina & Control de Salas</span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {project.overview}
-              </p>
+            {/* Interactive Tabs */}
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-red-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+              
+              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("whatItDoes");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "whatItDoes"
+                      ? "bg-red-600 text-white"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  ¿Qué hace?
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("solution");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "solution"
+                      ? "bg-red-600 text-white"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Solución
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("deepTech");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "deepTech"
+                      ? "bg-red-600 text-white"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Datos Técnicos
+                </button>
+              </div>
 
-              {/* Technical Features Breakdown */}
-              <div className="pt-2 border-t border-white/5 space-y-2.5">
-                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-red-500/20 text-xs">
-                  <div className="font-semibold text-red-300 flex items-center gap-1.5 mb-1">
-                    <Wrench className="w-3.5 h-3.5 text-red-400" />
-                    <span>Control Granular de Daños Mecánicos</span>
+              {/* Tab Content Display */}
+              <div className="space-y-2 text-xs">
+                {techTab === "whatItDoes" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-red-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Operaciones de Cabina & Auditorios
+                    </span>
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.whatItDoes}
+                    </p>
+                    <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
+                      {project.keyModules.map((m, idx) => (
+                        <div key={idx} className="flex items-start gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-red-400 shrink-0 mt-0.5" />
+                          <div>
+                            <strong className="text-white">{m.title}:</strong>{" "}
+                            <span className="text-slate-400 text-[11px]">{m.description}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-[11px] text-slate-400 leading-tight">
-                    Mapeo de incidencias físicas por butaca con clasificación de severidad (rotura de respaldo, tapizado o asiento) para cuadrillas de mantenimiento técnico.
-                  </p>
-                </div>
+                )}
 
-                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-red-500/20 text-xs">
-                  <div className="font-semibold text-red-300 flex items-center gap-1.5 mb-1">
-                    <Radio className="w-3.5 h-3.5 text-red-400" />
-                    <span>Telemetría de Horas Lámpara Xenón</span>
+                {techTab === "solution" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-red-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Digitalización Integral de Mantenimiento
+                    </span>
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.solutionProvided}
+                    </p>
+                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-red-500/20 text-[11px] text-slate-300 space-y-1">
+                      <strong className="text-red-400 block font-mono">
+                        Desafíos Operativos Superados:
+                      </strong>
+                      <ul className="list-disc pl-4 space-y-1 text-slate-400">
+                        {project.challenges.map((c, idx) => (
+                          <li key={idx}>{c}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <p className="text-[11px] text-slate-400 leading-tight">
-                    Contador predictivo de horas de haz de luz en proyectores digitales Christie y Barco, evitando explosión térmica o corte abrupto en función.
-                  </p>
-                </div>
+                )}
+
+                {techTab === "deepTech" && (
+                  <div className="space-y-2 animate-fadeIn max-h-[220px] overflow-y-auto pr-1">
+                    <span className="text-red-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Telemetría Xenón & Matching de Créditos
+                    </span>
+                    
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-red-400 text-[10px] font-bold flex items-center gap-1">
+                        <Layers className="w-3 h-3" /> React Native Web & Expo Architecture
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.architecture}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-red-400 text-[10px] font-bold flex items-center gap-1">
+                        <Cpu className="w-3 h-3" /> Algoritmo Difuso creditosMatcher
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.algorithmsAndConcurrency}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-red-400 text-[10px] font-bold flex items-center gap-1">
+                        <Radio className="w-3 h-3" /> Telemetría Predictiva de Horas Xenón
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.databaseAndTelemetry}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-red-400 text-[10px] font-bold flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3" /> Matriz Vectorizada de 3,000+ Butacas
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.securityAndPerformance}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Metrics Ribbon */}
+              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+                {project.metrics.map((m, idx) => (
+                  <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
+                    <span className="block text-xs sm:text-sm font-black text-red-400 font-mono">
+                      {m.value}
+                    </span>
+                    <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
+                      {m.label}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Projection Telemetry Live Card */}
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-red-500/30 space-y-2 font-mono text-xs">
-              <div className="flex items-center justify-between text-slate-400 text-[10px]">
+            <div className="p-3 rounded-xl bg-slate-950/80 border border-red-500/30 space-y-1.5 font-mono text-xs">
+              <div className="flex items-center justify-between text-slate-400 text-[9px]">
                 <span className="text-red-400 font-bold flex items-center gap-1">
                   <Tv className="w-3.5 h-3.5" />
-                  Telemetría Cabina Proyector — Sala {selectedSala}
+                  Telemetría Proyector — Sala {selectedSala}
                 </span>
                 <span className="text-emerald-400">● En Línea</span>
               </div>
-              <div className="grid grid-cols-2 gap-2 text-[11px]">
-                <div className="p-2 rounded bg-slate-900 border border-white/5">
-                  <span className="text-slate-400 block text-[9px]">Lámpara Xenón</span>
+              <div className="grid grid-cols-2 gap-2 text-[10px]">
+                <div className="p-1.5 rounded bg-slate-900 border border-white/5">
+                  <span className="text-slate-400 block text-[8px]">Lámpara Xenón</span>
                   <span className="text-white font-bold">1,420 hrs / 2,000 hrs</span>
-                  <span className="text-emerald-400 block text-[9px] mt-0.5">Vida Útil: 71% Óptimo</span>
+                  <span className="text-emerald-400 block text-[8px] mt-0.5">Vida Útil: 71% Óptimo</span>
                 </div>
-                <div className="p-2 rounded bg-slate-900 border border-white/5">
-                  <span className="text-slate-400 block text-[9px]">Ingesta de Contenido</span>
+                <div className="p-1.5 rounded bg-slate-900 border border-white/5">
+                  <span className="text-slate-400 block text-[8px]">Ingesta de Contenido</span>
                   <span className="text-white font-bold">DCP 100% Ingestado</span>
-                  <span className="text-red-400 block text-[9px] mt-0.5">KDM: Activo hasta 28/09</span>
+                  <span className="text-red-400 block text-[8px] mt-0.5">KDM: Activo hasta 28/09</span>
                 </div>
               </div>
-            </div>
-
-            {/* Metrics Ribbon */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {project.metrics.map((m, idx) => (
-                <div key={idx} className="p-3 rounded-xl glass-card border border-white/5 text-center">
-                  <span className="block text-sm sm:text-base font-black text-red-400 font-mono">
-                    {m.value}
-                  </span>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
-                    {m.label}
-                  </span>
-                </div>
-              ))}
             </div>
 
             {/* Tech Stack Chips */}
@@ -229,7 +333,7 @@ export function CinemarkCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-slate-900/80 border border-red-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-red-500/20 text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -238,10 +342,10 @@ export function CinemarkCard() {
           </div>
 
           {/* Right Column: Interactive Seat Matrix & Ticket Preview Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 sm:p-6 rounded-2xl border border-red-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-red-500/30 flex flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden">
             
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
                 <div className="p-1.5 rounded-lg bg-red-500/20 text-red-400">
                   <Sliders className="w-4 h-4" />
@@ -251,12 +355,12 @@ export function CinemarkCard() {
                     Sandbox Interactivo: Mapa de Butacas & Ticket Stub
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 block">
-                    Haz clic en una butaca para inspeccionar diagnósticos mecánicos o emitir ticket
+                    Haz clic en una butaca para ver diagnósticos mecánicos o emitir ticket
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1.5 font-mono text-xs">
+              <div className="flex items-center gap-1 font-mono text-[10px]">
                 <button
                   onClick={() => setSelectedSala(4)}
                   className={`px-2 py-1 rounded transition-colors ${
@@ -277,18 +381,18 @@ export function CinemarkCard() {
             </div>
 
             {/* Screen Arc Representation */}
-            <div className="flex flex-col items-center py-1">
-              <div className="w-3/4 h-2 bg-gradient-to-r from-red-600/30 via-red-500 to-red-600/30 rounded-full shadow-lg shadow-red-500/20" />
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mt-1">
+            <div className="flex flex-col items-center py-0.5">
+              <div className="w-3/4 h-1.5 bg-gradient-to-r from-red-600/30 via-red-500 to-red-600/30 rounded-full shadow-lg shadow-red-500/20" />
+              <span className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mt-0.5">
                 PANTALLA GIGANTE XD DIGITAL
               </span>
             </div>
 
             {/* Interactive Seat Matrix (5 rows x 8 seats) */}
-            <div className="p-3 rounded-xl bg-slate-950/70 border border-white/5 space-y-1.5">
+            <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 space-y-1">
               {rows.map((row) => (
                 <div key={row} className="flex items-center justify-center gap-2">
-                  <span className="w-4 text-[11px] font-mono font-bold text-slate-500 text-center">
+                  <span className="w-4 text-[10px] font-mono font-bold text-slate-500 text-center">
                     {row}
                   </span>
                   <div className="flex items-center gap-1.5">
@@ -320,47 +424,47 @@ export function CinemarkCard() {
               ))}
 
               {/* Legend */}
-              <div className="pt-2 border-t border-white/5 flex flex-wrap items-center justify-center gap-3 text-[10px] font-mono text-slate-400">
+              <div className="pt-1.5 border-t border-white/5 flex flex-wrap items-center justify-center gap-2.5 text-[9px] font-mono text-slate-400">
                 <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-slate-800 border border-white/10 inline-block" /> Libre
+                  <span className="w-2 h-2 rounded bg-slate-800 border border-white/10 inline-block" /> Libre
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-red-600 inline-block" /> Seleccionada
+                  <span className="w-2 h-2 rounded bg-red-600 inline-block" /> Seleccionada
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-amber-900 border border-amber-500 inline-block" /> Daño Técnico
+                  <span className="w-2 h-2 rounded bg-amber-900 border border-amber-500 inline-block" /> Avería Mecánica
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-slate-950 inline-block opacity-50" /> Ocupada
+                  <span className="w-2 h-2 rounded bg-slate-950 inline-block opacity-50" /> Ocupada
                 </span>
               </div>
             </div>
 
             {/* Diagnostic & Ticket Preview Card */}
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10 space-y-2.5">
+            <div className="p-3 rounded-xl bg-slate-950/80 border border-white/10 space-y-2">
               {selectedSeat?.status === "damaged" ? (
-                <div className="p-2.5 rounded-lg bg-amber-950/60 border border-amber-500/40 text-xs space-y-1">
+                <div className="p-2 rounded-lg bg-amber-950/60 border border-amber-500/40 text-xs space-y-1">
                   <div className="flex items-center justify-between text-amber-300 font-bold">
                     <span className="flex items-center gap-1.5">
-                      <AlertTriangle className="w-4 h-4 text-amber-400" />
-                      Diagnóstico de Butaca {selectedSeat.id}
+                      <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                      Diagnóstico Butaca {selectedSeat.id}
                     </span>
-                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-amber-900 text-amber-200">
+                    <span className="text-[9px] uppercase font-mono px-1.5 py-0.5 rounded bg-amber-900 text-amber-200">
                       Urgencia {selectedSeat.urgency}
                     </span>
                   </div>
-                  <p className="text-slate-300 text-[11px]">
-                    Desperfecto detectado: <strong>Mecanismo de {selectedSeat.damageType}</strong> trabado o suelto. Reporte enviado automáticamente al equipo de mantenimiento de sala.
+                  <p className="text-slate-300 text-[10px]">
+                    Desperfecto: <strong>Mecanismo de {selectedSeat.damageType}</strong> suelto. Reporte emitido en tiempo real para cuadrilla técnica.
                   </p>
                 </div>
               ) : (
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5">
                   <div className="text-xs text-slate-300 text-center sm:text-left">
                     <span className="font-bold text-white block">
                       {selectedMovie}
                     </span>
-                    <span className="text-[11px] font-mono text-slate-400">
-                      Sala {selectedSala} XD • Fila {selectedSeat?.row || "F"} Butaca {selectedSeat?.num || "8"} • Sonido Dolby Atmos
+                    <span className="text-[10px] font-mono text-slate-400">
+                      Sala {selectedSala} XD • Fila {selectedSeat?.row || "F"} Butaca {selectedSeat?.num || "8"} • Dolby Atmos
                     </span>
                   </div>
 
@@ -368,29 +472,29 @@ export function CinemarkCard() {
                     onClick={handlePrintTicket}
                     className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-white bg-red-600 hover:bg-red-500 hover:shadow-lg hover:shadow-red-600/30 hover:scale-105 transition-all flex items-center justify-center gap-2"
                   >
-                    <QrCode className="w-4 h-4" />
-                    <span>Emitir Ticket Stub</span>
+                    <QrCode className="w-3.5 h-3.5" />
+                    <span>Emitir Boleto Digital</span>
                   </button>
                 </div>
               )}
 
               {/* Ticket Stub Output */}
               {ticketIssued && (
-                <div className="p-3 rounded-lg bg-slate-900 border border-red-500/40 flex items-center justify-between font-mono text-xs animate-fadeIn">
+                <div className="p-2.5 rounded-lg bg-slate-900 border border-red-500/40 flex items-center justify-between font-mono text-xs animate-fadeIn">
                   <div className="space-y-0.5">
-                    <span className="text-[10px] text-red-400 uppercase tracking-wider block font-bold">
+                    <span className="text-[9px] text-red-400 uppercase tracking-wider block font-bold">
                       CINEMARK HOYTS • BOLETO DIGITAL
                     </span>
-                    <span className="text-white font-bold text-sm block">{selectedMovie}</span>
-                    <span className="text-slate-400 text-[10px] block">
+                    <span className="text-white font-bold text-xs block">{selectedMovie}</span>
+                    <span className="text-slate-400 text-[9px] block">
                       SALA {selectedSala} • BUTACA {selectedSeat?.id} • 21:30 HS
                     </span>
                   </div>
-                  <div className="text-center pl-3 border-l border-white/10">
-                    <div className="w-12 h-12 bg-white p-1 rounded flex items-center justify-center">
-                      <QrCode className="w-10 h-10 text-black" />
+                  <div className="text-center pl-2.5 border-l border-white/10">
+                    <div className="w-10 h-10 bg-white p-0.5 rounded flex items-center justify-center">
+                      <QrCode className="w-8 h-8 text-black" />
                     </div>
-                    <span className="text-[9px] text-slate-400 mt-0.5 block">VALIDADO</span>
+                    <span className="text-[8px] text-slate-400 mt-0.5 block">VALIDADO</span>
                   </div>
                 </div>
               )}
@@ -399,7 +503,7 @@ export function CinemarkCard() {
             {/* Footer Stack Note */}
             <div className="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-white/5">
               <span>Stack: React Native + Expo Router + Firebase Cloud</span>
-              <span className="text-red-400 font-mono text-[11px]">Cinemark Operations System</span>
+              <span className="text-red-400 font-mono text-[10px]">Cinemark Operations System</span>
             </div>
 
           </div>

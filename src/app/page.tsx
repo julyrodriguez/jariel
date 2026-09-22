@@ -3,24 +3,24 @@
 import React, { useEffect, useRef } from "react";
 import { Navbar } from "@/components/navigation/Navbar";
 import { ScrollIndicator } from "@/components/navigation/ScrollIndicator";
-import { HeroSection } from "@/components/hero/HeroSection";
+import { ProfileHeroCard } from "@/components/profile/ProfileHeroCard";
+import { ProjectsHubCard } from "@/components/projects/ProjectsHubCard";
 import { VacasLocasCard } from "@/components/projects/VacasLocasCard";
 import { DemoPilatesCard } from "@/components/projects/DemoPilatesCard";
 import { TiendaCard } from "@/components/projects/TiendaCard";
 import { CinemarkCard } from "@/components/projects/CinemarkCard";
 import { FinanzasCard } from "@/components/projects/FinanzasCard";
-import { AboutSection } from "@/components/about/AboutSection";
 import { useTheme } from "@/context/ThemeContext";
 import { SectionId } from "@/types";
 
 const SECTION_IDS: SectionId[] = [
-  "hero",
+  "profile",
+  "projects-hub",
   "vacas-locas",
   "demoPilates",
   "tienda",
   "cinemark-app",
-  "finanzas",
-  "about"
+  "finanzas"
 ];
 
 export default function Home() {
@@ -69,13 +69,18 @@ export default function Home() {
         ref={containerRef}
         className="snap-container relative z-10 w-full h-screen"
       >
-        <HeroSection />
+        {/* 1. Primera Card: Perfil Profesional, Formación Universitaria & Certificaciones */}
+        <ProfileHeroCard />
+
+        {/* 2. Segunda Card: Hub Central de Proyectos con Mini Cards */}
+        <ProjectsHubCard />
+
+        {/* 3. Proyectos Individuales con Desglose Técnico & Sandboxes */}
         <VacasLocasCard />
         <DemoPilatesCard />
         <TiendaCard />
         <CinemarkCard />
         <FinanzasCard />
-        <AboutSection />
       </main>
     </div>
   );

@@ -5,14 +5,15 @@ import { PROJECTS_DATA } from "@/data/projectsData";
 import { 
   Calendar, 
   Clock, 
-  Sparkles, 
   CheckCircle2, 
   ExternalLink, 
   UserCheck, 
   Mail, 
   ArrowRight, 
   ShieldCheck, 
-  Zap 
+  Layers,
+  Cpu,
+  Database
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import confetti from "canvas-confetti";
@@ -29,6 +30,7 @@ interface ShiftOption {
 export function DemoPilatesCard() {
   const project = PROJECTS_DATA["demoPilates"];
 
+  const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
   const [shifts, setShifts] = useState<ShiftOption[]>([
     { time: "08:00 hs", discipline: "Reformer", instructor: "Camila R.", capacity: 6, reserved: 5 },
     { time: "09:30 hs", discipline: "Reformer", instructor: "Camila R.", capacity: 6, reserved: 6 }, // Full
@@ -56,7 +58,6 @@ export function DemoPilatesCard() {
       // Confetti fallback
     }
 
-    // Update shift reservation count
     const updated = [...shifts];
     updated[activeSlotIdx].reserved += 1;
     setShifts(updated);
@@ -82,7 +83,7 @@ export function DemoPilatesCard() {
         style={{ background: project.theme.bgGradient }}
       />
 
-      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-6">
+      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -106,12 +107,12 @@ export function DemoPilatesCard() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
               {project.title}
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
               {project.subtitle}
             </p>
           </div>
 
-          {/* External Links: Live Demo & Github */}
+          {/* External Links */}
           <div className="flex items-center gap-2.5">
             {project.liveUrl && (
               <a
@@ -140,58 +141,160 @@ export function DemoPilatesCard() {
           </div>
         </div>
 
-        {/* Main Grid: Architecture & Flow on Left, Interactive Reservation Sandbox on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Main Grid: Architecture & Technical Specs on Left, Interactive Reservation Sandbox on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Left Column (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
-            {/* Overview & Architecture Details */}
-            <div className="glass-panel p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-teal-400 flex items-center gap-2">
-                <Sparkles className="w-4 h-4" />
-                <span>Arquitectura SaaS Híbrida (LocalCache + Cloud)</span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {project.overview}
-              </p>
-
-              {/* Architecture diagram cards */}
-              <div className="pt-2 border-t border-white/5 space-y-2.5">
-                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-teal-500/20 text-xs">
-                  <div className="font-semibold text-teal-300 flex items-center gap-1.5 mb-1">
-                    <Zap className="w-3.5 h-3.5 text-teal-400" />
-                    <span>Aislamiento Demo LocalCache</span>
-                  </div>
-                  <p className="text-[11px] text-slate-400 leading-tight">
-                    Capa de middleware que intercepta mutaciones en entornos de prueba, almacenando reservas en LocalStorage con paridad total de API sin polucionar Firestore.
-                  </p>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-slate-950/60 border border-teal-500/20 text-xs">
-                  <div className="font-semibold text-teal-300 flex items-center gap-1.5 mb-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
-                    <span>Cancelación Segura con Token de Un Solo Uso</span>
-                  </div>
-                  <p className="text-[11px] text-slate-400 leading-tight">
-                    Generación de hashes irreversibles embebidos en links de confirmación. Permite al alumno liberar su cupo en 1 segundo sin requerir inicio de sesión.
-                  </p>
-                </div>
+            {/* Interactive Tabs */}
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-teal-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+              
+              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("whatItDoes");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "whatItDoes"
+                      ? "bg-teal-400 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  ¿Qué hace?
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("solution");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "solution"
+                      ? "bg-teal-400 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Solución
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("deepTech");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "deepTech"
+                      ? "bg-teal-400 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Datos Técnicos
+                </button>
               </div>
-            </div>
 
-            {/* Metrics Ribbon */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {project.metrics.map((m, idx) => (
-                <div key={idx} className="p-3 rounded-xl glass-card border border-white/5 text-center">
-                  <span className="block text-sm sm:text-base font-black text-teal-400 font-mono">
-                    {m.value}
-                  </span>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
-                    {m.label}
-                  </span>
-                </div>
-              ))}
+              {/* Tab Content Display */}
+              <div className="space-y-2 text-xs">
+                {techTab === "whatItDoes" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-teal-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Operación & Portal de Autogestión
+                    </span>
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.whatItDoes}
+                    </p>
+                    <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
+                      {project.keyModules.map((m, idx) => (
+                        <div key={idx} className="flex items-start gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-teal-400 shrink-0 mt-0.5" />
+                          <div>
+                            <strong className="text-white">{m.title}:</strong>{" "}
+                            <span className="text-slate-400 text-[11px]">{m.description}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {techTab === "solution" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-teal-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Reducción de Inasistencias & Optimización de Capacidad
+                    </span>
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.solutionProvided}
+                    </p>
+                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-teal-500/20 text-[11px] text-slate-300 space-y-1">
+                      <strong className="text-teal-400 block font-mono">
+                        Desafíos Operativos Superados:
+                      </strong>
+                      <ul className="list-disc pl-4 space-y-1 text-slate-400">
+                        {project.challenges.map((c, idx) => (
+                          <li key={idx}>{c}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {techTab === "deepTech" && (
+                  <div className="space-y-2 animate-fadeIn max-h-[220px] overflow-y-auto pr-1">
+                    <span className="text-teal-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Arquitectura Híbrida & Concurrencia
+                    </span>
+                    
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                        <Layers className="w-3 h-3" /> Arquitectura Híbrida LocalCache
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.architecture}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                        <Cpu className="w-3 h-3" /> Transacciones Atómicas ACID
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.algorithmsAndConcurrency}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                        <Database className="w-3 h-3" /> Esquema NoSQL & Telemetría Ocupacional
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.databaseAndTelemetry}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3" /> Cancelación Segura Criptográfica
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.securityAndPerformance}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Metrics Ribbon */}
+              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+                {project.metrics.map((m, idx) => (
+                  <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
+                    <span className="block text-xs sm:text-sm font-black text-teal-400 font-mono">
+                      {m.value}
+                    </span>
+                    <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
+                      {m.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Tech Stack Badges */}
@@ -199,7 +302,7 @@ export function DemoPilatesCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-slate-900/80 border border-teal-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-teal-500/20 text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -208,10 +311,10 @@ export function DemoPilatesCard() {
           </div>
 
           {/* Right Column: Interactive Booking Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 sm:p-6 rounded-2xl border border-teal-500/30 flex flex-col justify-between space-y-5 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-teal-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
             
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
                 <div className="p-1.5 rounded-lg bg-teal-500/20 text-teal-400">
                   <Calendar className="w-4 h-4" />
@@ -226,19 +329,19 @@ export function DemoPilatesCard() {
                 </div>
               </div>
 
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-500/30">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-500/30">
                 Hoy: Miércoles
               </span>
             </div>
 
             {/* Turnos / Shift Cards Selector */}
-            <div className="space-y-3">
-              <div className="text-[11px] font-mono text-slate-400 flex items-center justify-between">
+            <div className="space-y-2.5">
+              <div className="text-[10px] font-mono text-slate-400 flex items-center justify-between">
                 <span>Turnos Disponibles para Reserva:</span>
                 <span className="text-teal-400">Cupos en Tiempo Real</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {shifts.map((shift, idx) => {
                   const isSelected = activeSlotIdx === idx;
                   const isFull = shift.reserved >= shift.capacity;
@@ -252,36 +355,35 @@ export function DemoPilatesCard() {
                         setActiveSlotIdx(idx);
                         setBookingConfirmed(false);
                       }}
-                      className={`p-3 rounded-xl text-left border transition-all relative overflow-hidden ${
+                      className={`p-2.5 rounded-xl text-left border transition-all relative overflow-hidden ${
                         isSelected
                           ? "bg-teal-950/70 border-teal-400 shadow-lg shadow-teal-500/10"
                           : "bg-slate-900/70 border-white/5 hover:border-teal-500/30"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="font-mono text-xs font-bold text-white flex items-center gap-1.5">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-mono text-xs font-bold text-white flex items-center gap-1">
                           <Clock className="w-3 h-3 text-teal-400" />
                           {shift.time}
                         </span>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-semibold ${
+                        <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono font-semibold ${
                           isFull
                             ? "bg-rose-500/20 text-rose-300 border border-rose-500/30"
                             : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
                         }`}>
-                          {isFull ? "Agotado" : `${available} disponibles`}
+                          {isFull ? "Agotado" : `${available} libres`}
                         </span>
                       </div>
 
                       <div className="text-xs font-semibold text-slate-200">
                         {shift.discipline}
                       </div>
-                      <div className="text-[11px] text-slate-400 flex items-center justify-between mt-1">
+                      <div className="text-[10px] text-slate-400 flex items-center justify-between mt-0.5">
                         <span>Instr: {shift.instructor}</span>
                         <span className="font-mono">{shift.reserved}/{shift.capacity} camas</span>
                       </div>
 
-                      {/* Capacity progress bar */}
-                      <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+                      <div className="w-full h-1 bg-slate-800 rounded-full mt-1.5 overflow-hidden">
                         <div
                           className={`h-full transition-all duration-500 ${
                             isFull ? "bg-rose-500" : "bg-teal-400"
@@ -296,14 +398,14 @@ export function DemoPilatesCard() {
             </div>
 
             {/* Simulated Booking Confirmation Box */}
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-white/10 space-y-3">
+            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10 space-y-2.5">
               {!bookingConfirmed ? (
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
                   <div className="text-xs text-slate-300 text-center sm:text-left">
                     <span className="block font-semibold text-white">
-                      Turno Seleccionado: {shifts[activeSlotIdx].time} — {shifts[activeSlotIdx].discipline}
+                      Turno: {shifts[activeSlotIdx].time} — {shifts[activeSlotIdx].discipline}
                     </span>
-                    <span className="text-[11px] text-slate-400">
+                    <span className="text-[10px] text-slate-400">
                       Capacidad restante: {shifts[activeSlotIdx].capacity - shifts[activeSlotIdx].reserved} lugares
                     </span>
                   </div>
@@ -311,40 +413,39 @@ export function DemoPilatesCard() {
                   <button
                     onClick={handleSimulateBooking}
                     disabled={shifts[activeSlotIdx].reserved >= shifts[activeSlotIdx].capacity}
-                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-teal-400 to-emerald-400 hover:shadow-lg hover:shadow-teal-500/25 hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-teal-400 to-emerald-400 hover:shadow-lg hover:shadow-teal-500/25 hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     <UserCheck className="w-4 h-4" />
                     <span>Confirmar Reserva de Prueba</span>
                   </button>
                 </div>
               ) : (
-                <div className="space-y-2.5 animate-fadeIn">
+                <div className="space-y-2 animate-fadeIn">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-bold text-emerald-400 flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4" />
-                      ¡Reserva Confirmada Exitosamente en Demo Studio!
+                      ¡Reserva Confirmada en Demo Studio!
                     </span>
                     <button
                       onClick={handleReset}
-                      className="text-[11px] font-mono text-slate-400 hover:text-white underline"
+                      className="text-[10px] font-mono text-slate-400 hover:text-white underline"
                     >
                       Probar otro turno
                     </button>
                   </div>
 
-                  {/* Simulated Automated Email/Notification Card */}
-                  <div className="p-3 rounded-lg bg-slate-900 border border-teal-500/30 text-xs space-y-1.5 font-mono">
-                    <div className="flex items-center justify-between text-slate-400 text-[10px]">
+                  <div className="p-2.5 rounded-lg bg-slate-900 border border-teal-500/30 text-xs space-y-1 font-mono">
+                    <div className="flex items-center justify-between text-slate-400 text-[9px]">
                       <span className="flex items-center gap-1 text-teal-300">
                         <Mail className="w-3 h-3" />
                         Notificación Automatizada (Resend / Nodemailer)
                       </span>
                       <span>Token: #{simulatedToken}</span>
                     </div>
-                    <p className="text-slate-300 text-[11px]">
-                      Hola <strong>Alumno/a</strong>, tu turno de <strong>{shifts[activeSlotIdx].discipline}</strong> a las <strong>{shifts[activeSlotIdx].time}</strong> está asegurado.
+                    <p className="text-slate-300 text-[10px]">
+                      Hola <strong>Alumno/a</strong>, tu turno de <strong>{shifts[activeSlotIdx].discipline}</strong> ({shifts[activeSlotIdx].time}) está confirmado.
                     </p>
-                    <div className="pt-1 flex items-center justify-between text-[10px] text-slate-400 border-t border-white/5">
+                    <div className="pt-1 flex items-center justify-between text-[9px] text-slate-400 border-t border-white/5">
                       <span>¿No puedes asistir?</span>
                       <span className="text-teal-400 underline cursor-pointer hover:text-teal-300">
                         https://demopilates.jariel.com.ar/cancelar?token={simulatedToken}

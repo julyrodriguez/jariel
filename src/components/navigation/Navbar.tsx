@@ -16,8 +16,8 @@ export function Navbar() {
   const { activeSection, currentTheme, soundEnabled, setSoundEnabled, scrollToSection } = useTheme();
 
   const getSectionTitle = () => {
-    if (activeSection === "hero") return "Inicio • Full Stack Architect";
-    if (activeSection === "about") return "Credenciales & Formación";
+    if (activeSection === "profile") return "Perfil Profesional • Credenciales";
+    if (activeSection === "projects-hub") return "Hub Central de Proyectos";
     if (activeSection in PROJECTS_DATA) return PROJECTS_DATA[activeSection].title;
     return "Portafolio";
   };
@@ -28,7 +28,7 @@ export function Navbar() {
         {/* Brand / Logo */}
         <div className="flex items-center gap-3 pointer-events-auto">
           <button
-            onClick={() => scrollToSection("hero")}
+            onClick={() => scrollToSection("profile")}
             className="group flex items-center gap-2.5 px-3 py-1.5 rounded-xl glass-panel border transition-all duration-300 hover:scale-105"
             style={{
               borderColor: `${currentTheme.primary}40`,
@@ -78,21 +78,21 @@ export function Navbar() {
             )}
           </button>
 
-          {/* Quick Jump: Proyectos */}
+          {/* Quick Jump: Perfil */}
           <button
-            onClick={() => scrollToSection("vacas-locas")}
+            onClick={() => scrollToSection("profile")}
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass-panel text-xs font-medium text-slate-300 hover:text-white hover:border-white/20 transition-all duration-200"
           >
-            <span>Proyectos</span>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
+            <span>Perfil</span>
           </button>
 
-          {/* Quick Jump: Credenciales */}
+          {/* Quick Jump: Hub */}
           <button
-            onClick={() => scrollToSection("about")}
+            onClick={() => scrollToSection("projects-hub")}
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass-panel text-xs font-medium text-slate-300 hover:text-white hover:border-white/20 transition-all duration-200"
           >
-            <span>Credenciales</span>
+            <span>Hub Proyectos</span>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
           </button>
 
           {/* GitHub Profile */}

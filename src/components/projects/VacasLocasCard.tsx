@@ -4,12 +4,15 @@ import React, { useState } from "react";
 import { PROJECTS_DATA } from "@/data/projectsData";
 import { 
   Trophy, 
-  Flame, 
   Gamepad2, 
   CheckCircle2, 
   Award, 
   Users, 
-  Activity 
+  Activity,
+  Cpu,
+  Layers,
+  ShieldCheck,
+  Database
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import { sound } from "@/lib/sound";
@@ -23,6 +26,7 @@ export function VacasLocasCard() {
   const [userPick1, setUserPick1] = useState<number>(2);
   const [userPick2, setUserPick2] = useState<number>(1);
   const [activeTournament, setActiveTournament] = useState<"copa" | "cs2">("copa");
+  const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
 
   // Calculate points dynamically
   const calculatePoints = () => {
@@ -56,7 +60,7 @@ export function VacasLocasCard() {
         style={{ background: project.theme.bgGradient }}
       />
 
-      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-6">
+      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -80,7 +84,7 @@ export function VacasLocasCard() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
               {project.title}
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
               {project.subtitle}
             </p>
           </div>
@@ -102,49 +106,160 @@ export function VacasLocasCard() {
           </div>
         </div>
 
-        {/* Main Grid: Architecture Details on Left, Interactive Simulation Sandbox on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Main Grid: Deep Technical Specs on Left, Interactive Simulation Sandbox on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
-          {/* Left Column: Tech Stack, Key Modules & Metrics (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+          {/* Left Column: Technical Analysis & Business Solution (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
-            {/* Overview & Key Highlights */}
-            <div className="glass-panel p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
-                <Flame className="w-4 h-4" />
-                <span>Arquitectura & Algoritmos de Gamificación</span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {project.overview}
-              </p>
+            {/* Interactive Tabs: ¿Qué hace? / ¿Qué solución brindó? / Datos Técnicos Profundos */}
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-emerald-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+              
+              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("whatItDoes");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "whatItDoes"
+                      ? "bg-emerald-500 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  ¿Qué hace?
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("solution");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "solution"
+                      ? "bg-emerald-500 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Solución
+                </button>
+                <button
+                  onClick={() => {
+                    sound.playClick();
+                    setTechTab("deepTech");
+                  }}
+                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                    techTab === "deepTech"
+                      ? "bg-emerald-500 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Datos Técnicos
+                </button>
+              </div>
 
-              <div className="pt-2 border-t border-white/5 space-y-2">
-                {project.keyModules.map((mod, idx) => (
-                  <div key={idx} className="text-xs space-y-0.5">
-                    <span className="font-semibold text-white flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      {mod.title}
+              {/* Tab Content Display */}
+              <div className="space-y-2 text-xs">
+                {techTab === "whatItDoes" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Operación & Módulos en Producción
                     </span>
-                    <p className="text-slate-400 pl-5 text-[11px] leading-normal">
-                      {mod.description}
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.whatItDoes}
                     </p>
+                    <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
+                      {project.keyModules.map((m, idx) => (
+                        <div key={idx} className="flex items-start gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <div>
+                            <strong className="text-white">{m.title}:</strong>{" "}
+                            <span className="text-slate-400 text-[11px]">{m.description}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {techTab === "solution" && (
+                  <div className="space-y-2 animate-fadeIn">
+                    <span className="text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Impacto y Desafío de Concurrencia Resuelto
+                    </span>
+                    <p className="text-slate-200 leading-relaxed">
+                      {project.solutionProvided}
+                    </p>
+                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-emerald-500/20 text-[11px] text-slate-300 space-y-1">
+                      <strong className="text-emerald-400 block font-mono">
+                        Desafíos Críticos Superados:
+                      </strong>
+                      <ul className="list-disc pl-4 space-y-1 text-slate-400">
+                        {project.challenges.map((c, idx) => (
+                          <li key={idx}>{c}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {techTab === "deepTech" && (
+                  <div className="space-y-2 animate-fadeIn max-h-[220px] overflow-y-auto pr-1">
+                    <span className="text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Ingeniería Profunda & Arquitectura
+                    </span>
+                    
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-emerald-400 text-[10px] font-bold flex items-center gap-1">
+                        <Layers className="w-3 h-3" /> Arquitectura Híbrida Desacoplada
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.architecture}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-emerald-400 text-[10px] font-bold flex items-center gap-1">
+                        <Cpu className="w-3 h-3" /> Algoritmo Simulación O(N log N)
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.algorithmsAndConcurrency}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-emerald-400 text-[10px] font-bold flex items-center gap-1">
+                        <Database className="w-3 h-3" /> Persistencia & Micro-Caché I/O
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.databaseAndTelemetry}
+                      </p>
+                    </div>
+
+                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
+                      <span className="font-mono text-emerald-400 text-[10px] font-bold flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3" /> Integridad & CDN WebP
+                      </span>
+                      <p className="text-[11px] text-slate-400 leading-tight">
+                        {project.deepTechnicalData.securityAndPerformance}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Metrics Ribbon */}
+              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+                {project.metrics.map((m, idx) => (
+                  <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
+                    <span className="block text-xs sm:text-sm font-black text-emerald-400 font-mono">
+                      {m.value}
+                    </span>
+                    <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
+                      {m.label}
+                    </span>
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Metrics Ribbon */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {project.metrics.map((m, idx) => (
-                <div key={idx} className="p-3 rounded-xl glass-card border border-white/5 text-center">
-                  <span className="block text-sm sm:text-base font-black text-emerald-400 font-mono">
-                    {m.value}
-                  </span>
-                  <span className="block text-[10px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
-                    {m.label}
-                  </span>
-                </div>
-              ))}
             </div>
 
             {/* Tech Stack Chips */}
@@ -152,7 +267,7 @@ export function VacasLocasCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-slate-900/80 border border-emerald-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-emerald-500/20 text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -161,10 +276,10 @@ export function VacasLocasCard() {
           </div>
 
           {/* Right Column: Live Interactive Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 sm:p-6 rounded-2xl border border-emerald-500/30 flex flex-col justify-between space-y-5 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-emerald-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
             
             {/* Sandbox Header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
                 <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400">
                   <Gamepad2 className="w-4 h-4" />
@@ -180,13 +295,13 @@ export function VacasLocasCard() {
               </div>
 
               {/* Tournament Switcher */}
-              <div className="flex items-center p-0.5 rounded-lg bg-slate-950/80 border border-white/10 text-[11px]">
+              <div className="flex items-center p-0.5 rounded-lg bg-slate-950/80 border border-white/10 text-[10px] font-mono">
                 <button
                   onClick={() => {
                     sound.playClick();
                     setActiveTournament("copa");
                   }}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2 py-1 rounded-md transition-colors ${
                     activeTournament === "copa"
                       ? "bg-emerald-500 text-slate-950 font-bold"
                       : "text-slate-400 hover:text-white"
@@ -199,7 +314,7 @@ export function VacasLocasCard() {
                     sound.playClick();
                     setActiveTournament("cs2");
                   }}
-                  className={`px-2.5 py-1 rounded-md transition-colors ${
+                  className={`px-2 py-1 rounded-md transition-colors ${
                     activeTournament === "cs2"
                       ? "bg-emerald-500 text-slate-950 font-bold"
                       : "text-slate-400 hover:text-white"
@@ -211,38 +326,38 @@ export function VacasLocasCard() {
             </div>
 
             {/* Simulated Match Arena */}
-            <div className="p-4 rounded-xl bg-slate-950/60 border border-white/5 space-y-4">
+            <div className="p-3.5 rounded-xl bg-slate-950/60 border border-white/5 space-y-3">
               
               {/* Actual Final Score (Simulation) */}
               <div>
-                <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
-                  <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
+                  <span className="flex items-center gap-1 text-emerald-400 font-semibold">
                     <Activity className="w-3.5 h-3.5" />
                     Resultado Real del Partido (Minuto 90&apos;)
                   </span>
-                  <span>Modifica los goles reales:</span>
+                  <span className="text-[10px]">Ajusta los goles reales:</span>
                 </div>
 
-                <div className="grid grid-cols-5 items-center bg-slate-900/90 p-3 rounded-xl border border-white/5">
+                <div className="grid grid-cols-5 items-center bg-slate-900/90 p-2.5 rounded-xl border border-white/5">
                   <div className="col-span-2 text-left">
-                    <span className="font-bold text-white text-sm block">
+                    <span className="font-bold text-white text-xs sm:text-sm block">
                       {activeTournament === "copa" ? "Boca Juniors" : "Team Vitality"}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-mono">Local</span>
+                    <span className="text-[9px] text-slate-400 font-mono">Local</span>
                   </div>
 
-                  <div className="col-span-1 flex items-center justify-center gap-2 font-mono">
+                  <div className="col-span-1 flex items-center justify-center gap-1.5 font-mono">
                     <div className="flex flex-col items-center">
                       <button
                         onClick={() => {
                           sound.playClick();
                           setTeam1Score(Math.min(9, team1Score + 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-xl font-black text-white px-2 py-0.5 rounded bg-slate-800 border border-white/10">
+                      <span className="text-lg font-black text-white px-2 py-0.5 rounded bg-slate-800 border border-white/10">
                         {team1Score}
                       </span>
                       <button
@@ -250,7 +365,7 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setTeam1Score(Math.max(0, team1Score - 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
                       >
                         ▼
                       </button>
@@ -264,11 +379,11 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setTeam2Score(Math.min(9, team2Score + 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-xl font-black text-white px-2 py-0.5 rounded bg-slate-800 border border-white/10">
+                      <span className="text-lg font-black text-white px-2 py-0.5 rounded bg-slate-800 border border-white/10">
                         {team2Score}
                       </span>
                       <button
@@ -276,7 +391,7 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setTeam2Score(Math.max(0, team2Score - 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
                       >
                         ▼
                       </button>
@@ -284,43 +399,43 @@ export function VacasLocasCard() {
                   </div>
 
                   <div className="col-span-2 text-right">
-                    <span className="font-bold text-white text-sm block">
+                    <span className="font-bold text-white text-xs sm:text-sm block">
                       {activeTournament === "copa" ? "River Plate" : "Natus Vincere"}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-mono">Visitante</span>
+                    <span className="text-[9px] text-slate-400 font-mono">Visitante</span>
                   </div>
                 </div>
               </div>
 
               {/* User Prediction Interactive Selector */}
               <div>
-                <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
-                  <span className="text-purple-300 font-semibold flex items-center gap-1.5">
+                <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
+                  <span className="text-purple-300 font-semibold flex items-center gap-1">
                     <Trophy className="w-3.5 h-3.5" />
                     Tu Pronóstico Cargado en la Plataforma
                   </span>
-                  <span>Ajusta tu pronóstico:</span>
+                  <span className="text-[10px]">Ajusta tu pronóstico:</span>
                 </div>
 
-                <div className="grid grid-cols-5 items-center bg-slate-900/90 p-3 rounded-xl border border-purple-500/20">
+                <div className="grid grid-cols-5 items-center bg-slate-900/90 p-2.5 rounded-xl border border-purple-500/20">
                   <div className="col-span-2 text-left">
                     <span className="text-xs font-semibold text-slate-200 block">
                       {activeTournament === "copa" ? "Pronóstico Boca" : "Pronóstico Vitality"}
                     </span>
                   </div>
 
-                  <div className="col-span-1 flex items-center justify-center gap-2 font-mono">
+                  <div className="col-span-1 flex items-center justify-center gap-1.5 font-mono">
                     <div className="flex flex-col items-center">
                       <button
                         onClick={() => {
                           sound.playClick();
                           setUserPick1(Math.min(9, userPick1 + 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-xl font-black text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/30">
+                      <span className="text-lg font-black text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/30">
                         {userPick1}
                       </span>
                       <button
@@ -328,7 +443,7 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setUserPick1(Math.max(0, userPick1 - 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
                       >
                         ▼
                       </button>
@@ -342,11 +457,11 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setUserPick2(Math.min(9, userPick2 + 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-xl font-black text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/30">
+                      <span className="text-lg font-black text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/30">
                         {userPick2}
                       </span>
                       <button
@@ -354,7 +469,7 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setUserPick2(Math.max(0, userPick2 - 1));
                         }}
-                        className="text-xs text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
                       >
                         ▼
                       </button>
@@ -370,42 +485,42 @@ export function VacasLocasCard() {
               </div>
 
               {/* Dynamic Calculation Evaluation Banner */}
-              <div className={`p-3 rounded-xl border flex items-center justify-between transition-all ${result.badge}`}>
+              <div className={`p-2.5 rounded-xl border flex items-center justify-between transition-all ${result.badge}`}>
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 shrink-0" />
                   <span className="text-xs font-bold">{result.label}</span>
                 </div>
                 <div className="text-right font-mono">
-                  <span className="text-lg font-black">{result.pts}</span>
-                  <span className="text-[10px] uppercase ml-1">pts</span>
+                  <span className="text-base font-black">{result.pts}</span>
+                  <span className="text-[9px] uppercase ml-1">pts</span>
                 </div>
               </div>
             </div>
 
             {/* Leaderboard Micro-Widget (Simulated real community) */}
-            <div className="p-3 rounded-xl bg-slate-950/80 border border-white/5 space-y-2 text-xs">
-              <div className="flex items-center justify-between text-slate-400 font-mono text-[10px]">
+            <div className="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 space-y-1.5 text-xs">
+              <div className="flex items-center justify-between text-slate-400 font-mono text-[9px]">
                 <span className="flex items-center gap-1 text-emerald-400">
-                  <Users className="w-3.5 h-3.5" />
+                  <Users className="w-3 h-3" />
                   Ranking Global de la Comunidad (Top 3)
                 </span>
-                <span>API sincronizada • apivacas.jariel.com.ar</span>
+                <span>API en vivo • apivacas.jariel.com.ar</span>
               </div>
               <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 rounded-lg bg-slate-900 border border-amber-500/30 flex flex-col items-center">
-                  <span className="text-amber-400 font-mono text-xs font-bold">🥇 #1 Julián R.</span>
-                  <span className="text-slate-300 font-mono text-[11px] font-semibold mt-0.5">84 pts</span>
-                  <span className="text-[9px] text-emerald-400">Racha: 5 aciertos</span>
+                <div className="p-1.5 rounded-lg bg-slate-900 border border-amber-500/30 flex flex-col items-center">
+                  <span className="text-amber-400 font-mono text-[11px] font-bold">🥇 #1 Julián R.</span>
+                  <span className="text-slate-300 font-mono text-[10px] font-semibold">84 pts</span>
+                  <span className="text-[8px] text-emerald-400">Racha: 5 aciertos</span>
                 </div>
-                <div className="p-2 rounded-lg bg-slate-900 border border-slate-700 flex flex-col items-center">
-                  <span className="text-slate-300 font-mono text-xs font-bold">🥈 #2 Mateo C.</span>
-                  <span className="text-slate-300 font-mono text-[11px] font-semibold mt-0.5">79 pts</span>
-                  <span className="text-[9px] text-slate-400">Racha: 3 aciertos</span>
+                <div className="p-1.5 rounded-lg bg-slate-900 border border-slate-700 flex flex-col items-center">
+                  <span className="text-slate-300 font-mono text-[11px] font-bold">🥈 #2 Mateo C.</span>
+                  <span className="text-slate-300 font-mono text-[10px] font-semibold">79 pts</span>
+                  <span className="text-[8px] text-slate-400">Racha: 3 aciertos</span>
                 </div>
-                <div className="p-2 rounded-lg bg-slate-900 border border-amber-700/40 flex flex-col items-center">
-                  <span className="text-amber-600 font-mono text-xs font-bold">🥉 #3 Lucas V.</span>
-                  <span className="text-slate-300 font-mono text-[11px] font-semibold mt-0.5">76 pts</span>
-                  <span className="text-[9px] text-slate-400">Racha: 2 aciertos</span>
+                <div className="p-1.5 rounded-lg bg-slate-900 border border-amber-700/40 flex flex-col items-center">
+                  <span className="text-amber-600 font-mono text-[11px] font-bold">🥉 #3 Lucas V.</span>
+                  <span className="text-slate-300 font-mono text-[10px] font-semibold">76 pts</span>
+                  <span className="text-[8px] text-slate-400">Racha: 2 aciertos</span>
                 </div>
               </div>
             </div>

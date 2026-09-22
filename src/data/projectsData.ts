@@ -1,4 +1,83 @@
-import { ProjectData, SkillCategory } from "@/types";
+import { ProjectData, SkillCategory, CertificateItem } from "@/types";
+
+export const CERTIFICATES_DATA: CertificateItem[] = [
+  {
+    id: "utn-tecnicatura",
+    title: "Tecnicatura Universitaria en Programación",
+    issuer: "Universidad Tecnológica Nacional (UTN)",
+    year: "Formación Universitaria",
+    badge: "Título Universitario",
+    topics: [
+      "Estructuras de Datos y Complejidad Algorítmica",
+      "Paradigmas de Programación (POO & Funcional)",
+      "Bases de Datos Relacionales (SQL) y Modelado NoSQL",
+      "Sistemas Operativos, Redes & Arquitectura de Software"
+    ],
+    description:
+      "Formación académica universitaria rigurosa con énfasis en ciencias de la computación, diseño de software escalable, algoritmos de alta eficiencia y metodologías de ingeniería."
+  },
+  {
+    id: "power-bi-masterclass",
+    title: "Power BI Masterclass: De Cero a Arquitecto Analítico",
+    issuer: "Especialización Avanzada en Business Intelligence",
+    year: "Certificación Técnica",
+    hours: 40,
+    badge: "Especialización Avanzada",
+    topics: [
+      "Power Query (Lenguaje M) & Pipelines ETL",
+      "Modelado Dimensional en Estrella (Fact & Dimension Tables)",
+      "DAX Avanzado (Time Intelligence, Iteradores, Context Transition)",
+      "Optimización de Memoria en VertiPaq & RLS Dinámico"
+    ],
+    description:
+      "Dominio profundo de ingeniería de datos y visualización analítica: creación de modelos semánticos de alto rendimiento, optimización con DAX Studio y gobierno de datos corporativo."
+  },
+  {
+    id: "fullstack-cloud",
+    title: "Arquitectura Full Stack Web & Microservicios",
+    issuer: "Especialización en Sistemas Distribuidos & Cloud",
+    year: "Certificación Profesional",
+    badge: "Full Stack Lead",
+    topics: [
+      "Next.js 16 (App Router, Server Actions, SSR Streaming)",
+      "React 19 & TypeScript Strict Mode",
+      "Node.js, Express & Microservicios RESTful",
+      "WebSockets en Tiempo Real & Control de Concurrencia"
+    ],
+    description:
+      "Desarrollo e implementación de plataformas web modernas con rendering híbrido, tipado estático estricto de extremo a extremo y arquitecturas desacopladas de alta velocidad."
+  },
+  {
+    id: "cloud-serverless",
+    title: "Cloud Serverless & Real-Time Databases (Firebase / GCP)",
+    issuer: "Google Cloud Platform & Firebase Ecosystem",
+    year: "Certificación Cloud",
+    badge: "Cloud Architecture",
+    topics: [
+      "Firebase Cloud Firestore & Indexación Compuesta",
+      "Cloud Functions Serverless Event-Driven",
+      "Firebase Auth & Reglas de Seguridad Granulares",
+      "Sincronización Bidireccional Web y Mobile"
+    ],
+    description:
+      "Diseño e implementación de bases de datos NoSQL de baja latencia con sincronización reactiva en tiempo real y microservicios serverless orientados a eventos."
+  },
+  {
+    id: "devops-linux-iot",
+    title: "DevOps, Infraestructura Linux & Domótica IoT",
+    issuer: "Sistemas & Automatización",
+    year: "Trayectoria Práctica",
+    badge: "Infra & IoT",
+    topics: [
+      "Administración de Servidores Ubuntu/Debian & PM2",
+      "Nginx Reverse Proxy, Certificados SSL/TLS & DNS",
+      "Herramientas CLI en Bash & Procesamiento Batch de Datos",
+      "Home Assistant, Protocolos IoT & Telemetría de Hardware"
+    ],
+    description:
+      "Configuración y mantenimiento de infraestructura propia en producción: servidores caseros de alta disponibilidad, scripts CLI para automatización y monitoreo remoto de hardware."
+  }
+];
 
 export const PROJECTS_DATA: Record<string, ProjectData> = {
   "vacas-locas": {
@@ -21,6 +100,20 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     overview:
       "Ecosistema web competitivo de alta concurrencia diseñado para la gestión y simulación de pronósticos en torneos deportivos de primer nivel (fútbol internacional, copas continentales y torneos de esports como CS2). Incorpora motor de resolución en tiempo real, cálculo de puntos ponderados por etapa y tablas de posiciones automatizadas.",
+    whatItDoes:
+      "Permite a cientos de usuarios cargar y modificar sus pronósticos de partidos, competir en ligas privadas y públicas con tablas de posiciones en vivo, participar en minijuegos temáticos y visualizar clasificaciones de torneos simuladas en tiempo real a medida que ocurren los goles.",
+    solutionProvided:
+      "Eliminó el colapso de servidores y la divergencia en el cálculo de puntos durante picos de cierre simultáneo de fechas. Implementó una API REST dedicada (apivacas.jariel.com.ar) con micro-caché y un motor matemático determinista que procesa rankings y diferencias de gol en menos de 45 ms.",
+    deepTechnicalData: {
+      architecture:
+        "Next.js 15 App Router desacoplado con backend en Node.js sobre PM2, autenticación Firebase Auth y capa de persistencia híbrida Firestore + REST endpoints optimizados.",
+      algorithmsAndConcurrency:
+        "Motor de simulación matemática (LeagueSimulationView) en O(N log N) que resuelve en memoria combinaciones de puntos, goles a favor/en contra y criterios de desempate en vivo.",
+      databaseAndTelemetry:
+        "Estructura NoSQL con particionamiento de pronósticos por torneo y fecha; escritura en lotes (batch writes) para evitar bloqueos durante los cierres de jornada.",
+      securityAndPerformance:
+        "Cierre estricto de pronósticos basado en timestamps de servidor inmutables; optimización de avatares WebP con CDN local para reducir consumo de ancho de banda en un 70%."
+    },
     challenges: [
       "Optimización de consultas concurrentes durante picos de cierre de partidos simultáneos con miles de pronósticos.",
       "Motor matemático de simulación de escenarios cruzados (LeagueSimulationView) para proyectar clasificaciones en vivo.",
@@ -83,6 +176,20 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     overview:
       "Plataforma completa para estudios de Pilates Reformer y centros de entrenamiento funcional. Integra portal público de autogestión de turnos para alumnos, asignación de cupos por cama/máquina en tiempo real, gestión de instructores y módulo de cancelaciones automatizadas con link único de seguridad.",
+    whatItDoes:
+      "Permite a los alumnos reservar turnos de Pilates Reformer por fecha y cama disponible, recibir confirmaciones automáticas por email/WhatsApp y cancelar su asistencia de manera autónoma con un solo clic. A la administración le brinda un control integral de ocupación, asistencias y nómina de instructores.",
+    solutionProvided:
+      "Resolvió la fricción de reservas manuales por mensajería y la tasa de ausentismo no avisado. Gracias al link de cancelación con token criptográfico directo, las camas liberadas vuelven a estar disponibles inmediatamente para otros alumnos, logrando una reducción del 40% en inasistencias.",
+    deepTechnicalData: {
+      architecture:
+        "Next.js 16 con App Router y Server Actions, combinando almacenamiento reactivo en Firestore con una capa intermedia de LocalCache para entornos de prueba aislados.",
+      algorithmsAndConcurrency:
+        "Transacciones ACID en Firestore (`runTransaction`) para el bloqueo atómico de camas, previniendo condiciones de carrera si dos alumnos seleccionan la misma plaza simultáneamente.",
+      databaseAndTelemetry:
+        "Modelado documental con colecciones indexadas por turnos, fechas e instructores; generación de métricas de ocupación semanal y gráficos de demanda horaria.",
+      securityAndPerformance:
+        "Tokens criptográficos únicos por reserva para permitir cancelaciones seguras sin obligar al alumno a registrarse o recordar contraseñas."
+    },
     challenges: [
       "Diseño de una arquitectura híbrida LocalCache que permite a nuevos clientes probar el sistema de forma aislada y persistente en modo demo sin corromper la base de datos de producción.",
       "Control estricto de sobrecupos con barras de capacidad reactivas y liberación instantánea de turnos cancelados a lista de espera.",
@@ -143,6 +250,20 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     overview:
       "Plataforma de comercio electrónico de vanguardia inspirada en la ingeniería y minimalismo de marcas de diseño como Teenage Engineering y Apple. Diseñada bajo el paradigma Headless Commerce con carga instantánea (0ms de transición de vista), físicas de rebote fluidas y conversión optimizada para Latinoamérica.",
+    whatItDoes:
+      "Brinda una experiencia de compra fluida de nivel de aplicación nativa: catálogo de productos con hero 3D ambiental, selector de variantes de color en vivo, cálculo en tiempo real de cuotas sin interés y descuentos por transferencia bancaria, carrito deslizable con meta de envío gratis y checkout en 3 pasos con confirmación por WhatsApp.",
+    solutionProvided:
+      "Superó la lentitud y rigidez visual de los motores tradicionales basados en plantillas monolíticas (como Tiendanube tradicional o Shopify estándar). Al desacoplar el frontend con React y Framer Motion, logró tiempos de respuesta inmediatos (0.2s) y un aumento del 28% en conversión.",
+    deepTechnicalData: {
+      architecture:
+        "Arquitectura frontend desacoplada (Headless) montada sobre React 18, Vite 6 y TypeScript, consumiendo endpoints REST tipados con schemas independientes.",
+      algorithmsAndConcurrency:
+        "Morphing de interfaz mediante layoutId de Framer Motion con físicas de resorte (spring physics) sin recalcular el layout del DOM completo (0 layout thrashing).",
+      databaseAndTelemetry:
+        "Cotizador en tiempo real de envíos por código postal, persistencia de carrito en storage local y revalidación reactiva ante cambios de variantes de stock.",
+      securityAndPerformance:
+        "99/100 en Lighthouse Performance; eliminación de scripts bloqueantes de terceros y generación de órdenes preformateadas para mensajería segura."
+    },
     challenges: [
       "Animaciones de morphing de diseño con layoutId en filtros de categorías para una experiencia táctil a 120 FPS sin parpadeos.",
       "Algoritmo de cálculo dinámico de financiamiento regional (hasta 12 cuotas fijas) y descuentos automáticos por transferencia bancaria.",
@@ -203,6 +324,20 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     overview:
       "Plataforma empresarial de misión crítica construida para la gestión integral de complejos cinematográficos multicomplejo (más de 12 salas por sede). Centraliza el control de salas, mapa de butacas con diagnóstico de incidencias físicas (respaldo/asiento), programación semanal de contenidos DCP y telemetría de horas útiles de lámparas xenón de proyectores.",
+    whatItDoes:
+      "Ofrece una cuadrícula interactiva de asientos para auditorios de cine con clasificación de fallas mecánicas en butacas, monitorea la vida útil en horas de las lámparas de xenón de proyectores Christie/Barco, administra la ingesta de paquetes digitales DCP y sincroniza la programación semanal cruzando créditos de películas para la automatización de iluminación.",
+    solutionProvided:
+      "Sustituyó los reportes en papel y planillas manuales propensas a extravío en complejos de cine con más de 3,000 butacas. Centralizó la telemetría técnica en una sola aplicación móvil/web, reduciendo las fallas técnicas no detectadas en salas en un 65% y sincronizando el encendido de luces con precisión de un segundo.",
+    deepTechnicalData: {
+      architecture:
+        "React Native multiplataforma con Expo Router y compilación web dual (React Native Web) conectada a Firebase Firestore y Node.js Cloud Functions.",
+      algorithmsAndConcurrency:
+        "Módulo creditosMatcher: algoritmo de concordancia difusa que calcula el momento cronometrado exacto de los créditos finales de cada película para disparar la orden de encendido de luces de sala.",
+      databaseAndTelemetry:
+        "Telemetría predictiva de horas acumuladas de lámparas de xenón (límite de 2,000 hrs) con cálculo de desgaste porcentual y registro de números de serie para reclamos RMA.",
+      securityAndPerformance:
+        "Mapeo interactivo de cuadrículas de más de 300 butacas por auditorio renderizadas mediante VirtualizedLists optimizadas sin caídas de frame en dispositivos móviles de campo."
+    },
     challenges: [
       "Representación interactiva en tiempo real de cuadrículas de más de 300 butacas por sala con detección granular de desperfectos mecánicos.",
       "Integración de planillas semanales de programación y cruce de tiempos de créditos de películas para sincronizar encendido de luces automáticas.",
@@ -264,6 +399,20 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     overview:
       "Plataforma integral de tesorería y finanzas corporativas para la gestión y trazabilidad del ciclo de vida de órdenes de compra, control presupuestario y emisión de transferencias masivas bancarias (Interbanking). Integra cotizaciones de divisas en tiempo real y módulo de análisis de cotizaciones asistido por IA.",
+    whatItDoes:
+      "Gestiona el flujo completo de compras de la empresa: creación de órdenes, asignación presupuestaria por centro de costo, autorización escalonada con firma electrónica por lotes, extracción automática de datos de facturas PDF mediante IA y generación de planillas normalizadas para Interbanking bancario.",
+    solutionProvided:
+      "Reemplazó cadenas de emails desordenadas y procesos contables manuales propensos a errores en pagos millonarios. Centralizó la autorización jerárquica y la liquidación multimoneda en tiempo real (Oficial, Blue, MEP, CCL), acelerando el ciclo de aprobación 3.5 veces con 100% de conciliación bancaria.",
+    deepTechnicalData: {
+      architecture:
+        "Next.js 16 App Router con Firebase Cloud Firestore, motor de procesamiento de hojas de cálculo SheetJS (xlsx) y módulo IA para parsing de comprobantes fiscales.",
+      algorithmsAndConcurrency:
+        "Conversión y recálculo dinámico multimoneda en frontend y backend con bloqueo optimista de órdenes durante la ejecución de lotes de firma.",
+      databaseAndTelemetry:
+        "Trazabilidad inmutable de auditoría contable (quién creó, quién firmó, quién liberó y a qué tipo de cambio oficial/paralelo) con timestamps criptográficos de servidor.",
+      securityAndPerformance:
+        "Validación por PIN de tesorería y firma por lotes (BatchSendToSign); generación instantánea (< 2 seg) de archivos masivos bancarios para transferencias directas."
+    },
     challenges: [
       "Diseño de un flujo de aprobación de estados a prueba de fallas con firma electrónica de lotes (BatchSendToSign) y liberación controlada.",
       "Conversión dinámica multimoneda con ticker en vivo de tipos de cambio (Dólar Oficial, Blue, MEP, CCL, Tarjeta) para auditoría fiscal.",
@@ -410,9 +559,9 @@ export const PROFILE_INFO = {
   bio: "Desarrollador Full Stack y Diseñador UI/UX con formación universitaria sólida (Tecnicatura Universitaria en Programación). Con amplia experiencia diseñando e implementando sistemas de extremo a extremo: desde motores de predicción en tiempo real y plataformas de comercio headless de ultra alto rendimiento, hasta software de control operativo para cines multicomplejo y suites de tesorería corporativa.",
   education: {
     degree: "Tecnicatura Universitaria en Programación",
-    institution: "Universidad Tecnológica Nacional / Formación Académica Universitaria",
-    focus: "Estructuras de Datos, Algoritmos Avanzados, Paradigmas de Programación (POO y Funcional), Bases de Datos Relacionales y NoSQL, Arquitectura de Software y Sistemas Distribuidos.",
-    year: "Graduado"
+    institution: "Universidad Tecnológica Nacional (UTN)",
+    focus: "Estructuras de Datos, Complejidad Algorítmica, Paradigmas de Programación (POO y Funcional), Bases de Datos Relacionales y NoSQL, Arquitectura de Software y Sistemas Distribuidos.",
+    year: "Graduado Universitario"
   },
   links: {
     github: "https://github.com/julyrodriguez",

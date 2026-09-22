@@ -29,7 +29,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [activeSection, setActiveSection] = useState<SectionId>("hero");
+  const [activeSection, setActiveSection] = useState<SectionId>("profile");
   const [soundEnabled, setSoundEnabledState] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("jariel_sound_enabled") === "true";
