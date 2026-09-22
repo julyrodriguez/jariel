@@ -24,7 +24,7 @@ export function TiendaCard() {
 
   const [mobileView, setMobileView] = useState<"specs" | "sandbox">("specs");
   const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
-  const [selectedColor, setSelectedColor] = useState<"cream" | "champagne" | "obsidian">("cream");
+  const [selectedColor, setSelectedColor] = useState<"cream" | "champagne" | "obsidian">("obsidian");
   const [installmentPlan, setInstallmentPlan] = useState<3 | 6 | 12>(6);
   const [cartCount, setCartCount] = useState<number>(1);
   const [showCartDrawer, setShowCartDrawer] = useState<boolean>(false);
@@ -384,8 +384,12 @@ export function TiendaCard() {
                   <Sparkles className="w-8 h-8 text-[#fef3c7] opacity-90" />
                 </div>
 
-                <span className="text-[11px] font-mono font-bold text-[#fef3c7] tracking-wider">AURA-1 CREAM</span>
-                <span className="text-[9px] text-amber-200 font-mono mt-0.5">Acabado Seda Cremita & ANC</span>
+                <span className="text-[11px] font-mono font-bold text-[#fef3c7] tracking-wider uppercase">
+                  AURA-1 {selectedColor === "obsidian" ? "MOCA" : selectedColor === "champagne" ? "ORO" : "CREAM"}
+                </span>
+                <span className="text-[9px] text-amber-200 font-mono mt-0.5">
+                  {colors[selectedColor].name} & ANC
+                </span>
                 
                 <span className="mt-1.5 text-[9px] px-2 py-0.5 rounded-full bg-[#f5e6d3]/20 text-[#fef3c7] border border-[#f5e6d3]/30 font-semibold">
                   ¡Edición Limitada Alabaster!

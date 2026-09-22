@@ -28,45 +28,105 @@ interface Seat {
   urgency?: "leve" | "medio" | "grave";
 }
 
+interface SalaConfig {
+  name: string;
+  badge: string;
+  movie: string;
+  screenTitle: string;
+  screenArcClass: string;
+  screenGlowColor: string;
+  soundSystem: string;
+  projectorModel: string;
+  projectorHours: string;
+  projectorLifePct: string;
+  projectorStatus: string;
+  kdmStatus: string;
+  rows: string[];
+  seatsPerRow: number[];
+  damagedSeatsMap: Record<string, { type: "respaldo" | "asiento"; urgency: "leve" | "medio" | "grave" }>;
+  occupiedSeats: Set<string>;
+  defaultSeat: Seat;
+}
+
+const SALAS_DATA: Record<number, SalaConfig> = {
+  4: {
+    name: "Sala 4 XD",
+    badge: "XD PANTALLA GIGANTE",
+    movie: "Dune: Parte Dos (IMAX XD 4K)",
+    screenTitle: "PANTALLA CURVA GIGANTE XD TITANIO 4K (24 METROS)",
+    screenArcClass: "w-5/6 h-2 bg-gradient-to-r from-red-600/40 via-red-500 to-red-600/40 rounded-full shadow-lg shadow-red-500/30",
+    screenGlowColor: "#ef4444",
+    soundSystem: "Dolby Atmos 64 Canales Inmersivo",
+    projectorModel: "Christie CP4450-RGB Láser Puro",
+    projectorHours: "1,420 hrs / 2,000 hrs",
+    projectorLifePct: "Vida Útil: 71% Óptimo",
+    projectorStatus: "● Láser En Línea",
+    kdmStatus: "KDM: Activo hasta 28/09",
+    rows: ["C", "D", "E", "F", "G"],
+    seatsPerRow: [1, 2, 3, 4, 5, 6, 7, 8],
+    damagedSeatsMap: {
+      "D-3": { type: "respaldo", urgency: "grave" },
+      "E-7": { type: "asiento", urgency: "medio" }
+    },
+    occupiedSeats: new Set(["C-1", "C-2", "D-5", "D-6", "E-4", "G-3", "G-4"]),
+    defaultSeat: { id: "F-5", row: "F", num: 5, status: "selected" }
+  },
+  9: {
+    name: "Sala 9 3D",
+    badge: "REAL D 3D DIGITAL",
+    movie: "Avatar: El Sentido del Agua (Real D 3D)",
+    screenTitle: "PANTALLA REAL D 3D SILVER SCREEN HIGH-GAIN (16 METROS)",
+    screenArcClass: "w-3/5 h-2 bg-gradient-to-r from-amber-500/40 via-amber-400 to-amber-500/40 rounded-full shadow-lg shadow-amber-500/30",
+    screenGlowColor: "#f59e0b",
+    soundSystem: "JBL Professional 7.1 Surround",
+    projectorModel: "Barco DP4K-32B Xenón Dual 7kW",
+    projectorHours: "1,890 hrs / 2,000 hrs",
+    projectorLifePct: "Vida Útil: 94% (Próx. Recambio)",
+    projectorStatus: "● Xenón Operativo",
+    kdmStatus: "KDM: Activo hasta 25/09",
+    rows: ["A", "B", "C", "D", "E", "F"],
+    seatsPerRow: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    damagedSeatsMap: {
+      "B-4": { type: "asiento", urgency: "grave" },
+      "D-8": { type: "respaldo", urgency: "leve" },
+      "F-2": { type: "asiento", urgency: "medio" }
+    },
+    occupiedSeats: new Set(["A-3", "A-4", "B-7", "B-8", "C-5", "C-6", "D-2", "E-8", "E-9", "F-5"]),
+    defaultSeat: { id: "D-5", row: "D", num: 5, status: "selected" }
+  }
+};
+
 export function CinemarkCard() {
   const project = PROJECTS_DATA["cinemark-app"];
 
   const [mobileView, setMobileView] = useState<"specs" | "sandbox">("specs");
   const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
-  const selectedMovie = "Dune: Parte Dos (IMAX XD)";
   const [selectedSala, setSelectedSala] = useState<number>(4);
-  const [selectedSeat, setSelectedSeat] = useState<Seat | null>({
-    id: "F-08",
-    row: "F",
-    num: 8,
-    status: "selected"
-  });
+  const [selectedSeat, setSelectedSeat] = useState<Seat | null>(SALAS_DATA[4].defaultSeat);
   const [ticketIssued, setTicketIssued] = useState<boolean>(false);
 
-  // 5 rows x 8 seats interactive theater layout
-  const rows = ["C", "D", "E", "F", "G"];
-  const seatsPerRow = [1, 2, 3, 4, 5, 6, 7, 8];
+  const currentSala = SALAS_DATA[selectedSala] || SALAS_DATA[4];
 
-  const damagedSeatsMap: Record<string, { type: "respaldo" | "asiento"; urgency: "leve" | "medio" | "grave" }> = {
-    "D-3": { type: "respaldo", urgency: "grave" },
-    "E-7": { type: "asiento", urgency: "medio" }
+  const handleSwitchSala = (salaId: number) => {
+    sound.playClick();
+    setSelectedSala(salaId);
+    setSelectedSeat(SALAS_DATA[salaId].defaultSeat);
+    setTicketIssued(false);
   };
-
-  const occupiedSeats = new Set(["C-1", "C-2", "D-5", "D-6", "E-4", "G-3", "G-4"]);
 
   const handleSeatClick = (row: string, num: number) => {
     const id = `${row}-${num}`;
-    if (occupiedSeats.has(id)) return;
+    if (currentSala.occupiedSeats.has(id)) return;
 
     sound.playClick();
-    if (damagedSeatsMap[id]) {
+    if (currentSala.damagedSeatsMap[id]) {
       setSelectedSeat({
         id,
         row,
         num,
         status: "damaged",
-        damageType: damagedSeatsMap[id].type,
-        urgency: damagedSeatsMap[id].urgency
+        damageType: currentSala.damagedSeatsMap[id].type,
+        urgency: currentSala.damagedSeatsMap[id].urgency
       });
       return;
     }
@@ -349,20 +409,20 @@ export function CinemarkCard() {
               <div className="flex items-center justify-between text-slate-400 text-[9px]">
                 <span className="text-red-400 font-bold flex items-center gap-1">
                   <Tv className="w-3.5 h-3.5" />
-                  Telemetría Proyector — Sala {selectedSala}
+                  Telemetría Proyector — {currentSala.name}
                 </span>
-                <span className="text-emerald-400">● En Línea</span>
+                <span className="text-emerald-400">{currentSala.projectorStatus}</span>
               </div>
               <div className="grid grid-cols-2 gap-2 text-[10px]">
                 <div className="p-1.5 rounded bg-slate-900 border border-white/5">
-                  <span className="text-slate-400 block text-[8px]">Lámpara Xenón</span>
-                  <span className="text-white font-bold">1,420 hrs / 2,000 hrs</span>
-                  <span className="text-emerald-400 block text-[8px] mt-0.5">Vida Útil: 71% Óptimo</span>
+                  <span className="text-slate-400 block text-[8px]">{currentSala.projectorModel}</span>
+                  <span className="text-white font-bold">{currentSala.projectorHours}</span>
+                  <span className="text-emerald-400 block text-[8px] mt-0.5">{currentSala.projectorLifePct}</span>
                 </div>
                 <div className="p-1.5 rounded bg-slate-900 border border-white/5">
                   <span className="text-slate-400 block text-[8px]">Ingesta de Contenido</span>
                   <span className="text-white font-bold">DCP 100% Ingestado</span>
-                  <span className="text-red-400 block text-[8px] mt-0.5">KDM: Activo hasta 28/09</span>
+                  <span className="text-red-400 block text-[8px] mt-0.5">{currentSala.kdmStatus}</span>
                 </div>
               </div>
             </div>
@@ -411,19 +471,24 @@ export function CinemarkCard() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 font-mono text-[10px]">
+              {/* Selector de Salas Interactivo */}
+              <div className="flex items-center gap-1.5 font-mono text-[10px]">
                 <button
-                  onClick={() => setSelectedSala(4)}
-                  className={`px-2 py-1 rounded transition-colors ${
-                    selectedSala === 4 ? "bg-red-600 text-white font-bold" : "bg-slate-900 text-slate-400"
+                  onClick={() => handleSwitchSala(4)}
+                  className={`px-2.5 py-1 rounded transition-all duration-200 ${
+                    selectedSala === 4 
+                      ? "bg-red-600 text-white font-bold shadow-md shadow-red-600/30" 
+                      : "bg-slate-900 text-slate-400 hover:text-white"
                   }`}
                 >
                   Sala 4 XD
                 </button>
                 <button
-                  onClick={() => setSelectedSala(9)}
-                  className={`px-2 py-1 rounded transition-colors ${
-                    selectedSala === 9 ? "bg-red-600 text-white font-bold" : "bg-slate-900 text-slate-400"
+                  onClick={() => handleSwitchSala(9)}
+                  className={`px-2.5 py-1 rounded transition-all duration-200 ${
+                    selectedSala === 9 
+                      ? "bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/30" 
+                      : "bg-slate-900 text-slate-400 hover:text-white"
                   }`}
                 >
                   Sala 9 3D
@@ -431,39 +496,46 @@ export function CinemarkCard() {
               </div>
             </div>
 
-            {/* Screen Arc Representation */}
-            <div className="flex flex-col items-center py-0.5">
-              <div className="w-3/4 h-1.5 bg-gradient-to-r from-red-600/30 via-red-500 to-red-600/30 rounded-full shadow-lg shadow-red-500/20" />
-              <span className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mt-0.5">
-                PANTALLA GIGANTE XD DIGITAL
+            {/* Screen Arc Representation (Cambia dinámicamente entre Sala 4 XD y Sala 9 3D) */}
+            <div className="flex flex-col items-center py-1 transition-all duration-500">
+              <div className={`transition-all duration-500 ${currentSala.screenArcClass}`} />
+              <span 
+                className="text-[9px] font-mono uppercase tracking-widest mt-1 transition-colors duration-300 font-bold"
+                style={{ color: currentSala.screenGlowColor }}
+              >
+                {currentSala.screenTitle}
               </span>
             </div>
 
-            {/* Interactive Seat Matrix (5 rows x 8 seats) */}
-            <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 space-y-1">
-              {rows.map((row) => (
-                <div key={row} className="flex items-center justify-center gap-2">
-                  <span className="w-4 text-[10px] font-mono font-bold text-slate-500 text-center">
+            {/* Interactive Seat Matrix (Cambia filas, columnas, averías y ocupación según la sala) */}
+            <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5 space-y-1 transition-all duration-300">
+              {currentSala.rows.map((row) => (
+                <div key={row} className="flex items-center justify-center gap-1.5 sm:gap-2">
+                  <span className="w-3.5 sm:w-4 text-[9px] sm:text-[10px] font-mono font-bold text-slate-500 text-center">
                     {row}
                   </span>
-                  <div className="flex items-center gap-1.5">
-                    {seatsPerRow.map((num) => {
+                  <div className="flex items-center gap-1 sm:gap-1.5">
+                    {currentSala.seatsPerRow.map((num) => {
                       const id = `${row}-${num}`;
-                      const isOccupied = occupiedSeats.has(id);
-                      const isDamaged = Boolean(damagedSeatsMap[id]);
+                      const isOccupied = currentSala.occupiedSeats.has(id);
+                      const isDamaged = Boolean(currentSala.damagedSeatsMap[id]);
                       const isSelected = selectedSeat?.id === id;
 
                       let btnClass = "bg-slate-800 text-slate-300 border-white/5 hover:bg-slate-700";
                       if (isOccupied) btnClass = "bg-slate-950 text-slate-600 border-transparent cursor-not-allowed opacity-40";
                       if (isDamaged) btnClass = "bg-amber-950 text-amber-400 border-amber-500/40 animate-pulse";
-                      if (isSelected) btnClass = "bg-red-600 text-white border-red-400 shadow-md shadow-red-500/40 scale-110 font-bold";
+                      if (isSelected) {
+                        btnClass = selectedSala === 4
+                          ? "bg-red-600 text-white border-red-400 shadow-md shadow-red-500/40 scale-110 font-bold"
+                          : "bg-amber-500 text-slate-950 border-amber-300 shadow-md shadow-amber-500/40 scale-110 font-bold";
+                      }
 
                       return (
                         <button
                           key={num}
                           onClick={() => handleSeatClick(row, num)}
                           disabled={isOccupied}
-                          className={`w-6 h-6 sm:w-7 sm:h-7 rounded-md text-[10px] font-mono border transition-all flex items-center justify-center ${btnClass}`}
+                          className={`w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-md text-[9px] sm:text-[10px] font-mono border transition-all flex items-center justify-center ${btnClass}`}
                           title={`Butaca ${id}`}
                         >
                           {num}
@@ -480,7 +552,11 @@ export function CinemarkCard() {
                   <span className="w-2 h-2 rounded bg-slate-800 border border-white/10 inline-block" /> Libre
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded bg-red-600 inline-block" /> Seleccionada
+                  <span 
+                    className="w-2 h-2 rounded inline-block" 
+                    style={{ backgroundColor: currentSala.screenGlowColor }} 
+                  /> 
+                  Seleccionada
                 </span>
                 <span className="flex items-center gap-1">
                   <span className="w-2 h-2 rounded bg-amber-900 border border-amber-500 inline-block" /> Avería Mecánica
@@ -498,30 +574,34 @@ export function CinemarkCard() {
                   <div className="flex items-center justify-between text-amber-300 font-bold">
                     <span className="flex items-center gap-1.5">
                       <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-                      Diagnóstico Butaca {selectedSeat.id}
+                      Diagnóstico Butaca {selectedSeat.id} ({currentSala.name})
                     </span>
                     <span className="text-[9px] uppercase font-mono px-1.5 py-0.5 rounded bg-amber-900 text-amber-200">
                       Urgencia {selectedSeat.urgency}
                     </span>
                   </div>
                   <p className="text-slate-300 text-[10px]">
-                    Desperfecto: <strong>Mecanismo de {selectedSeat.damageType}</strong> suelto. Reporte emitido en tiempo real para cuadrilla técnica.
+                    Desperfecto: <strong>Mecanismo de {selectedSeat.damageType}</strong> suelto. Reporte emitido en tiempo real para cuadrilla técnica de {currentSala.name}.
                   </p>
                 </div>
               ) : (
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5">
                   <div className="text-xs text-slate-300 text-center sm:text-left">
                     <span className="font-bold text-white block">
-                      {selectedMovie}
+                      {currentSala.movie}
                     </span>
                     <span className="text-[10px] font-mono text-slate-400">
-                      Sala {selectedSala} XD • Fila {selectedSeat?.row || "F"} Butaca {selectedSeat?.num || "8"} • Dolby Atmos
+                      {currentSala.name} • Fila {selectedSeat?.row || "D"} Butaca {selectedSeat?.num || "5"} • {currentSala.soundSystem}
                     </span>
                   </div>
 
                   <button
                     onClick={handlePrintTicket}
-                    className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-white bg-red-600 hover:bg-red-500 hover:shadow-lg hover:shadow-red-600/30 hover:scale-105 transition-all flex items-center justify-center gap-2"
+                    className={`w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-lg ${
+                      selectedSala === 4
+                        ? "text-white bg-red-600 hover:bg-red-500 hover:shadow-red-600/30 hover:scale-105"
+                        : "text-slate-950 bg-amber-400 hover:bg-amber-300 hover:shadow-amber-400/30 hover:scale-105"
+                    }`}
                   >
                     <QrCode className="w-3.5 h-3.5" />
                     <span>Emitir Boleto Digital</span>
@@ -531,14 +611,20 @@ export function CinemarkCard() {
 
               {/* Ticket Stub Output */}
               {ticketIssued && (
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-red-500/40 flex items-center justify-between font-mono text-xs animate-fadeIn">
+                <div 
+                  className="p-2.5 rounded-lg bg-slate-900 border flex items-center justify-between font-mono text-xs animate-fadeIn"
+                  style={{ borderColor: currentSala.screenGlowColor }}
+                >
                   <div className="space-y-0.5">
-                    <span className="text-[9px] text-red-400 uppercase tracking-wider block font-bold">
-                      CINEMARK HOYTS • BOLETO DIGITAL
+                    <span 
+                      className="text-[9px] uppercase tracking-wider block font-bold"
+                      style={{ color: currentSala.screenGlowColor }}
+                    >
+                      CINEMARK HOYTS • {currentSala.badge}
                     </span>
-                    <span className="text-white font-bold text-xs block">{selectedMovie}</span>
+                    <span className="text-white font-bold text-xs block">{currentSala.movie}</span>
                     <span className="text-slate-400 text-[9px] block">
-                      SALA {selectedSala} • BUTACA {selectedSeat?.id} • 21:30 HS
+                      {currentSala.name.toUpperCase()} • BUTACA {selectedSeat?.id} • 21:30 HS
                     </span>
                   </div>
                   <div className="text-center pl-2.5 border-l border-white/10">
