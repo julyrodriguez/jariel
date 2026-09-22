@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { ScrollIndicator } from "@/components/navigation/ScrollIndicator";
 import { ScrollToTopMobile } from "@/components/navigation/ScrollToTopMobile";
+import { MobileSectionDivider } from "@/components/navigation/MobileSectionDivider";
 import { ProfileHeroCard } from "@/components/profile/ProfileHeroCard";
 import { EducationCard } from "@/components/profile/EducationCard";
 import { ProjectsHubCard } from "@/components/projects/ProjectsHubCard";
@@ -82,17 +83,38 @@ export default function Home() {
         {/* 1. Primera Card: Perfil Profesional, Propuesta de Valor & Acceso Rápido */}
         <ProfileHeroCard />
 
+        {/* Separador Mobile: Formación */}
+        <MobileSectionDivider number="02" label="FORMACIÓN" color="#818cf8" />
+
         {/* 2. Segunda Card: Formación Continua & Certificaciones Universitarias UTN */}
         <EducationCard />
+
+        {/* Separador Mobile: Hub de Proyectos */}
+        <MobileSectionDivider number="03" label="HUB DE PROYECTOS" color="#38bdf8" />
 
         {/* 3. Tercera Card: Hub Central de Proyectos con Mini Cards */}
         <ProjectsHubCard />
 
-        {/* 3. Proyectos Individuales con Desglose Técnico & Sandboxes */}
+        {/* Separador Mobile: Proyecto Prode */}
+        <MobileSectionDivider number="04" label="PRODE" color="#10b981" />
+
+        {/* 4. Proyectos Individuales con Desglose Técnico & Sandboxes */}
         <VacasLocasCard />
+
+        {/* Separador Mobile: Proyecto Pilates Studio */}
+        <MobileSectionDivider number="05" label="PILATES STUDIO" color="#a855f7" />
         <DemoPilatesCard />
+
+        {/* Separador Mobile: Proyecto Aura TM */}
+        <MobileSectionDivider number="06" label="AURA TM" color="#f5e6d3" />
         <TiendaCard />
+
+        {/* Separador Mobile: Proyecto Cinemark */}
+        <MobileSectionDivider number="07" label="CINEMARK" color="#e50914" />
         <CinemarkCard />
+
+        {/* Separador Mobile: Proyecto Finanzas */}
+        <MobileSectionDivider number="08" label="FINANZAS" color="#2563eb" />
         <FinanzasCard />
       </main>
     </div>
