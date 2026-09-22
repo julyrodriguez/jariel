@@ -234,6 +234,32 @@ export function ProfileHeroCard() {
               </div>
             </motion.div>
 
+            {/* Bottom Callout / Navegación Directa */}
+            <motion.div 
+              variants={itemVariants}
+              className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-sky-950/80 via-indigo-950/60 to-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg"
+            >
+              <div className="text-left space-y-0.5">
+                <span className="text-xs font-bold text-white block">
+                  Descubrí mis 5 sistemas funcionando
+                </span>
+                <span className="text-[11px] text-slate-400 block">
+                  Cada proyecto cuenta con una demostración interactiva que podés probar vos mismo
+                </span>
+              </div>
+
+              <button
+                onClick={() => {
+                  sound.playSuccess();
+                  scrollToSection("projects-hub");
+                }}
+                className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-teal-300 hover:shadow-lg hover:shadow-sky-400/25 hover:scale-105 transition-all flex items-center justify-center gap-1.5 shrink-0"
+              >
+                <span>Ver Proyectos</span>
+                <ArrowDown className="w-3.5 h-3.5" />
+              </button>
+            </motion.div>
+
           </div>
 
           {/* Columna Derecha: Cursos Técnicos en la Universidad Tecnológica Nacional (7 cols) */}
@@ -307,32 +333,6 @@ export function ProfileHeroCard() {
                   </div>
                 ))}
               </div>
-            </motion.div>
-
-            {/* Bottom Callout / Navegación Directa */}
-            <motion.div 
-              variants={itemVariants}
-              className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-sky-950/80 via-indigo-950/60 to-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg"
-            >
-              <div className="text-left space-y-0.5">
-                <span className="text-xs font-bold text-white block">
-                  Descubrí mis 5 sistemas funcionando
-                </span>
-                <span className="text-[11px] text-slate-400 block">
-                  Cada proyecto cuenta con una demostración interactiva que podés probar vos mismo
-                </span>
-              </div>
-
-              <button
-                onClick={() => {
-                  sound.playSuccess();
-                  scrollToSection("projects-hub");
-                }}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-teal-300 hover:shadow-lg hover:shadow-sky-400/25 hover:scale-105 transition-all flex items-center justify-center gap-1.5 shrink-0"
-              >
-                <span>Ver Proyectos</span>
-                <ArrowDown className="w-3.5 h-3.5" />
-              </button>
             </motion.div>
 
           </div>
