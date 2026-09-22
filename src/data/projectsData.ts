@@ -2,80 +2,79 @@ import { ProjectData, SkillCategory, CertificateItem } from "@/types";
 
 export const CERTIFICATES_DATA: CertificateItem[] = [
   {
-    id: "utn-tecnicatura",
-    title: "Tecnicatura Universitaria en Programación",
+    id: "experto-fullstack-utn",
+    title: "Experto Universitario en Programación Full Stack",
     issuer: "Universidad Tecnológica Nacional (UTN)",
-    year: "Formación Universitaria",
-    badge: "Título Universitario",
+    year: "Certificación Universitaria",
+    badge: "Experto UTN",
     topics: [
-      "Estructuras de Datos y Complejidad Algorítmica",
-      "Paradigmas de Programación (POO & Funcional)",
-      "Bases de Datos Relacionales (SQL) y Modelado NoSQL",
-      "Sistemas Operativos, Redes & Arquitectura de Software"
+      "Arquitectura de Software & Buenas Prácticas",
+      "Desarrollo Frontend & Backend Integral",
+      "Modelado de Datos & Conexión de Servidores",
+      "Seguridad, APIs y Despliegue en la Nube"
     ],
     description:
-      "Formación académica universitaria rigurosa con énfasis en ciencias de la computación, diseño de software escalable, algoritmos de alta eficiencia y metodologías de ingeniería."
+      "Capacitación universitaria de alto nivel para diseñar, estructurar y liderar desarrollos digitales completos de inicio a fin."
   },
   {
-    id: "power-bi-masterclass",
-    title: "Power BI Masterclass: De Cero a Arquitecto Analítico",
-    issuer: "Especialización Avanzada en Business Intelligence",
-    year: "Certificación Técnica",
-    hours: 40,
-    badge: "Especialización Avanzada",
+    id: "fullstack-developer-utn",
+    title: "Full Stack Developer",
+    issuer: "Universidad Tecnológica Nacional (UTN)",
+    year: "Especialización Técnica",
+    badge: "Full Stack UTN",
     topics: [
-      "Power Query (Lenguaje M) & Pipelines ETL",
-      "Modelado Dimensional en Estrella (Fact & Dimension Tables)",
-      "DAX Avanzado (Time Intelligence, Iteradores, Context Transition)",
-      "Optimización de Memoria en VertiPaq & RLS Dinámico"
+      "Aplicaciones Web Dinámicas e Interactivas",
+      "Lógica de Servidores & APIs REST",
+      "Bases de Datos Relacionales y NoSQL",
+      "Experiencia de Usuario y Rendimiento"
     ],
     description:
-      "Dominio profundo de ingeniería de datos y visualización analítica: creación de modelos semánticos de alto rendimiento, optimización con DAX Studio y gobierno de datos corporativo."
+      "Formación orientada a construir productos digitales funcionales, rápidos y preparados para resolver necesidades de negocios."
   },
   {
-    id: "fullstack-cloud",
-    title: "Arquitectura Full Stack Web & Microservicios",
-    issuer: "Especialización en Sistemas Distribuidos & Cloud",
-    year: "Certificación Profesional",
-    badge: "Full Stack Lead",
+    id: "react-js-utn",
+    title: "React JS",
+    issuer: "Universidad Tecnológica Nacional (UTN)",
+    year: "Desarrollo Frontend",
+    badge: "React UTN",
     topics: [
-      "Next.js 16 (App Router, Server Actions, SSR Streaming)",
-      "React 19 & TypeScript Strict Mode",
-      "Node.js, Express & Microservicios RESTful",
-      "WebSockets en Tiempo Real & Control de Concurrencia"
+      "Interfaces de Usuario Reactivas y Modernas",
+      "Gestión Eficiente del Estado y Datos en Vivo",
+      "Componentes Reutilizables & Hooks Avanzados",
+      "Navegación Fluida sin Recargas de Página"
     ],
     description:
-      "Desarrollo e implementación de plataformas web modernas con rendering híbrido, tipado estático estricto de extremo a extremo y arquitecturas desacopladas de alta velocidad."
+      "Especialización en la tecnología líder para crear sitios y aplicaciones web ágiles, visualmente atractivas y fáciles de usar."
   },
   {
-    id: "cloud-serverless",
-    title: "Cloud Serverless & Real-Time Databases (Firebase / GCP)",
-    issuer: "Google Cloud Platform & Firebase Ecosystem",
-    year: "Certificación Cloud",
-    badge: "Cloud Architecture",
+    id: "nodejs-utn",
+    title: "NodeJS",
+    issuer: "Universidad Tecnológica Nacional (UTN)",
+    year: "Desarrollo Backend",
+    badge: "NodeJS UTN",
     topics: [
-      "Firebase Cloud Firestore & Indexación Compuesta",
-      "Cloud Functions Serverless Event-Driven",
-      "Firebase Auth & Reglas de Seguridad Granulares",
-      "Sincronización Bidireccional Web y Mobile"
+      "Servidores Ligeros y Conexión de Datos",
+      "Creación de APIs para Conectar Sistemas",
+      "Gestión de Usuarios, Permisos y Seguridad",
+      "Automatización de Tareas y Procesos Batch"
     ],
     description:
-      "Diseño e implementación de bases de datos NoSQL de baja latencia con sincronización reactiva en tiempo real y microservicios serverless orientados a eventos."
+      "Dominio del motor backend en JavaScript para crear sistemas rápidos que procesan información de forma segura y constante."
   },
   {
-    id: "devops-linux-iot",
-    title: "DevOps, Infraestructura Linux & Domótica IoT",
-    issuer: "Sistemas & Automatización",
-    year: "Trayectoria Práctica",
-    badge: "Infra & IoT",
+    id: "angular-utn",
+    title: "Angular",
+    issuer: "Universidad Tecnológica Nacional (UTN)",
+    year: "Desarrollo Frontend",
+    badge: "Angular UTN",
     topics: [
-      "Administración de Servidores Ubuntu/Debian & PM2",
-      "Nginx Reverse Proxy, Certificados SSL/TLS & DNS",
-      "Herramientas CLI en Bash & Procesamiento Batch de Datos",
-      "Home Assistant, Protocolos IoT & Telemetría de Hardware"
+      "Estructuras Modulares para Empresas",
+      "Tipado Fuerte con TypeScript",
+      "Formularios Complejos y Validaciones",
+      "Servicios, Inyección de Dependencias & Routing"
     ],
     description:
-      "Configuración y mantenimiento de infraestructura propia en producción: servidores caseros de alta disponibilidad, scripts CLI para automatización y monitoreo remoto de hardware."
+      "Especialización en el framework empresarial de Google para la construcción de plataformas ordenadas, escalables y seguras."
   }
 ];
 
@@ -554,14 +553,14 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const PROFILE_INFO = {
   name: "Julián Ariel Rodríguez",
   shortName: "Julián Rodríguez",
-  title: "Tech Lead & Senior Full Stack Engineer",
-  tagline: "Especialista en arquitecturas web inmersivas, sistemas de alta concurrencia y aplicaciones empresariales de misión crítica.",
-  bio: "Desarrollador Full Stack y Diseñador UI/UX con formación universitaria sólida (Tecnicatura Universitaria en Programación). Con amplia experiencia diseñando e implementando sistemas de extremo a extremo: desde motores de predicción en tiempo real y plataformas de comercio headless de ultra alto rendimiento, hasta software de control operativo para cines multicomplejo y suites de tesorería corporativa.",
+  title: "Desarrollador Full Stack & Creador de Soluciones Digitales",
+  tagline: "Creo plataformas web, tiendas online y herramientas a medida para que tu negocio funcione mejor y ahorres tiempo.",
+  bio: "¡Hola! Soy Julián. Me apasiona construir soluciones digitales que resuelvan problemas reales de forma simple y confiable. Desde tiendas online rápidas donde tus clientes compran sin vueltas, hasta sistemas de turnos que reducen el ausentismo y paneles para administrar tus operaciones diarias. Mi compromiso es que la tecnología trabaje a tu favor, con un diseño limpio, veloz y fácil de usar para cualquier persona.",
   education: {
-    degree: "Tecnicatura Universitaria en Programación",
-    institution: "Universidad Tecnológica Nacional (UTN)",
-    focus: "Estructuras de Datos, Complejidad Algorítmica, Paradigmas de Programación (POO y Funcional), Bases de Datos Relacionales y NoSQL, Arquitectura de Software y Sistemas Distribuidos.",
-    year: "Graduado Universitario"
+    status: "Actualmente Cursando",
+    degree: "Data Science & Inteligencia Artificial",
+    focus: "Formación activa en análisis de datos, modelos predictivos y herramientas de IA para ayudar a que los negocios tomen decisiones más inteligentes, automáticas y acertadas.",
+    year: "En Curso"
   },
   links: {
     github: "https://github.com/julyrodriguez",
@@ -570,9 +569,9 @@ export const PROFILE_INFO = {
     email: "rodriguez.jariel01@gmail.com"
   },
   stats: [
-    { label: "Sistemas en Producción", value: "5+" },
-    { label: "Años de Experiencia", value: "4+" },
-    { label: "Stack Tecnológico", value: "Full Stack" },
-    { label: "Arquitectura", value: "100% Custom" }
+    { label: "Sistemas Funcionando", value: "5+" },
+    { label: "Años Desarrollando", value: "4+" },
+    { label: "Soluciones", value: "A Medida" },
+    { label: "Experiencia", value: "Simple & Ágil" }
   ]
 };
