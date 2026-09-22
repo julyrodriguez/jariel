@@ -89,13 +89,13 @@ export function ProfileHeroCard() {
         {/* Encabezado Centrado: Solo Nombre, Bio y Contactos Directos */}
         <motion.div 
           variants={itemVariants} 
-          className="text-center space-y-2.5 max-w-4xl mx-auto border-b border-white/10 pb-4"
+          className="text-center space-y-2.5 max-w-5xl mx-auto border-b border-white/10 pb-4"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white">
             {PROFILE_INFO.name}
           </h1>
           
-          <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-4xl lg:max-w-5xl mx-auto leading-relaxed">
             {PROFILE_INFO.bio}
           </p>
 
