@@ -209,10 +209,10 @@ export function EducationCard() {
 
         </div>
 
-        {/* Indicación a la derecha con flechitas animadas para indicar al usuario bajar */}
+        {/* Indicación a la derecha con flechitas animadas para indicar al usuario bajar (solo visible en desktop) */}
         <motion.div 
           variants={itemVariants}
-          className="flex justify-end items-center pt-1"
+          className="hidden md:flex justify-end items-center pt-1"
         >
           <button
             onClick={() => {
