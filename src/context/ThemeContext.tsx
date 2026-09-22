@@ -17,6 +17,18 @@ const DEFAULT_THEME: ProjectTheme = {
   tag: "FULL STACK ARCHITECT"
 };
 
+const EDUCATION_THEME: ProjectTheme = {
+  primary: "#818cf8",
+  secondary: "#38bdf8",
+  accent: "#6366f1",
+  glow: "rgba(99, 102, 241, 0.22)",
+  border: "rgba(99, 102, 241, 0.3)",
+  bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(99, 102, 241, 0.14) 0%, rgba(56, 189, 248, 0.04) 50%, #07090e 100%)",
+  badgeBg: "rgba(99, 102, 241, 0.12)",
+  badgeText: "#818cf8",
+  tag: "ESTUDIOS & CERTIFICACIONES"
+};
+
 interface ThemeContextType {
   activeSection: SectionId;
   setActiveSection: (section: SectionId) => void;
@@ -51,6 +63,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const currentTheme: ProjectTheme = 
     activeSection in PROJECTS_DATA
       ? PROJECTS_DATA[activeSection].theme
+      : activeSection === "education"
+      ? EDUCATION_THEME
       : DEFAULT_THEME;
 
   const scrollToSection = (sectionId: SectionId) => {

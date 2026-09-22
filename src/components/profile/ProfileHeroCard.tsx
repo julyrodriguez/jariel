@@ -1,18 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { PROFILE_INFO, CERTIFICATES_DATA } from "@/data/projectsData";
+import { PROFILE_INFO } from "@/data/projectsData";
 import { 
-  Award, 
   ArrowDown, 
   Check, 
   Copy, 
   Sparkles, 
   Rocket, 
   Zap, 
-  HeartHandshake, 
-  CheckCircle2, 
-  BrainCircuit 
+  HeartHandshake,
+  GraduationCap
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 import { useTheme } from "@/context/ThemeContext";
@@ -83,15 +81,15 @@ export function ProfileHeroCard() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-4 md:space-y-5"
+        className="relative z-10 max-w-5xl w-full mx-auto my-auto space-y-5 md:space-y-6"
       >
         
-        {/* Encabezado Centrado: Solo Nombre, Bio y Contactos Directos */}
+        {/* Encabezado Centrado: Solo Nombre, Bio ancha y Contactos Directos */}
         <motion.div 
           variants={itemVariants} 
-          className="text-center space-y-2.5 max-w-5xl mx-auto border-b border-white/10 pb-4"
+          className="text-center space-y-3 mx-auto"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">
             {PROFILE_INFO.name}
           </h1>
           
@@ -145,199 +143,101 @@ export function ProfileHeroCard() {
           </div>
         </motion.div>
 
-        {/* 2-Column Balanced Layout: Sin Scrolls Internos */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
-          
-          {/* Columna Izquierda: Formación Actual en IA & Mi Propuesta de Valor (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col space-y-3.5">
-            
-            {/* Formación Académica Actual: Data Science & IA (Sin mencionar universidad) */}
-            <motion.div 
-              variants={itemVariants}
-              className="glass-panel p-4 sm:p-5 rounded-2xl border border-sky-500/30 space-y-2 shadow-xl relative overflow-hidden bg-gradient-to-br from-slate-950/80 to-sky-950/20"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sky-400">
-                  <BrainCircuit className="w-5 h-5 text-sky-400" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                    Formación Actual
-                  </span>
+        {/* Card: ¿Cómo puedo potenciar tu proyecto? (3 Columnas Horizontales, sin espacios vacíos) */}
+        <motion.div 
+          variants={itemVariants}
+          className="glass-panel p-5 sm:p-6 rounded-2xl border border-white/10 space-y-3.5 shadow-xl bg-slate-950/60"
+        >
+          <div className="flex items-center gap-2 text-amber-400 border-b border-white/5 pb-2.5">
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
+              ¿Cómo puedo potenciar tu proyecto?
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 pt-1">
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/5 space-y-2 hover:border-sky-500/30 transition-all">
+              <div className="flex items-center gap-2">
+                <div className="p-1.5 rounded-lg bg-sky-500/10 text-sky-400 shrink-0">
+                  <Rocket className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-                  {PROFILE_INFO.education.status}
-                </span>
+                <strong className="text-white font-semibold text-xs sm:text-sm">
+                  Páginas y Tiendas que Venden
+                </strong>
               </div>
-
-              <div>
-                <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">
-                  {PROFILE_INFO.education.degree}
-                </h2>
-                <span className="text-xs text-sky-300/90 font-medium block mt-0.5">
-                  Especialización en análisis predictivo, modelos de machine learning y soluciones con inteligencia artificial.
-                </span>
-              </div>
-
-              <p className="text-xs text-slate-300 leading-relaxed border-t border-white/5 pt-2">
-                {PROFILE_INFO.education.focus}
+              <p className="text-slate-300 text-[11px] sm:text-xs leading-relaxed">
+                Diseños rápidos, claros y adaptados a celulares para que tus clientes encuentren lo que buscan sin perder tiempo.
               </p>
-            </motion.div>
+            </div>
 
-            {/* ¿Cómo puedo potenciar tu proyecto? (Sin espacios vacíos, alineado al inicio) */}
-            <motion.div 
-              variants={itemVariants}
-              className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl bg-slate-950/60"
-            >
-              <div className="flex items-center gap-2 text-amber-400 border-b border-white/5 pb-2">
-                <Sparkles className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
-                  ¿Cómo puedo potenciar tu proyecto?
-                </span>
-              </div>
-
-              <div className="space-y-3 text-xs pt-0.5">
-                <div className="flex items-start gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-sky-500/10 text-sky-400 shrink-0 mt-0.5">
-                    <Rocket className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <strong className="text-white block font-semibold text-xs">Páginas y Tiendas que Venden</strong>
-                    <span className="text-slate-300 text-[11px] leading-snug block mt-0.5">
-                      Diseños rápidos, claros y adaptados a celulares para que tus clientes encuentren lo que buscan sin perder tiempo.
-                    </span>
-                  </div>
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/5 space-y-2 hover:border-emerald-500/30 transition-all">
+              <div className="flex items-center gap-2">
+                <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 shrink-0">
+                  <Zap className="w-4 h-4" />
                 </div>
-
-                <div className="flex items-start gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 shrink-0 mt-0.5">
-                    <Zap className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <strong className="text-white block font-semibold text-xs">Automatización de Tareas Diarias</strong>
-                    <span className="text-slate-300 text-[11px] leading-snug block mt-0.5">
-                      Sistemas de reservas, cálculos de pagos y reportes automáticos que te ahorran horas de trabajo manual.
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 shrink-0 mt-0.5">
-                    <HeartHandshake className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <strong className="text-white block font-semibold text-xs">Comunicación Clara y Cercana</strong>
-                    <span className="text-slate-300 text-[11px] leading-snug block mt-0.5">
-                      Hablo tu mismo idioma. Te explico todo de forma sencilla, sin tecnicismos confusos y con soporte constante.
-                    </span>
-                  </div>
-                </div>
+                <strong className="text-white font-semibold text-xs sm:text-sm">
+                  Automatización de Tareas
+                </strong>
               </div>
-            </motion.div>
+              <p className="text-slate-300 text-[11px] sm:text-xs leading-relaxed">
+                Sistemas de reservas, cálculos de pagos y reportes automáticos que te ahorran horas de trabajo manual.
+              </p>
+            </div>
 
-            {/* Bottom Callout / Navegación Directa */}
-            <motion.div 
-              variants={itemVariants}
-              className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-sky-950/80 via-indigo-950/60 to-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg"
-            >
-              <div className="text-left space-y-0.5">
-                <span className="text-xs font-bold text-white block">
-                  Descubrí mis 5 sistemas funcionando
-                </span>
-                <span className="text-[11px] text-slate-400 block">
-                  Cada proyecto cuenta con una demostración interactiva que podés probar vos mismo
-                </span>
+            <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/5 space-y-2 hover:border-indigo-500/30 transition-all">
+              <div className="flex items-center gap-2">
+                <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 shrink-0">
+                  <HeartHandshake className="w-4 h-4" />
+                </div>
+                <strong className="text-white font-semibold text-xs sm:text-sm">
+                  Comunicación Clara y Cercana
+                </strong>
               </div>
+              <p className="text-slate-300 text-[11px] sm:text-xs leading-relaxed">
+                Hablo tu mismo idioma. Te explico todo de forma sencilla, sin tecnicismos confusos y con soporte constante.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
-              <button
-                onClick={() => {
-                  sound.playSuccess();
-                  scrollToSection("projects-hub");
-                }}
-                className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-teal-300 hover:shadow-lg hover:shadow-sky-400/25 hover:scale-105 transition-all flex items-center justify-center gap-1.5 shrink-0"
-              >
-                <span>Ver Proyectos</span>
-                <ArrowDown className="w-3.5 h-3.5" />
-              </button>
-            </motion.div>
-
+        {/* Botón y Callout: Descubrí mis 5 sistemas funcionando (inmediatamente abajo de potenciar proyecto) */}
+        <motion.div 
+          variants={itemVariants}
+          className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-sky-950/80 via-indigo-950/60 to-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg"
+        >
+          <div className="text-left space-y-0.5">
+            <span className="text-xs sm:text-sm font-bold text-white block">
+              Descubrí mis 5 sistemas funcionando
+            </span>
+            <span className="text-[11px] sm:text-xs text-slate-400 block">
+              Cada proyecto cuenta con una demostración interactiva que podés probar vos mismo.
+            </span>
           </div>
 
-          {/* Columna Derecha: Cursos Técnicos en la Universidad Tecnológica Nacional (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col space-y-3.5">
-            
-            <motion.div 
-              variants={itemVariants}
-              className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl bg-slate-950/60"
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <button
+              onClick={() => {
+                sound.playPop();
+                scrollToSection("education");
+              }}
+              className="px-3.5 py-2 rounded-xl font-semibold text-xs text-slate-300 glass-panel border border-white/10 hover:border-white/20 hover:text-white transition-all flex items-center justify-center gap-1.5"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
-                <div className="flex items-center gap-2 text-indigo-400">
-                  <Award className="w-4 h-4" />
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
-                    Cursos Técnicos y Certificaciones
-                  </h3>
-                </div>
-                <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-500/30 font-semibold">
-                  Universidad Tecnológica Nacional (UTN)
-                </span>
-              </div>
+              <GraduationCap className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Ver Estudios</span>
+            </button>
 
-              {/* Lista limpia de los 5 Cursos UTN sin scroll interno */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {CERTIFICATES_DATA.map((cert) => (
-                  <div
-                    key={cert.id}
-                    className={`p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-indigo-500/40 transition-all flex flex-col justify-between space-y-1.5 ${
-                      cert.id === "experto-fullstack-utn" ? "sm:col-span-2 border-indigo-500/30 bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900" : ""
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                        <span className="text-xs font-bold text-white block">
-                          {cert.title}
-                        </span>
-                      </div>
-                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-semibold shrink-0">
-                        {cert.badge}
-                      </span>
-                    </div>
-
-                    <span className="text-[10px] font-mono text-slate-400 block">
-                      {cert.issuer}
-                    </span>
-
-                    <p className="text-[11px] text-slate-300 leading-snug">
-                      {cert.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1 pt-0.5">
-                      {cert.topics.slice(0, 2).map((t, idx) => (
-                        <span
-                          key={idx}
-                          className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-950 border border-white/5 text-slate-400"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Stats Ribbon Accesible */}
-              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5 text-center">
-                {PROFILE_INFO.stats.map((s, idx) => (
-                  <div key={idx} className="p-2 rounded-xl bg-slate-900/90 border border-white/5">
-                    <span className="block text-xs sm:text-sm font-black text-sky-400 font-mono">{s.value}</span>
-                    <span className="block text-[8px] sm:text-[9px] text-slate-400 uppercase font-medium mt-0.5">{s.label}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
+            <button
+              onClick={() => {
+                sound.playSuccess();
+                scrollToSection("projects-hub");
+              }}
+              className="flex-1 sm:flex-initial px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-teal-300 hover:shadow-lg hover:shadow-sky-400/25 hover:scale-105 transition-all flex items-center justify-center gap-1.5 shrink-0"
+            >
+              <span>Ver Proyectos</span>
+              <ArrowDown className="w-3.5 h-3.5" />
+            </button>
           </div>
-
-        </div>
+        </motion.div>
 
       </motion.div>
     </section>

@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { ScrollIndicator } from "@/components/navigation/ScrollIndicator";
 import { MobileBottomDock } from "@/components/navigation/MobileBottomDock";
 import { ProfileHeroCard } from "@/components/profile/ProfileHeroCard";
+import { EducationCard } from "@/components/profile/EducationCard";
 import { ProjectsHubCard } from "@/components/projects/ProjectsHubCard";
 import { VacasLocasCard } from "@/components/projects/VacasLocasCard";
 import { DemoPilatesCard } from "@/components/projects/DemoPilatesCard";
@@ -15,6 +16,7 @@ import { SectionId } from "@/types";
 
 const SECTION_IDS: SectionId[] = [
   "profile",
+  "education",
   "projects-hub",
   "vacas-locas",
   "demoPilates",
@@ -77,10 +79,13 @@ export default function Home() {
         ref={containerRef}
         className="snap-container relative z-10 w-full h-screen"
       >
-        {/* 1. Primera Card: Perfil Profesional, Formación Universitaria & Certificaciones */}
+        {/* 1. Primera Card: Perfil Profesional, Propuesta de Valor & Acceso Rápido */}
         <ProfileHeroCard />
 
-        {/* 2. Segunda Card: Hub Central de Proyectos con Mini Cards */}
+        {/* 2. Segunda Card: Formación Continua & Certificaciones Universitarias UTN */}
+        <EducationCard />
+
+        {/* 3. Tercera Card: Hub Central de Proyectos con Mini Cards */}
         <ProjectsHubCard />
 
         {/* 3. Proyectos Individuales con Desglose Técnico & Sandboxes */}

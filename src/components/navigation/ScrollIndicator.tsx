@@ -12,13 +12,14 @@ interface NavItem {
 }
 
 const SECTIONS: NavItem[] = [
-  { id: "profile", label: "Perfil & Certificados", badge: "01" },
-  { id: "projects-hub", label: "Hub de Proyectos", badge: "02" },
-  { id: "vacas-locas", label: "Prode", badge: "03" },
-  { id: "demoPilates", label: "Pilates Studio", badge: "04" },
-  { id: "tienda", label: "Aura TM", badge: "05" },
-  { id: "cinemark-app", label: "Cinemark", badge: "06" },
-  { id: "finanzas", label: "Finanzas", badge: "07" },
+  { id: "profile", label: "Perfil", badge: "01" },
+  { id: "education", label: "Estudios & Certificaciones", badge: "02" },
+  { id: "projects-hub", label: "Hub de Proyectos", badge: "03" },
+  { id: "vacas-locas", label: "Prode", badge: "04" },
+  { id: "demoPilates", label: "Pilates Studio", badge: "05" },
+  { id: "tienda", label: "Aura TM", badge: "06" },
+  { id: "cinemark-app", label: "Cinemark", badge: "07" },
+  { id: "finanzas", label: "Finanzas", badge: "08" },
 ];
 
 export function ScrollIndicator() {

@@ -5,7 +5,7 @@ export type ProjectId =
   | "cinemark-app" 
   | "finanzas";
 
-export type SectionId = "profile" | "projects-hub" | ProjectId;
+export type SectionId = "profile" | "education" | "projects-hub" | ProjectId;
 
 export interface ProjectTheme {
   primary: string;

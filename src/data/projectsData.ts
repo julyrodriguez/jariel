@@ -551,8 +551,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 ];
 
 export const PROFILE_INFO = {
-  name: "Julián Ariel Rodríguez",
-  shortName: "Julián Rodríguez",
+  name: "Julian ariel rodriguez",
+  shortName: "Julian Rodriguez",
   title: "Desarrollador Full Stack & Creador de Soluciones Digitales",
   tagline: "Creo plataformas web, tiendas online y herramientas a medida para que tu negocio funcione mejor y ahorres tiempo.",
   bio: "¡Hola! Soy Julián. Me apasiona construir soluciones digitales que resuelvan problemas reales de forma simple y confiable. Desde tiendas online rápidas donde tus clientes compran sin vueltas, hasta sistemas de turnos que reducen el ausentismo y paneles para administrar tus operaciones diarias. Mi compromiso es que la tecnología trabaje a tu favor, con un diseño limpio, veloz y fácil de usar para cualquier persona.",

@@ -5,6 +5,7 @@ import { useTheme } from "@/context/ThemeContext";
 import { SectionId } from "@/types";
 import { 
   User, 
+  GraduationCap,
   LayoutGrid, 
   Gamepad2, 
   Calendar, 
@@ -23,7 +24,8 @@ interface DockItem {
 
 const DOCK_ITEMS: DockItem[] = [
   { id: "profile", label: "Perfil", icon: <User className="w-4 h-4" />, activeColor: "#38bdf8" },
-  { id: "projects-hub", label: "Hub", icon: <LayoutGrid className="w-4 h-4" />, activeColor: "#818cf8" },
+  { id: "education", label: "Estudios", icon: <GraduationCap className="w-4 h-4" />, activeColor: "#818cf8" },
+  { id: "projects-hub", label: "Hub", icon: <LayoutGrid className="w-4 h-4" />, activeColor: "#60a5fa" },
   { id: "vacas-locas", label: "Prode", icon: <Gamepad2 className="w-4 h-4" />, activeColor: "#10b981" },
   { id: "demoPilates", label: "Pilates", icon: <Calendar className="w-4 h-4" />, activeColor: "#a855f7" },
   { id: "tienda", label: "AURA", icon: <ShoppingBag className="w-4 h-4" />, activeColor: "#f5e6d3" },
