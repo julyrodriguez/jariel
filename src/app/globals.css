@@ -47,18 +47,34 @@ html, body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+  height: 100dvh;
   scroll-behavior: smooth;
   scroll-padding-top: 0px;
+}
+
+@media (max-width: 768px) {
+  .snap-container {
+    scroll-snap-type: y proximity;
+    scroll-padding-bottom: 76px;
+  }
 }
 
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .snap-section {
+    padding-bottom: 5.5rem;
+    min-height: auto;
+  }
 }
 
 /* Glassmorphic utilities */

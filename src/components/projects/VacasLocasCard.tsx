@@ -12,13 +12,17 @@ import {
   Cpu,
   Layers,
   ShieldCheck,
-  Database
+  Database,
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import { sound } from "@/lib/sound";
 
 export function VacasLocasCard() {
   const project = PROJECTS_DATA["vacas-locas"];
+
+  const [mobileView, setMobileView] = useState<"specs" | "sandbox">("specs");
 
   // Interactive Match Predictor State
   const [team1Score, setTeam1Score] = useState<number>(2);
@@ -106,11 +110,43 @@ export function VacasLocasCard() {
           </div>
         </div>
 
+        {/* Mobile Segmented View Switcher */}
+        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/85 border border-white/10 shadow-lg mb-2">
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileView("specs");
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileView === "specs"
+                ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Ficha & Arquitectura</span>
+          </button>
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileView("sandbox");
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileView === "sandbox"
+                ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <Trophy className="w-3.5 h-3.5" />
+            <span>Simulador Interactivo</span>
+          </button>
+        </div>
+
         {/* Main Grid: Deep Technical Specs on Left, Interactive Simulation Sandbox on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Left Column: Technical Analysis & Business Solution (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
+          <div className={`${mobileView === "specs" ? "flex" : "hidden lg:flex"} lg:col-span-5 flex-col justify-between space-y-3.5`}>
             
             {/* Interactive Tabs: ¿Qué hace? / ¿Qué solución brindó? / Datos Técnicos Profundos */}
             <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-emerald-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
@@ -273,10 +309,22 @@ export function VacasLocasCard() {
                 </span>
               ))}
             </div>
+
+            {/* Mobile CTA to Sandbox */}
+            <button
+              onClick={() => {
+                sound.playSuccess();
+                setMobileView("sandbox");
+              }}
+              className="lg:hidden w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 transition-all flex items-center justify-center gap-2 shadow-lg"
+            >
+              <span>Probar Simulador de Pronósticos</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           {/* Right Column: Live Interactive Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-emerald-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
+          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 glass-panel p-5 rounded-2xl border border-emerald-500/30 flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden`}>
             
             {/* Sandbox Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
@@ -524,6 +572,18 @@ export function VacasLocasCard() {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Return to Specs Button */}
+            <button
+              onClick={() => {
+                sound.playPop();
+                setMobileView("specs");
+              }}
+              className="lg:hidden w-full py-2 px-3 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>← Volver a Ficha Técnica & Arquitectura</span>
+            </button>
 
           </div>
         </div>

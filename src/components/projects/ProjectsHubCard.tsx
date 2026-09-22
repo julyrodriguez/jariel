@@ -103,8 +103,17 @@ export function ProjectsHubCard() {
           </div>
         </div>
 
-        {/* 5 Interactive Mini Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Mobile Swipe Hint */}
+        <div className="md:hidden flex items-center justify-between text-[11px] font-mono text-slate-400 px-1">
+          <span className="flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+            Desliza horizontalmente
+          </span>
+          <span>5 Desarrollos + Estándares →</span>
+        </div>
+
+        {/* 5 Interactive Mini Cards: Horizontal Swipe Deck on Mobile, 3x2 Grid on Desktop */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-2 pt-1 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:overflow-visible md:pb-0 scroll-smooth">
           {projectList.map((item) => {
             const project = PROJECTS_DATA[item.id];
             const isHovered = hoveredProjectId === item.id;
@@ -117,7 +126,7 @@ export function ProjectsHubCard() {
                   setHoveredProjectId(item.id);
                 }}
                 onMouseLeave={() => setHoveredProjectId(null)}
-                className={`p-4 sm:p-5 rounded-2xl glass-panel border transition-all duration-300 flex flex-col justify-between space-y-3.5 relative overflow-hidden group hover:scale-[1.02] shadow-xl ${
+                className={`min-w-[85vw] sm:min-w-[72vw] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl glass-panel border transition-all duration-300 flex flex-col justify-between space-y-3.5 relative overflow-hidden group hover:scale-[1.02] shadow-xl ${
                   isHovered ? "shadow-2xl" : ""
                 }`}
                 style={{
@@ -201,7 +210,7 @@ export function ProjectsHubCard() {
           })}
 
           {/* Quick Technical Overview Card (Fill 6th slot for 2x3 or 3x2 grid balance) */}
-          <div className="p-4 sm:p-5 rounded-2xl glass-panel border border-white/10 flex flex-col justify-between space-y-3 shadow-xl bg-slate-950/50">
+          <div className="min-w-[85vw] sm:min-w-[72vw] md:min-w-0 snap-center p-4 sm:p-5 rounded-2xl glass-panel border border-white/10 flex flex-col justify-between space-y-3 shadow-xl bg-slate-950/50">
             <div className="space-y-1">
               <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider font-bold flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5" />

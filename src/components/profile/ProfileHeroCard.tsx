@@ -30,6 +30,7 @@ export function ProfileHeroCard() {
   const { scrollToSection } = useTheme();
   const [copied, setCopied] = useState(false);
   const [activeSkillCategory, setActiveSkillCategory] = useState<number>(0);
+  const [mobileTab, setMobileTab] = useState<"education" | "skills">("education");
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PROFILE_INFO.links.email);
@@ -154,11 +155,43 @@ export function ProfileHeroCard() {
           </div>
         </div>
 
+        {/* Mobile Segmented View Switcher */}
+        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/80 border border-white/10 shadow-lg">
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileTab("education");
+            }}
+            className={`flex-1 py-2 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileTab === "education"
+                ? "bg-sky-500 text-slate-950 shadow-md shadow-sky-500/20"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <GraduationCap className="w-4 h-4" />
+            <span>Formación & Cursos</span>
+          </button>
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileTab("skills");
+            }}
+            className={`flex-1 py-2 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileTab === "skills"
+                ? "bg-sky-500 text-slate-950 shadow-md shadow-sky-500/20"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <Code2 className="w-4 h-4" />
+            <span>Stack & Skills</span>
+          </button>
+        </div>
+
         {/* 2-Column Core Layout: Education & Certifications (Left 6 cols) vs Skills Matrix & CTA (Right 6 cols) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Left Column: Formación Universitaria & Certificaciones Extraídas (6 cols) */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-3.5">
+          <div className={`${mobileTab === "education" ? "flex" : "hidden lg:flex"} lg:col-span-6 flex-col justify-between space-y-3.5`}>
             
             {/* Academic Degree Highlight */}
             <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-sky-500/30 space-y-2.5 shadow-xl relative overflow-hidden">
@@ -245,7 +278,7 @@ export function ProfileHeroCard() {
           </div>
 
           {/* Right Column: Technical Skill Matrix & Navigation Action (6 cols) */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-3.5">
+          <div className={`${mobileTab === "skills" ? "flex" : "hidden lg:flex"} lg:col-span-6 flex-col justify-between space-y-3.5`}>
             
             {/* Skills Matrix */}
             <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl flex-1 flex flex-col justify-between">

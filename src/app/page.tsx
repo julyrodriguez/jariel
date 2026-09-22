@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { Navbar } from "@/components/navigation/Navbar";
 import { ScrollIndicator } from "@/components/navigation/ScrollIndicator";
+import { MobileBottomDock } from "@/components/navigation/MobileBottomDock";
 import { ProfileHeroCard } from "@/components/profile/ProfileHeroCard";
 import { ProjectsHubCard } from "@/components/projects/ProjectsHubCard";
 import { VacasLocasCard } from "@/components/projects/VacasLocasCard";
@@ -63,6 +64,7 @@ export default function Home() {
       {/* Global Persistent Navigation Controls */}
       <Navbar />
       <ScrollIndicator />
+      <MobileBottomDock />
 
       {/* Main Full-Screen Snap Scroll Container */}
       <main

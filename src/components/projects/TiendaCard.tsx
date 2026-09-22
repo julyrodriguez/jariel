@@ -11,7 +11,9 @@ import {
   CheckCircle2,
   Cpu,
   Database,
-  ShieldCheck
+  ShieldCheck,
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import confetti from "canvas-confetti";
@@ -20,6 +22,7 @@ import { sound } from "@/lib/sound";
 export function TiendaCard() {
   const project = PROJECTS_DATA["tienda"];
 
+  const [mobileView, setMobileView] = useState<"specs" | "sandbox">("specs");
   const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
   const [selectedColor, setSelectedColor] = useState<"cream" | "champagne" | "obsidian">("cream");
   const [installmentPlan, setInstallmentPlan] = useState<3 | 6 | 12>(6);
@@ -111,11 +114,43 @@ export function TiendaCard() {
           </div>
         </div>
 
+        {/* Mobile Segmented View Switcher */}
+        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/85 border border-[#f5e6d3]/20 shadow-lg mb-2">
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileView("specs");
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileView === "specs"
+                ? "bg-[#f5e6d3] text-stone-950 shadow-md shadow-[#f5e6d3]/25 font-bold"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Ficha & Arquitectura</span>
+          </button>
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileView("sandbox");
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileView === "sandbox"
+                ? "bg-[#f5e6d3] text-stone-950 shadow-md shadow-[#f5e6d3]/25 font-bold"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Catálogo Cremita & Cart</span>
+          </button>
+        </div>
+
         {/* Main Grid: Architecture on Left, Interactive Product & Cart Sandbox on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Left Column (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
+          <div className={`${mobileView === "specs" ? "flex" : "hidden lg:flex"} lg:col-span-5 flex-col justify-between space-y-3.5`}>
             
             {/* Interactive Tabs */}
             <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-[#f5e6d3]/35 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
@@ -278,10 +313,22 @@ export function TiendaCard() {
                 </span>
               ))}
             </div>
+
+            {/* Mobile CTA to Sandbox */}
+            <button
+              onClick={() => {
+                sound.playSuccess();
+                setMobileView("sandbox");
+              }}
+              className="lg:hidden w-full py-2.5 px-4 rounded-xl text-xs font-bold text-stone-950 bg-gradient-to-r from-[#f5e6d3] via-[#fef3c7] to-[#e2d9c8] hover:shadow-lg hover:shadow-[#f5e6d3]/30 transition-all flex items-center justify-center gap-2 shadow-lg font-bold"
+            >
+              <span>Probar Catálogo Cremita & Carrito</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           {/* Right Column: Interactive Product Card & Slide-Over Cart Simulator (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-[#f5e6d3]/40 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
+          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 glass-panel p-5 rounded-2xl border border-[#f5e6d3]/40 flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden`}>
             
             {/* Sandbox Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
@@ -449,6 +496,18 @@ export function TiendaCard() {
               <span>Stack: React 18 + Vite + Tailwind + Spring Physics</span>
               <span className="text-[#fef3c7] font-mono text-[10px]">AURA Next-Gen Cream Engine</span>
             </div>
+
+            {/* Mobile Return to Specs Button */}
+            <button
+              onClick={() => {
+                sound.playPop();
+                setMobileView("specs");
+              }}
+              className="lg:hidden w-full py-2 px-3 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>← Volver a Ficha Técnica & Arquitectura</span>
+            </button>
 
           </div>
         </div>

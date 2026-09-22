@@ -9,7 +9,9 @@ import {
   ShieldCheck, 
   Layers,
   Cpu,
-  Database
+  Database,
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import confetti from "canvas-confetti";
@@ -27,6 +29,7 @@ interface Order {
 export function FinanzasCard() {
   const project = PROJECTS_DATA["finanzas"];
 
+  const [mobileView, setMobileView] = useState<"specs" | "sandbox">("specs");
   const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
   const [selectedCurrency, setSelectedCurrency] = useState<"oficial" | "blue" | "mep" | "ccl">("mep");
   
@@ -140,11 +143,43 @@ export function FinanzasCard() {
           </div>
         </div>
 
+        {/* Mobile Segmented View Switcher */}
+        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/85 border border-blue-500/20 shadow-lg mb-2">
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileView("specs");
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileView === "specs"
+                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Ficha & Arquitectura</span>
+          </button>
+          <button
+            onClick={() => {
+              sound.playClick();
+              setMobileView("sandbox");
+            }}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+              mobileView === "sandbox"
+                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <TrendingUp className="w-3.5 h-3.5" />
+            <span>Ticker & Órdenes</span>
+          </button>
+        </div>
+
         {/* Main Grid: Architecture Details on Left, Interactive Finance Sandbox on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
           {/* Left Column: Specs & Financial Features (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
+          <div className={`${mobileView === "specs" ? "flex" : "hidden lg:flex"} lg:col-span-5 flex-col justify-between space-y-3.5`}>
             
             {/* Interactive Tabs */}
             <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-blue-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
@@ -307,10 +342,22 @@ export function FinanzasCard() {
                 </span>
               ))}
             </div>
+
+            {/* Mobile CTA to Sandbox */}
+            <button
+              onClick={() => {
+                sound.playSuccess();
+                setMobileView("sandbox");
+              }}
+              className="lg:hidden w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-600/30 transition-all flex items-center justify-center gap-2 shadow-lg font-bold"
+            >
+              <span>Probar Ticker Cambiario & Órdenes</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           {/* Right Column: Interactive Financial Analytics & Batch Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-blue-500/30 flex flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden">
+          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 glass-panel p-5 rounded-2xl border border-blue-500/30 flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden`}>
             
             {/* Header with Live Currency Ticker */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
@@ -471,6 +518,18 @@ export function FinanzasCard() {
               <span>Stack: Next.js 16 + Firebase Firestore + SheetJS (XLSX)</span>
               <span className="text-blue-400 font-mono text-[10px]">Finanzas Treasury Suite</span>
             </div>
+
+            {/* Mobile Return to Specs Button */}
+            <button
+              onClick={() => {
+                sound.playPop();
+                setMobileView("specs");
+              }}
+              className="lg:hidden w-full py-2 px-3 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>← Volver a Ficha Técnica & Arquitectura</span>
+            </button>
 
           </div>
         </div>
