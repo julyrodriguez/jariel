@@ -26,7 +26,7 @@ const EDUCATION_THEME: ProjectTheme = {
   bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(99, 102, 241, 0.14) 0%, rgba(56, 189, 248, 0.04) 50%, #07090e 100%)",
   badgeBg: "rgba(99, 102, 241, 0.12)",
   badgeText: "#818cf8",
-  tag: "ESTUDIOS & CERTIFICACIONES"
+  tag: "FORMACIÓN"
 };
 
 interface ThemeContextType {

@@ -3,7 +3,6 @@
 import React from "react";
 import { PROFILE_INFO, CERTIFICATES_DATA } from "@/data/projectsData";
 import { 
-  Award, 
   CheckCircle2, 
   BrainCircuit, 
   Sparkles,
@@ -72,23 +71,14 @@ export function EducationCard() {
         className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-4 md:space-y-5"
       >
         
-        {/* Encabezado de Sección */}
+        {/* Encabezado de Sección: Solo Formación */}
         <motion.div 
           variants={itemVariants} 
-          className="text-center space-y-1.5 max-w-4xl mx-auto border-b border-white/10 pb-3"
+          className="text-center max-w-4xl mx-auto border-b border-white/10 pb-3"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-mono font-medium mb-1">
-            <Award className="w-3.5 h-3.5 text-indigo-400" />
-            <span>ESTUDIOS & CERTIFICACIONES</span>
-          </div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white">
-            Formación Continua & Especialización
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+            Formación
           </h2>
-          
-          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Combinación de formación avanzada en Inteligencia Artificial y certificaciones universitarias para crear sistemas modernos, rápidos y confiables.
-          </p>
         </motion.div>
 
         {/* 2-Column Balanced Layout: Formación Actual + Cursos UTN */}

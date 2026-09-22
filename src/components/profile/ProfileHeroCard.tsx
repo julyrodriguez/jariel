@@ -223,7 +223,7 @@ export function ProfileHeroCard() {
               className="px-3.5 py-2 rounded-xl font-semibold text-xs text-slate-300 glass-panel border border-white/10 hover:border-white/20 hover:text-white transition-all flex items-center justify-center gap-1.5"
             >
               <GraduationCap className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Ver Estudios</span>
+              <span>Ver Formación</span>
             </button>
 
             <button
