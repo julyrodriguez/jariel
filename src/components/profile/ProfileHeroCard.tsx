@@ -7,16 +7,40 @@ import {
   ArrowDown, 
   Check, 
   Copy, 
-  Sparkles,
-  Rocket,
-  Zap,
-  HeartHandshake,
-  CheckCircle2,
-  BrainCircuit
+  Sparkles, 
+  Rocket, 
+  Zap, 
+  HeartHandshake, 
+  CheckCircle2, 
+  BrainCircuit 
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 import { useTheme } from "@/context/ThemeContext";
 import { sound } from "@/lib/sound";
+import { motion, type Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.08
+    }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: -26 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: "easeOut"
+    }
+  }
+};
 
 export function ProfileHeroCard() {
   const { scrollToSection } = useTheme();
@@ -32,7 +56,7 @@ export function ProfileHeroCard() {
   return (
     <section 
       id="profile"
-      className="snap-section relative justify-center px-4 sm:px-8 py-10 md:py-16 overflow-hidden flex flex-col justify-center"
+      className="snap-section relative justify-center px-4 sm:px-8 py-10 md:py-14 overflow-hidden flex flex-col justify-center"
     >
       {/* Dynamic Ambient Background with Feathered Mask */}
       <div 
@@ -54,40 +78,35 @@ export function ProfileHeroCard() {
       {/* Seamless Transition Vignette */}
       <div className="section-vignette-bottom" />
 
-      <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-4 md:space-y-5">
+      {/* Animated Staggered Content Container (aparece desde arriba hacia abajo) */}
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-4 md:space-y-5"
+      >
         
-        {/* Top Header / Profile Banner (Primera Persona & Tono Accesible) */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3.5">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-0.5 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-sky-950/80 text-sky-300 border border-sky-500/30">
-                DESARROLLADOR WEB & SOLUCIONES DIGITALES
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Disponible para nuevos proyectos
-              </span>
-            </div>
-            
-            <div className="flex flex-wrap items-baseline gap-2">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white">
-                ¡Hola! Soy {PROFILE_INFO.name}
-              </h1>
-            </div>
-            
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
-              {PROFILE_INFO.bio}
-            </p>
-          </div>
+        {/* Encabezado Centrado: Solo Nombre, Bio y Contactos Directos */}
+        <motion.div 
+          variants={itemVariants} 
+          className="text-center space-y-2.5 max-w-4xl mx-auto border-b border-white/10 pb-4"
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white">
+            {PROFILE_INFO.name}
+          </h1>
+          
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            {PROFILE_INFO.bio}
+          </p>
 
-          {/* Social Profiles & Email Direct */}
-          <div className="flex items-center gap-2 flex-wrap">
+          {/* Perfiles Sociales & Copiar Email Centrados */}
+          <div className="flex items-center justify-center gap-2.5 flex-wrap pt-1">
             <a
               href={PROFILE_INFO.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => sound.playPop()}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all"
               title="Mi perfil en LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
@@ -99,7 +118,7 @@ export function ProfileHeroCard() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => sound.playPop()}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-white/10 hover:border-white/30 hover:scale-105 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-white/10 hover:border-white/30 hover:scale-105 transition-all"
               title="Ver mis repositorios de código"
             >
               <GithubIcon className="w-4 h-4" />
@@ -108,7 +127,7 @@ export function ProfileHeroCard() {
 
             <button
               onClick={handleCopyEmail}
-              className="px-3.5 py-2 rounded-xl text-xs font-mono text-slate-300 glass-panel border border-white/10 hover:border-white/30 hover:text-white transition-all flex items-center gap-1.5"
+              className="px-4 py-2 rounded-xl text-xs font-mono text-slate-300 glass-panel border border-white/10 hover:border-white/30 hover:text-white transition-all flex items-center gap-1.5"
               title="Copiar mi correo electrónico"
             >
               {copied ? (
@@ -124,16 +143,19 @@ export function ProfileHeroCard() {
               )}
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2-Column Balanced Layout: Sin Scrolls Internos */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
           
           {/* Columna Izquierda: Formación Actual en IA & Mi Propuesta de Valor (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-3">
+          <div className="lg:col-span-5 flex flex-col space-y-3.5">
             
             {/* Formación Académica Actual: Data Science & IA (Sin mencionar universidad) */}
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-sky-500/30 space-y-2 shadow-xl relative overflow-hidden bg-gradient-to-br from-slate-950/80 to-sky-950/20">
+            <motion.div 
+              variants={itemVariants}
+              className="glass-panel p-4 sm:p-5 rounded-2xl border border-sky-500/30 space-y-2 shadow-xl relative overflow-hidden bg-gradient-to-br from-slate-950/80 to-sky-950/20"
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-sky-400">
                   <BrainCircuit className="w-5 h-5 text-sky-400" />
@@ -159,10 +181,13 @@ export function ProfileHeroCard() {
               <p className="text-xs text-slate-300 leading-relaxed border-t border-white/5 pt-2">
                 {PROFILE_INFO.education.focus}
               </p>
-            </div>
+            </motion.div>
 
-            {/* ¿En qué puedo ayudarte? (Explicación para gente no técnica) */}
-            <div className="glass-panel p-4 rounded-2xl border border-white/10 space-y-2.5 shadow-xl flex-1 flex flex-col justify-between bg-slate-950/60">
+            {/* ¿Cómo puedo potenciar tu proyecto? (Sin espacios vacíos, alineado al inicio) */}
+            <motion.div 
+              variants={itemVariants}
+              className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl bg-slate-950/60"
+            >
               <div className="flex items-center gap-2 text-amber-400 border-b border-white/5 pb-2">
                 <Sparkles className="w-4 h-4" />
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
@@ -170,14 +195,14 @@ export function ProfileHeroCard() {
                 </span>
               </div>
 
-              <div className="space-y-2 text-xs">
+              <div className="space-y-3 text-xs pt-0.5">
                 <div className="flex items-start gap-2.5">
                   <div className="p-1.5 rounded-lg bg-sky-500/10 text-sky-400 shrink-0 mt-0.5">
                     <Rocket className="w-3.5 h-3.5" />
                   </div>
                   <div>
                     <strong className="text-white block font-semibold text-xs">Páginas y Tiendas que Venden</strong>
-                    <span className="text-slate-300 text-[11px] leading-snug block">
+                    <span className="text-slate-300 text-[11px] leading-snug block mt-0.5">
                       Diseños rápidos, claros y adaptados a celulares para que tus clientes encuentren lo que buscan sin perder tiempo.
                     </span>
                   </div>
@@ -189,7 +214,7 @@ export function ProfileHeroCard() {
                   </div>
                   <div>
                     <strong className="text-white block font-semibold text-xs">Automatización de Tareas Diarias</strong>
-                    <span className="text-slate-300 text-[11px] leading-snug block">
+                    <span className="text-slate-300 text-[11px] leading-snug block mt-0.5">
                       Sistemas de reservas, cálculos de pagos y reportes automáticos que te ahorran horas de trabajo manual.
                     </span>
                   </div>
@@ -201,21 +226,23 @@ export function ProfileHeroCard() {
                   </div>
                   <div>
                     <strong className="text-white block font-semibold text-xs">Comunicación Clara y Cercana</strong>
-                    <span className="text-slate-300 text-[11px] leading-snug block">
+                    <span className="text-slate-300 text-[11px] leading-snug block mt-0.5">
                       Hablo tu mismo idioma. Te explico todo de forma sencilla, sin tecnicismos confusos y con soporte constante.
                     </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
           {/* Columna Derecha: Cursos Técnicos en la Universidad Tecnológica Nacional (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-3">
+          <div className="lg:col-span-7 flex flex-col space-y-3.5">
             
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl flex-1 flex flex-col justify-between bg-slate-950/60">
-              
+            <motion.div 
+              variants={itemVariants}
+              className="glass-panel p-4 sm:p-5 rounded-2xl border border-white/10 space-y-3 shadow-xl bg-slate-950/60"
+            >
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
                 <div className="flex items-center gap-2 text-indigo-400">
                   <Award className="w-4 h-4" />
@@ -280,11 +307,13 @@ export function ProfileHeroCard() {
                   </div>
                 ))}
               </div>
-
-            </div>
+            </motion.div>
 
             {/* Bottom Callout / Navegación Directa */}
-            <div className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-sky-950/80 via-indigo-950/60 to-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg">
+            <motion.div 
+              variants={itemVariants}
+              className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-sky-950/80 via-indigo-950/60 to-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg"
+            >
               <div className="text-left space-y-0.5">
                 <span className="text-xs font-bold text-white block">
                   Descubrí mis 5 sistemas funcionando
@@ -304,13 +333,13 @@ export function ProfileHeroCard() {
                 <span>Ver Proyectos</span>
                 <ArrowDown className="w-3.5 h-3.5" />
               </button>
-            </div>
+            </motion.div>
 
           </div>
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

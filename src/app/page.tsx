@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { Navbar } from "@/components/navigation/Navbar";
 import { ScrollIndicator } from "@/components/navigation/ScrollIndicator";
 import { MobileBottomDock } from "@/components/navigation/MobileBottomDock";
 import { ProfileHeroCard } from "@/components/profile/ProfileHeroCard";
@@ -70,7 +69,6 @@ export default function Home() {
       />
 
       {/* Global Persistent Navigation Controls */}
-      <Navbar />
       <ScrollIndicator />
       <MobileBottomDock />
 
