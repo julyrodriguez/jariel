@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { ScrollIndicator } from "@/components/navigation/ScrollIndicator";
-import { MobileBottomDock } from "@/components/navigation/MobileBottomDock";
+import { ScrollToTopMobile } from "@/components/navigation/ScrollToTopMobile";
 import { ProfileHeroCard } from "@/components/profile/ProfileHeroCard";
 import { EducationCard } from "@/components/profile/EducationCard";
 import { ProjectsHubCard } from "@/components/projects/ProjectsHubCard";
@@ -72,7 +72,7 @@ export default function Home() {
 
       {/* Global Persistent Navigation Controls */}
       <ScrollIndicator />
-      <MobileBottomDock />
+      <ScrollToTopMobile />
 
       {/* Main Full-Screen Snap Scroll Container */}
       <main
