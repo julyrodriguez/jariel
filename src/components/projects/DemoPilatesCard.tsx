@@ -52,7 +52,7 @@ export function DemoPilatesCard() {
         particleCount: 50,
         spread: 60,
         origin: { y: 0.75 },
-        colors: ["#14b8a6", "#84cc16", "#2dd4bf", "#ffffff"]
+        colors: ["#a855f7", "#c084fc", "#f472b6", "#ffffff"]
       });
     } catch {
       // Confetti fallback
@@ -77,7 +77,7 @@ export function DemoPilatesCard() {
       id="demoPilates"
       className="snap-section relative justify-center px-4 sm:px-8 py-16 md:py-20 overflow-hidden"
     >
-      {/* Organic Wellness Glow Background */}
+      {/* Mindful Lilac / Violet Wellness Glow Background */}
       <div
         className="absolute inset-0 pointer-events-none transition-all duration-700 opacity-60"
         style={{ background: project.theme.bgGradient }}
@@ -99,8 +99,8 @@ export function DemoPilatesCard() {
               >
                 {project.theme.tag}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-[10px] font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+              <span className="px-2.5 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-[10px] font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
                 {project.status}
               </span>
             </div>
@@ -120,7 +120,7 @@ export function DemoPilatesCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playSuccess()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-teal-400 to-emerald-300 hover:shadow-lg hover:shadow-teal-500/20 hover:scale-105 transition-all"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105 transition-all"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>Abrir Demo en Vivo</span>
@@ -132,9 +132,9 @@ export function DemoPilatesCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-teal-500/30 hover:border-teal-400 hover:scale-105 transition-all"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-purple-500/30 hover:border-purple-400 hover:scale-105 transition-all"
               >
-                <GithubIcon className="w-4 h-4 text-teal-400" />
+                <GithubIcon className="w-4 h-4 text-purple-400" />
                 <span>Código</span>
               </a>
             )}
@@ -148,7 +148,7 @@ export function DemoPilatesCard() {
           <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
             {/* Interactive Tabs */}
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-teal-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-purple-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
               
               <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
                 <button
@@ -158,7 +158,7 @@ export function DemoPilatesCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "whatItDoes"
-                      ? "bg-teal-400 text-slate-950"
+                      ? "bg-purple-500 text-white"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -171,7 +171,7 @@ export function DemoPilatesCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "solution"
-                      ? "bg-teal-400 text-slate-950"
+                      ? "bg-purple-500 text-white"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -184,7 +184,7 @@ export function DemoPilatesCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "deepTech"
-                      ? "bg-teal-400 text-slate-950"
+                      ? "bg-purple-500 text-white"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -196,7 +196,7 @@ export function DemoPilatesCard() {
               <div className="space-y-2 text-xs">
                 {techTab === "whatItDoes" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <span className="text-teal-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-purple-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Operación & Portal de Autogestión
                     </span>
                     <p className="text-slate-200 leading-relaxed">
@@ -205,7 +205,7 @@ export function DemoPilatesCard() {
                     <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
                       {project.keyModules.map((m, idx) => (
                         <div key={idx} className="flex items-start gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-teal-400 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5" />
                           <div>
                             <strong className="text-white">{m.title}:</strong>{" "}
                             <span className="text-slate-400 text-[11px]">{m.description}</span>
@@ -218,14 +218,14 @@ export function DemoPilatesCard() {
 
                 {techTab === "solution" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <span className="text-teal-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-purple-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Reducción de Inasistencias & Optimización de Capacidad
                     </span>
                     <p className="text-slate-200 leading-relaxed">
                       {project.solutionProvided}
                     </p>
-                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-teal-500/20 text-[11px] text-slate-300 space-y-1">
-                      <strong className="text-teal-400 block font-mono">
+                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-purple-500/20 text-[11px] text-slate-300 space-y-1">
+                      <strong className="text-purple-400 block font-mono">
                         Desafíos Operativos Superados:
                       </strong>
                       <ul className="list-disc pl-4 space-y-1 text-slate-400">
@@ -239,12 +239,12 @@ export function DemoPilatesCard() {
 
                 {techTab === "deepTech" && (
                   <div className="space-y-2 animate-fadeIn max-h-[220px] overflow-y-auto pr-1">
-                    <span className="text-teal-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-purple-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Arquitectura Híbrida & Concurrencia
                     </span>
                     
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-purple-400 text-[10px] font-bold flex items-center gap-1">
                         <Layers className="w-3 h-3" /> Arquitectura Híbrida LocalCache
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -253,7 +253,7 @@ export function DemoPilatesCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-purple-400 text-[10px] font-bold flex items-center gap-1">
                         <Cpu className="w-3 h-3" /> Transacciones Atómicas ACID
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -262,7 +262,7 @@ export function DemoPilatesCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-purple-400 text-[10px] font-bold flex items-center gap-1">
                         <Database className="w-3 h-3" /> Esquema NoSQL & Telemetría Ocupacional
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -271,7 +271,7 @@ export function DemoPilatesCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-teal-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-purple-400 text-[10px] font-bold flex items-center gap-1">
                         <ShieldCheck className="w-3 h-3" /> Cancelación Segura Criptográfica
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -286,7 +286,7 @@ export function DemoPilatesCard() {
               <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
                 {project.metrics.map((m, idx) => (
                   <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
-                    <span className="block text-xs sm:text-sm font-black text-teal-400 font-mono">
+                    <span className="block text-xs sm:text-sm font-black text-purple-400 font-mono">
                       {m.value}
                     </span>
                     <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
@@ -302,7 +302,7 @@ export function DemoPilatesCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-teal-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-purple-500/20 text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -311,12 +311,12 @@ export function DemoPilatesCard() {
           </div>
 
           {/* Right Column: Interactive Booking Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-teal-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-purple-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
             
             {/* Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-teal-500/20 text-teal-400">
+                <div className="p-1.5 rounded-lg bg-purple-500/20 text-purple-400">
                   <Calendar className="w-4 h-4" />
                 </div>
                 <div>
@@ -329,7 +329,7 @@ export function DemoPilatesCard() {
                 </div>
               </div>
 
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-500/30">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-500/30">
                 Hoy: Miércoles
               </span>
             </div>
@@ -338,7 +338,7 @@ export function DemoPilatesCard() {
             <div className="space-y-2.5">
               <div className="text-[10px] font-mono text-slate-400 flex items-center justify-between">
                 <span>Turnos Disponibles para Reserva:</span>
-                <span className="text-teal-400">Cupos en Tiempo Real</span>
+                <span className="text-purple-400">Cupos en Tiempo Real</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -357,19 +357,19 @@ export function DemoPilatesCard() {
                       }}
                       className={`p-2.5 rounded-xl text-left border transition-all relative overflow-hidden ${
                         isSelected
-                          ? "bg-teal-950/70 border-teal-400 shadow-lg shadow-teal-500/10"
-                          : "bg-slate-900/70 border-white/5 hover:border-teal-500/30"
+                          ? "bg-purple-950/70 border-purple-400 shadow-lg shadow-purple-500/10"
+                          : "bg-slate-900/70 border-white/5 hover:border-purple-500/30"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-mono text-xs font-bold text-white flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-teal-400" />
+                          <Clock className="w-3 h-3 text-purple-400" />
                           {shift.time}
                         </span>
                         <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono font-semibold ${
                           isFull
                             ? "bg-rose-500/20 text-rose-300 border border-rose-500/30"
-                            : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                            : "bg-purple-500/20 text-purple-300 border border-purple-500/30"
                         }`}>
                           {isFull ? "Agotado" : `${available} libres`}
                         </span>
@@ -386,7 +386,7 @@ export function DemoPilatesCard() {
                       <div className="w-full h-1 bg-slate-800 rounded-full mt-1.5 overflow-hidden">
                         <div
                           className={`h-full transition-all duration-500 ${
-                            isFull ? "bg-rose-500" : "bg-teal-400"
+                            isFull ? "bg-rose-500" : "bg-purple-500"
                           }`}
                           style={{ width: `${(shift.reserved / shift.capacity) * 100}%` }}
                         />
@@ -413,7 +413,7 @@ export function DemoPilatesCard() {
                   <button
                     onClick={handleSimulateBooking}
                     disabled={shifts[activeSlotIdx].reserved >= shifts[activeSlotIdx].capacity}
-                    className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-teal-400 to-emerald-400 hover:shadow-lg hover:shadow-teal-500/25 hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-4 py-2 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     <UserCheck className="w-4 h-4" />
                     <span>Confirmar Reserva de Prueba</span>
@@ -422,7 +422,7 @@ export function DemoPilatesCard() {
               ) : (
                 <div className="space-y-2 animate-fadeIn">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-emerald-400 flex items-center gap-1.5">
+                    <span className="font-bold text-purple-300 flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4" />
                       ¡Reserva Confirmada en Demo Studio!
                     </span>
@@ -434,9 +434,9 @@ export function DemoPilatesCard() {
                     </button>
                   </div>
 
-                  <div className="p-2.5 rounded-lg bg-slate-900 border border-teal-500/30 text-xs space-y-1 font-mono">
+                  <div className="p-2.5 rounded-lg bg-slate-900 border border-purple-500/30 text-xs space-y-1 font-mono">
                     <div className="flex items-center justify-between text-slate-400 text-[9px]">
-                      <span className="flex items-center gap-1 text-teal-300">
+                      <span className="flex items-center gap-1 text-purple-300">
                         <Mail className="w-3 h-3" />
                         Notificación Automatizada (Resend / Nodemailer)
                       </span>
@@ -447,7 +447,7 @@ export function DemoPilatesCard() {
                     </p>
                     <div className="pt-1 flex items-center justify-between text-[9px] text-slate-400 border-t border-white/5">
                       <span>¿No puedes asistir?</span>
-                      <span className="text-teal-400 underline cursor-pointer hover:text-teal-300">
+                      <span className="text-purple-400 underline cursor-pointer hover:text-purple-300">
                         https://demopilates.jariel.com.ar/cancelar?token={simulatedToken}
                       </span>
                     </div>
@@ -463,7 +463,7 @@ export function DemoPilatesCard() {
                 href="https://demopilates.jariel.com.ar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-teal-400 hover:underline flex items-center gap-1 font-semibold"
+                className="text-purple-400 hover:underline flex items-center gap-1 font-semibold"
               >
                 <span>Explorar Sistema Completo</span>
                 <ArrowRight className="w-3.5 h-3.5" />

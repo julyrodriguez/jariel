@@ -21,7 +21,7 @@ export function TiendaCard() {
   const project = PROJECTS_DATA["tienda"];
 
   const [techTab, setTechTab] = useState<"whatItDoes" | "solution" | "deepTech">("whatItDoes");
-  const [selectedColor, setSelectedColor] = useState<"obsidian" | "silver" | "cyan">("obsidian");
+  const [selectedColor, setSelectedColor] = useState<"cream" | "champagne" | "obsidian">("cream");
   const [installmentPlan, setInstallmentPlan] = useState<3 | 6 | 12>(6);
   const [cartCount, setCartCount] = useState<number>(1);
   const [showCartDrawer, setShowCartDrawer] = useState<boolean>(false);
@@ -33,9 +33,9 @@ export function TiendaCard() {
   const freeShippingDiff = Math.max(0, freeShippingThreshold - currentTotal);
 
   const colors = {
-    obsidian: { name: "Negro Obsidiana", hex: "#111827", glow: "rgba(17, 24, 39, 0.6)" },
-    silver: { name: "Plata Titanio", hex: "#94a3b8", glow: "rgba(148, 163, 184, 0.4)" },
-    cyan: { name: "Cian Holográfico", hex: "#06b6d4", glow: "rgba(6, 182, 212, 0.5)" }
+    cream: { name: "Cremita Seda", hex: "#f5e6d3", glow: "rgba(245, 230, 211, 0.55)" },
+    champagne: { name: "Champagne Oro", hex: "#e2d9c8", glow: "rgba(226, 217, 200, 0.45)" },
+    obsidian: { name: "Negro Moca", hex: "#1c1917", glow: "rgba(28, 25, 23, 0.6)" }
   };
 
   const handleAddToCart = () => {
@@ -47,7 +47,7 @@ export function TiendaCard() {
         particleCount: 35,
         spread: 45,
         origin: { y: 0.7 },
-        colors: ["#06b6d4", "#22d3ee", "#38bdf8", "#ffffff"]
+        colors: ["#f5e6d3", "#fef3c7", "#d97706", "#ffffff"]
       });
     } catch {
       // Confetti fallback
@@ -59,9 +59,9 @@ export function TiendaCard() {
       id="tienda"
       className="snap-section relative justify-center px-4 sm:px-8 py-16 md:py-20 overflow-hidden"
     >
-      {/* Dynamic Ambient Theming Glow */}
+      {/* Luxury Cream / Champagne Ambient Glow */}
       <div
-        className="absolute inset-0 pointer-events-none transition-all duration-700 opacity-60"
+        className="absolute inset-0 pointer-events-none transition-all duration-700 opacity-70"
         style={{ background: project.theme.bgGradient }}
       />
 
@@ -81,8 +81,8 @@ export function TiendaCard() {
               >
                 {project.theme.tag}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-[10px] font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              <span className="px-2.5 py-0.5 rounded-full bg-[#f5e6d3]/20 border border-[#f5e6d3]/30 text-[#fef3c7] text-[10px] font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#f5e6d3] animate-pulse" />
                 {project.status}
               </span>
             </div>
@@ -102,9 +102,9 @@ export function TiendaCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-cyan-500/30 hover:border-cyan-400 hover:scale-105 transition-all shadow-lg"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-[#f5e6d3]/40 hover:border-[#f5e6d3] hover:scale-105 transition-all shadow-lg"
               >
-                <GithubIcon className="w-4 h-4 text-cyan-400" />
+                <GithubIcon className="w-4 h-4 text-[#fef3c7]" />
                 <span>Ver Código en GitHub</span>
               </a>
             )}
@@ -118,7 +118,7 @@ export function TiendaCard() {
           <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
             {/* Interactive Tabs */}
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-cyan-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-[#f5e6d3]/35 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
               
               <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
                 <button
@@ -128,7 +128,7 @@ export function TiendaCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "whatItDoes"
-                      ? "bg-cyan-400 text-slate-950"
+                      ? "bg-[#f5e6d3] text-stone-950 font-bold"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -141,7 +141,7 @@ export function TiendaCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "solution"
-                      ? "bg-cyan-400 text-slate-950"
+                      ? "bg-[#f5e6d3] text-stone-950 font-bold"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -154,7 +154,7 @@ export function TiendaCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "deepTech"
-                      ? "bg-cyan-400 text-slate-950"
+                      ? "bg-[#f5e6d3] text-stone-950 font-bold"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -166,8 +166,8 @@ export function TiendaCard() {
               <div className="space-y-2 text-xs">
                 {techTab === "whatItDoes" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <span className="text-cyan-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
-                      Experiencia Headless & Catálogo 3D
+                    <span className="text-[#fef3c7] font-mono text-[10px] font-bold uppercase tracking-wider block">
+                      Experiencia Headless & Catálogo 3D Cremita
                     </span>
                     <p className="text-slate-200 leading-relaxed">
                       {project.whatItDoes}
@@ -175,7 +175,7 @@ export function TiendaCard() {
                     <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
                       {project.keyModules.map((m, idx) => (
                         <div key={idx} className="flex items-start gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#f5e6d3] shrink-0 mt-0.5" />
                           <div>
                             <strong className="text-white">{m.title}:</strong>{" "}
                             <span className="text-slate-400 text-[11px]">{m.description}</span>
@@ -188,14 +188,14 @@ export function TiendaCard() {
 
                 {techTab === "solution" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <span className="text-cyan-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-[#fef3c7] font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Rendimiento Extremo vs Monolitos Tradicionales
                     </span>
                     <p className="text-slate-200 leading-relaxed">
                       {project.solutionProvided}
                     </p>
-                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-cyan-500/20 text-[11px] text-slate-300 space-y-1">
-                      <strong className="text-cyan-400 block font-mono">
+                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-[#f5e6d3]/20 text-[11px] text-slate-300 space-y-1">
+                      <strong className="text-[#fef3c7] block font-mono">
                         Desafíos de Conversión Superados:
                       </strong>
                       <ul className="list-disc pl-4 space-y-1 text-slate-400">
@@ -209,12 +209,12 @@ export function TiendaCard() {
 
                 {techTab === "deepTech" && (
                   <div className="space-y-2 animate-fadeIn max-h-[220px] overflow-y-auto pr-1">
-                    <span className="text-cyan-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-[#fef3c7] font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Físicas Spring & Arquitectura Headless
                     </span>
                     
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-cyan-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-[#fef3c7] text-[10px] font-bold flex items-center gap-1">
                         <Layers className="w-3 h-3" /> Arquitectura Headless Desacoplada
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -223,7 +223,7 @@ export function TiendaCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-cyan-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-[#fef3c7] text-[10px] font-bold flex items-center gap-1">
                         <Cpu className="w-3 h-3" /> Físicas de Resortes & 0 Layout Thrashing
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -232,7 +232,7 @@ export function TiendaCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-cyan-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-[#fef3c7] text-[10px] font-bold flex items-center gap-1">
                         <Database className="w-3 h-3" /> Esquema de Variantes & Cotizador
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -241,7 +241,7 @@ export function TiendaCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-cyan-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-[#fef3c7] text-[10px] font-bold flex items-center gap-1">
                         <ShieldCheck className="w-3 h-3" /> Lighthouse 99/100 & Zero Lag
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -256,7 +256,7 @@ export function TiendaCard() {
               <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
                 {project.metrics.map((m, idx) => (
                   <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
-                    <span className="block text-xs sm:text-sm font-black text-cyan-400 font-mono">
+                    <span className="block text-xs sm:text-sm font-black text-[#fef3c7] font-mono">
                       {m.value}
                     </span>
                     <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
@@ -272,7 +272,7 @@ export function TiendaCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-cyan-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-[#f5e6d3]/20 text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -281,20 +281,20 @@ export function TiendaCard() {
           </div>
 
           {/* Right Column: Interactive Product Card & Slide-Over Cart Simulator (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-cyan-500/30 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-[#f5e6d3]/40 flex flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden">
             
             {/* Sandbox Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-cyan-500/20 text-cyan-400">
+                <div className="p-1.5 rounded-lg bg-[#f5e6d3]/20 text-[#fef3c7]">
                   <ShoppingBag className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="text-xs font-bold text-white block">
-                    Sandbox Interactivo: Flagship Product & Checkout Reactivo
+                    Sandbox Interactivo: Flagship Product AURA Cremita & Checkout
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 block">
-                    Interactúa con variantes de color, cálculo de cuotas y carrito deslizable
+                    Interactúa con tonos cremita, cálculo de cuotas y carrito deslizable
                   </span>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export function TiendaCard() {
                   sound.playPop();
                   setShowCartDrawer(!showCartDrawer);
                 }}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-950 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono hover:bg-cyan-900/50 transition-colors"
+                className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#29221b] border border-[#f5e6d3]/40 text-[#fef3c7] text-[11px] font-mono hover:bg-[#3d3328] transition-colors"
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
                 <span>Carrito ({cartCount})</span>
@@ -316,7 +316,7 @@ export function TiendaCard() {
               
               {/* Product Visual Mockup */}
               <div 
-                className="sm:col-span-5 p-4 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-white/10 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-500"
+                className="sm:col-span-5 p-4 rounded-2xl bg-gradient-to-b from-[#1c1815] to-[#120f0d] border border-[#f5e6d3]/20 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-500"
                 style={{
                   boxShadow: `0 0 30px ${colors[selectedColor].glow}`
                 }}
@@ -327,29 +327,29 @@ export function TiendaCard() {
                   className="w-24 h-24 rounded-2xl border flex items-center justify-center mb-2 transition-all duration-300 shadow-xl"
                   style={{
                     backgroundColor: colors[selectedColor].hex,
-                    borderColor: "rgba(255, 255, 255, 0.2)"
+                    borderColor: "rgba(245, 230, 211, 0.3)"
                   }}
                 >
-                  <Sparkles className="w-8 h-8 text-white opacity-80" />
+                  <Sparkles className="w-8 h-8 text-[#fef3c7] opacity-90" />
                 </div>
 
-                <span className="text-[11px] font-mono font-bold text-slate-300 tracking-wider">AURA-1 ULTRA</span>
-                <span className="text-[9px] text-cyan-400 font-mono mt-0.5">Cancelación Activa 45dB</span>
+                <span className="text-[11px] font-mono font-bold text-[#fef3c7] tracking-wider">AURA-1 CREAM</span>
+                <span className="text-[9px] text-amber-200 font-mono mt-0.5">Acabado Seda Cremita & ANC</span>
                 
-                <span className="mt-1.5 text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
-                  ¡Solo 3 unidades en bodega!
+                <span className="mt-1.5 text-[9px] px-2 py-0.5 rounded-full bg-[#f5e6d3]/20 text-[#fef3c7] border border-[#f5e6d3]/30 font-semibold">
+                  ¡Edición Limitada Alabaster!
                 </span>
               </div>
 
               {/* Product Configurator & Calculators */}
               <div className="sm:col-span-7 space-y-2.5">
                 <div>
-                  <h4 className="text-sm sm:text-base font-bold text-white">Auriculares Inalámbricos AURA-1</h4>
+                  <h4 className="text-sm sm:text-base font-bold text-white">Auriculares Inalámbricos AURA-1 Seda</h4>
                   <div className="flex items-baseline gap-2 mt-0.5">
                     <span className="text-lg font-black text-white font-mono">
                       ${basePrice.toLocaleString("es-AR")}
                     </span>
-                    <span className="text-[11px] text-emerald-400 font-semibold">
+                    <span className="text-[11px] text-[#fef3c7] font-semibold">
                       o ${transferDiscount.toLocaleString("es-AR")} con Transferencia (15% OFF)
                     </span>
                   </div>
@@ -358,7 +358,7 @@ export function TiendaCard() {
                 {/* Color Variant Selector */}
                 <div className="space-y-1">
                   <span className="text-[10px] font-mono text-slate-400 block">
-                    Variante de Color: <strong className="text-white">{colors[selectedColor].name}</strong>
+                    Variante de Color: <strong className="text-[#fef3c7]">{colors[selectedColor].name}</strong>
                   </span>
                   <div className="flex items-center gap-2">
                     {(Object.keys(colors) as Array<keyof typeof colors>).map((col) => (
@@ -369,12 +369,12 @@ export function TiendaCard() {
                           setSelectedColor(col);
                         }}
                         className={`w-6 h-6 rounded-full border-2 transition-all duration-200 flex items-center justify-center ${
-                          selectedColor === col ? "border-cyan-400 scale-110 shadow-lg" : "border-slate-700 opacity-70 hover:opacity-100"
+                          selectedColor === col ? "border-[#fef3c7] scale-110 shadow-lg shadow-[#f5e6d3]/30" : "border-slate-700 opacity-70 hover:opacity-100"
                         }`}
                         style={{ backgroundColor: colors[col].hex }}
                         title={colors[col].name}
                       >
-                        {selectedColor === col && <Check className="w-3 h-3 text-white" />}
+                        {selectedColor === col && <Check className="w-3 h-3 text-stone-900 font-bold" />}
                       </button>
                     ))}
                   </div>
@@ -395,12 +395,12 @@ export function TiendaCard() {
                         }}
                         className={`py-1 px-1.5 rounded-lg text-center border text-[11px] font-mono transition-all ${
                           installmentPlan === plan
-                            ? "bg-cyan-950 border-cyan-400 text-white font-bold"
+                            ? "bg-[#2d241c] border-[#f5e6d3] text-[#fef3c7] font-bold"
                             : "bg-slate-900 border-white/5 text-slate-400 hover:text-white"
                         }`}
                       >
                         <span className="block text-[10px]">{plan} Cuotas</span>
-                        <span className="block text-[9px] text-cyan-300 font-semibold">
+                        <span className="block text-[9px] text-[#f5e6d3] font-semibold">
                           ${Math.round(basePrice / plan).toLocaleString("es-AR")}/mes
                         </span>
                       </button>
@@ -411,24 +411,24 @@ export function TiendaCard() {
                 {/* Add to Cart CTA */}
                 <button
                   onClick={handleAddToCart}
-                  className="w-full py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-300 hover:shadow-lg hover:shadow-cyan-500/25 hover:scale-[1.02] transition-all flex items-center justify-center gap-1.5 mt-1"
+                  className="w-full py-2 rounded-xl font-bold text-xs text-stone-950 bg-gradient-to-r from-[#f5e6d3] via-[#fef3c7] to-[#e2d9c8] hover:shadow-lg hover:shadow-[#f5e6d3]/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-1.5 mt-1"
                 >
-                  <ShoppingBag className="w-3.5 h-3.5" />
+                  <ShoppingBag className="w-3.5 h-3.5 text-stone-950" />
                   <span>Agregar al Carrito • Envío Inmediato</span>
                 </button>
               </div>
             </div>
 
             {/* Slide-over Cart Drawer / Progress Preview (Interactive) */}
-            <div className="p-3 rounded-xl bg-slate-950/80 border border-white/10 space-y-1.5">
+            <div className="p-3 rounded-xl bg-slate-950/80 border border-[#f5e6d3]/20 space-y-1.5">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-300 font-semibold flex items-center gap-1 text-[11px]">
-                  <Truck className="w-3.5 h-3.5 text-cyan-400" />
+                  <Truck className="w-3.5 h-3.5 text-[#f5e6d3]" />
                   {freeShippingDiff === 0
                     ? "¡Felicidades! Tienes Envío Gratis desbloqueado"
                     : `Agrega $${freeShippingDiff.toLocaleString("es-AR")} para desbloquear Envío Gratis`}
                 </span>
-                <span className="font-mono text-cyan-300 text-[10px] font-bold">
+                <span className="font-mono text-[#fef3c7] text-[10px] font-bold">
                   Total: ${currentTotal.toLocaleString("es-AR")}
                 </span>
               </div>
@@ -436,7 +436,7 @@ export function TiendaCard() {
               {/* Progress bar towards free shipping */}
               <div className="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-[#d97706] to-[#f5e6d3] transition-all duration-500"
                   style={{
                     width: `${Math.min(100, (currentTotal / freeShippingThreshold) * 100)}%`
                   }}
@@ -447,7 +447,7 @@ export function TiendaCard() {
             {/* Footer Stack Note */}
             <div className="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-white/5">
               <span>Stack: React 18 + Vite + Tailwind + Spring Physics</span>
-              <span className="text-cyan-400 font-mono text-[10px]">Next-Gen Headless Engine</span>
+              <span className="text-[#fef3c7] font-mono text-[10px]">AURA Next-Gen Cream Engine</span>
             </div>
 
           </div>

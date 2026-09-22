@@ -33,25 +33,25 @@ export function ProjectsHubCard() {
     },
     {
       id: "demoPilates",
-      icon: <Calendar className="w-5 h-5 text-teal-400" />,
+      icon: <Calendar className="w-5 h-5 text-purple-400" />,
       highlight: "Gestión de turnos de Reformer con cancelación segura por token sin login.",
       quickStats: "-40% Ausentismo • LocalCache"
     },
     {
       id: "tienda",
-      icon: <ShoppingBag className="w-5 h-5 text-cyan-400" />,
-      highlight: "E-Commerce Headless desacoplado con físicas de resortes a 120 FPS.",
+      icon: <ShoppingBag className="w-5 h-5 text-[#f5e6d3]" />,
+      highlight: "E-Commerce Headless desacoplado en tono cremita con físicas de resortes a 120 FPS.",
       quickStats: "0.2s Carga • +28% Conversión"
     },
     {
       id: "cinemark-app",
-      icon: <Film className="w-5 h-5 text-red-400" />,
+      icon: <Film className="w-5 h-5 text-red-500" />,
       highlight: "Control de 12+ salas, averías de 3,000+ butacas y telemetría xenón.",
       quickStats: "12 Auditorios • -65% Fallas"
     },
     {
       id: "finanzas",
-      icon: <Building2 className="w-5 h-5 text-sky-400" />,
+      icon: <Building2 className="w-5 h-5 text-blue-500" />,
       highlight: "Tesorería corporativa, firma de órdenes por lotes y pagos bancarios.",
       quickStats: "+$120M ARS/mes • 3.5x Veloz"
     }
@@ -217,16 +217,24 @@ export function ProjectsHubCard() {
 
             <div className="space-y-1.5 text-[11px] font-mono text-slate-300">
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>Microservicios & Server Components</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span>Vacas Locas: Microservicios & Simulación</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
-                <span>Bases NoSQL & LocalCache Híbrido</span>
+                <span className="w-2 h-2 rounded-full bg-purple-400" />
+                <span>Pilates: Transacciones ACID & Token Url</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                <span>Telemetría de Hardware & IoT</span>
+                <span className="w-2 h-2 rounded-full bg-[#f5e6d3]" />
+                <span>AURA: Headless Cremita & Spring Physics</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-red-500" />
+                <span>Cinemark: Telemetría de Salas & Butacas</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-blue-500" />
+                <span>Finanzas: Flujo Multi-Divisa & Interbanking</span>
               </div>
             </div>
 

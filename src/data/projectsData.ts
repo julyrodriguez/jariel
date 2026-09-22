@@ -219,14 +219,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { label: "Sincronización LocalCache", value: "Instantánea" }
     ],
     theme: {
-      primary: "#14b8a6",
-      secondary: "#84cc16",
-      accent: "#2dd4bf",
-      glow: "rgba(20, 184, 166, 0.25)",
-      border: "rgba(20, 184, 166, 0.4)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(20, 184, 166, 0.15) 0%, rgba(132, 204, 22, 0.08) 45%, rgba(11, 19, 18, 0.95) 100%)",
-      badgeBg: "rgba(20, 184, 166, 0.15)",
-      badgeText: "#2dd4bf",
+      primary: "#a855f7",
+      secondary: "#ec4899",
+      accent: "#c084fc",
+      glow: "rgba(168, 85, 247, 0.3)",
+      border: "rgba(168, 85, 247, 0.45)",
+      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.1) 45%, rgba(15, 10, 22, 0.98) 100%)",
+      badgeBg: "rgba(168, 85, 247, 0.18)",
+      badgeText: "#d8b4fe",
       tag: "WELLNESS & SAAS MANAGEMENT"
     }
   },
@@ -293,15 +293,15 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { label: "Aumento de Conversión", value: "+28% vs SSR" }
     ],
     theme: {
-      primary: "#06b6d4",
-      secondary: "#6366f1",
-      accent: "#22d3ee",
-      glow: "rgba(6, 182, 212, 0.25)",
-      border: "rgba(6, 182, 212, 0.4)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(6, 182, 212, 0.15) 0%, rgba(99, 102, 241, 0.08) 45%, rgba(8, 12, 20, 0.95) 100%)",
-      badgeBg: "rgba(6, 182, 212, 0.15)",
-      badgeText: "#22d3ee",
-      tag: "HEADLESS COMMERCE & LUXURY UI"
+      primary: "#f5e6d3",
+      secondary: "#d97706",
+      accent: "#fef3c7",
+      glow: "rgba(245, 230, 211, 0.35)",
+      border: "rgba(245, 230, 211, 0.45)",
+      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(245, 230, 211, 0.22) 0%, rgba(217, 119, 6, 0.12) 45%, rgba(18, 15, 12, 0.98) 100%)",
+      badgeBg: "rgba(245, 230, 211, 0.18)",
+      badgeText: "#fef3c7",
+      tag: "AURA LUXURY CREAM & COMMERCE"
     }
   },
 
@@ -442,15 +442,15 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { label: "Tiempo de Generación Interbanking", value: "< 2 seg" }
     ],
     theme: {
-      primary: "#38bdf8",
-      secondary: "#10b981",
-      accent: "#0ea5e9",
-      glow: "rgba(56, 189, 248, 0.25)",
-      border: "rgba(56, 189, 248, 0.4)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(56, 189, 248, 0.15) 0%, rgba(16, 185, 129, 0.08) 45%, rgba(10, 16, 26, 0.95) 100%)",
-      badgeBg: "rgba(56, 189, 248, 0.15)",
-      badgeText: "#38bdf8",
-      tag: "ENTERPRISE FINTECH & TREASURY"
+      primary: "#2563eb",
+      secondary: "#f59e0b",
+      accent: "#60a5fa",
+      glow: "rgba(37, 99, 235, 0.35)",
+      border: "rgba(37, 99, 235, 0.45)",
+      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(37, 99, 235, 0.22) 0%, rgba(245, 158, 11, 0.1) 45%, rgba(10, 14, 28, 0.98) 100%)",
+      badgeBg: "rgba(37, 99, 235, 0.18)",
+      badgeText: "#93c5fd",
+      tag: "ROYAL FINTECH & TREASURY"
     }
   }
 };

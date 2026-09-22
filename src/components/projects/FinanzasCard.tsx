@@ -72,7 +72,7 @@ export function FinanzasCard() {
         particleCount: 45,
         spread: 55,
         origin: { y: 0.7 },
-        colors: ["#38bdf8", "#10b981", "#ffffff"]
+        colors: ["#2563eb", "#3b82f6", "#fbbf24", "#ffffff"]
       });
     } catch {
       // Confetti fallback
@@ -110,8 +110,8 @@ export function FinanzasCard() {
               >
                 {project.theme.tag}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-sky-500/20 border border-sky-500/30 text-sky-300 text-[10px] font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+              <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-300 text-[10px] font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 {project.status}
               </span>
             </div>
@@ -131,9 +131,9 @@ export function FinanzasCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-sky-500/30 hover:border-sky-400 hover:scale-105 transition-all shadow-lg"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-blue-500/30 hover:border-blue-400 hover:scale-105 transition-all shadow-lg"
               >
-                <GithubIcon className="w-4 h-4 text-sky-400" />
+                <GithubIcon className="w-4 h-4 text-blue-400" />
                 <span>Ver Repositorio</span>
               </a>
             )}
@@ -147,7 +147,7 @@ export function FinanzasCard() {
           <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
             {/* Interactive Tabs */}
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-sky-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-blue-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
               
               <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
                 <button
@@ -157,7 +157,7 @@ export function FinanzasCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "whatItDoes"
-                      ? "bg-sky-400 text-slate-950"
+                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -170,7 +170,7 @@ export function FinanzasCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "solution"
-                      ? "bg-sky-400 text-slate-950"
+                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -183,7 +183,7 @@ export function FinanzasCard() {
                   }}
                   className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
                     techTab === "deepTech"
-                      ? "bg-sky-400 text-slate-950"
+                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -195,7 +195,7 @@ export function FinanzasCard() {
               <div className="space-y-2 text-xs">
                 {techTab === "whatItDoes" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <span className="text-sky-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-blue-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Tesorería & Pipeline de Compras
                     </span>
                     <p className="text-slate-200 leading-relaxed">
@@ -204,7 +204,7 @@ export function FinanzasCard() {
                     <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
                       {project.keyModules.map((m, idx) => (
                         <div key={idx} className="flex items-start gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
                           <div>
                             <strong className="text-white">{m.title}:</strong>{" "}
                             <span className="text-slate-400 text-[11px]">{m.description}</span>
@@ -217,14 +217,14 @@ export function FinanzasCard() {
 
                 {techTab === "solution" && (
                   <div className="space-y-2 animate-fadeIn">
-                    <span className="text-sky-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-blue-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Firma de Lotes & Eliminación de Cuellos de Botella
                     </span>
                     <p className="text-slate-200 leading-relaxed">
                       {project.solutionProvided}
                     </p>
-                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-sky-500/20 text-[11px] text-slate-300 space-y-1">
-                      <strong className="text-sky-400 block font-mono">
+                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-blue-500/20 text-[11px] text-slate-300 space-y-1">
+                      <strong className="text-blue-400 block font-mono">
                         Desafíos Corporativos Superados:
                       </strong>
                       <ul className="list-disc pl-4 space-y-1 text-slate-400">
@@ -238,12 +238,12 @@ export function FinanzasCard() {
 
                 {techTab === "deepTech" && (
                   <div className="space-y-2 animate-fadeIn max-h-[220px] overflow-y-auto pr-1">
-                    <span className="text-sky-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
+                    <span className="text-blue-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Auditoría Inmutable & Conciliación Bancaria
                     </span>
                     
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
                         <Layers className="w-3 h-3" /> Next.js 16 + Firestore + SheetJS (XLSX)
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -252,7 +252,7 @@ export function FinanzasCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
                         <Cpu className="w-3 h-3" /> Conciliación Multimoneda & Bloqueo Optimista
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -261,7 +261,7 @@ export function FinanzasCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
                         <Database className="w-3 h-3" /> Trazabilidad de Auditoría Inmutable
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -270,7 +270,7 @@ export function FinanzasCard() {
                     </div>
 
                     <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-sky-400 text-[10px] font-bold flex items-center gap-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
                         <ShieldCheck className="w-3 h-3" /> PIN de Tesorería & Batch Signing
                       </span>
                       <p className="text-[11px] text-slate-400 leading-tight">
@@ -285,7 +285,7 @@ export function FinanzasCard() {
               <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
                 {project.metrics.map((m, idx) => (
                   <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
-                    <span className="block text-xs sm:text-sm font-black text-sky-400 font-mono">
+                    <span className="block text-xs sm:text-sm font-black text-blue-400 font-mono">
                       {m.value}
                     </span>
                     <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
@@ -301,7 +301,7 @@ export function FinanzasCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-sky-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-blue-500/20 text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -310,12 +310,12 @@ export function FinanzasCard() {
           </div>
 
           {/* Right Column: Interactive Financial Analytics & Batch Sandbox (7 cols) */}
-          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-sky-500/30 flex flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 glass-panel p-5 rounded-2xl border border-blue-500/30 flex flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden">
             
             {/* Header with Live Currency Ticker */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-sky-500/20 text-sky-400">
+                <div className="p-1.5 rounded-lg bg-blue-500/20 text-blue-400">
                   <TrendingUp className="w-4 h-4" />
                 </div>
                 <div>
@@ -339,7 +339,7 @@ export function FinanzasCard() {
                     }}
                     className={`px-2 py-1 rounded transition-colors ${
                       selectedCurrency === cur
-                        ? "bg-sky-500 text-slate-950 font-bold"
+                        ? "bg-blue-600 text-white font-bold"
                         : "text-slate-400 hover:text-white"
                     }`}
                   >
@@ -367,7 +367,7 @@ export function FinanzasCard() {
                 <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider block">
                   Total Lote en USD
                 </span>
-                <span className="text-base font-black text-sky-400 font-mono block mt-0.5">
+                <span className="text-base font-black text-blue-400 font-mono block mt-0.5">
                   ${totalUsd.toLocaleString("en-US")} USD
                 </span>
                 <span className="text-[9px] text-slate-400 font-mono">
@@ -399,17 +399,17 @@ export function FinanzasCard() {
               <div className="space-y-1">
                 {orders.map((order) => {
                   let statusColor = "bg-amber-500/20 text-amber-300 border-amber-500/40";
-                  if (order.status === "Firmado") statusColor = "bg-sky-500/20 text-sky-300 border-sky-500/40";
+                  if (order.status === "Firmado") statusColor = "bg-blue-500/20 text-blue-300 border-blue-500/40";
                   if (order.status === "Liberado") statusColor = "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
 
                   return (
                     <div
                       key={order.id}
-                      className="p-2 rounded-lg bg-slate-900/90 border border-white/5 flex items-center justify-between gap-2 hover:border-sky-500/30 transition-all text-xs"
+                      className="p-2 rounded-lg bg-slate-900/90 border border-white/5 flex items-center justify-between gap-2 hover:border-blue-500/30 transition-all text-xs"
                     >
                       <div>
                         <div className="font-bold text-white flex items-center gap-1.5 text-[11px]">
-                          <span className="font-mono text-sky-400">{order.id}</span>
+                          <span className="font-mono text-blue-400">{order.id}</span>
                           <span>{order.provider}</span>
                         </div>
                         <span className="text-[9px] text-slate-400 block mt-0.5">
@@ -440,7 +440,7 @@ export function FinanzasCard() {
             </div>
 
             {/* Batch Release Action Strip */}
-            <div className="p-2.5 rounded-xl bg-slate-950/90 border border-sky-500/30 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="p-2.5 rounded-xl bg-slate-950/90 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-2">
               {batchActionFeedback ? (
                 <div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 animate-fadeIn">
                   <CheckCircle2 className="w-4 h-4" />
@@ -459,7 +459,7 @@ export function FinanzasCard() {
 
               <button
                 onClick={handleBatchLiberate}
-                className="w-full sm:w-auto px-3.5 py-1.5 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-emerald-400 hover:shadow-lg hover:shadow-sky-500/25 hover:scale-105 transition-all flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto px-3.5 py-1.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all flex items-center justify-center gap-1.5 border border-blue-400/30"
               >
                 <FileSpreadsheet className="w-3.5 h-3.5" />
                 <span>Liberar Lote en Interbanking</span>
@@ -469,7 +469,7 @@ export function FinanzasCard() {
             {/* Footer Stack Note */}
             <div className="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-white/5">
               <span>Stack: Next.js 16 + Firebase Firestore + SheetJS (XLSX)</span>
-              <span className="text-sky-400 font-mono text-[10px]">Finanzas Treasury Suite</span>
+              <span className="text-blue-400 font-mono text-[10px]">Finanzas Treasury Suite</span>
             </div>
 
           </div>
