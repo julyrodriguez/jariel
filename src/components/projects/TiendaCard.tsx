@@ -89,10 +89,6 @@ export function TiendaCard() {
               >
                 {project.theme.tag}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#f5e6d3]/20 border border-[#f5e6d3]/30 text-[#fef3c7] text-[10px] font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#f5e6d3] animate-pulse" />
-                {project.status}
-              </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
               {project.title}

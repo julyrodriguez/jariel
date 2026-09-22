@@ -84,10 +84,6 @@ export function VacasLocasCard() {
               >
                 {project.theme.tag}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                {project.status}
-              </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
               {project.title}

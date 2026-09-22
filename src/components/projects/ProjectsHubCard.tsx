@@ -154,9 +154,6 @@ export function ProjectsHubCard() {
                       <span className="text-xs font-mono font-bold uppercase tracking-wider block" style={{ color: project.theme.accent }}>
                         {project.title}
                       </span>
-                      <span className="text-[10px] text-slate-400 font-mono">
-                        {project.status}
-                      </span>
                     </div>
                   </div>
 
