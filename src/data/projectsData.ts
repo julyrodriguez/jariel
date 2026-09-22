@@ -457,7 +457,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
   caronails: {
     id: "caronails",
     title: "Caro Nails",
-    subtitle: "Gestión integral de turnos, clientas, insumos y facturación. Actualmente utilizado y en producción por Studio Caro Nails.",
+    subtitle: "Gestión integral de turnos, clientas, insumos y facturación. Actualmente en uso por un studio de Caro Nails.",
     category: "Beauty Tech & Studio Management PWA",
     year: "2024 - 2026",
     role: "Full Stack Architect & Developer",
@@ -524,7 +524,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(244, 63, 94, 0.18) 0%, rgba(217, 70, 239, 0.05) 50%, #07090e 100%)",
       badgeBg: "rgba(244, 63, 94, 0.18)",
       badgeText: "#fda4af",
-      tag: "BEAUTY TECH & GESTIÓN"
+      tag: "CARO NAILS"
     }
   }
 };

@@ -58,8 +58,8 @@ export function ProjectsHubCard() {
     {
       id: "caronails",
       icon: <Sparkles className="w-5 h-5 text-rose-400" />,
-      highlight: "Gestion integral de turnos, clientas, insumos y facturacion. Actualmente utilizado y en produccion por Studio Caro Nails.",
-      quickStats: "Produccion • Studio Caro Nails"
+      highlight: "Gestión integral de turnos, clientas, insumos y facturación. Actualmente en uso por un studio de Caro Nails.",
+      quickStats: "En uso por clientes"
     }
   ];
 
@@ -152,17 +152,27 @@ export function ProjectsHubCard() {
                     </div>
                     <div>
                       <span className="text-xs font-mono font-bold uppercase tracking-wider block" style={{ color: project.theme.accent }}>
-                        {project.theme.tag}
+                        {project.title}
                       </span>
                       <span className="text-[10px] text-slate-400 font-mono">
-                        {project.year} • {project.status}
+                        {project.status}
                       </span>
                     </div>
                   </div>
 
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-900 border border-white/10 text-slate-300 font-semibold">
-                    {item.quickStats}
-                  </span>
+                  {["cinemark-app", "demoPilates", "finanzas", "caronails"].includes(item.id) ? (
+                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-950/90 border border-emerald-400/60 text-emerald-300 font-bold flex items-center gap-1.5 shadow-[0_0_14px_rgba(52,211,153,0.4)] animate-pulse shrink-0">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                      </span>
+                      <span>En uso por clientes</span>
+                    </span>
+                  ) : (
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-900 border border-white/10 text-slate-300 font-semibold shrink-0">
+                      {item.quickStats}
+                    </span>
+                  )}
                 </div>
 
                 {/* Title & Solution highlight */}
