@@ -4,11 +4,10 @@ import React from "react";
 import { PROFILE_INFO, CERTIFICATES_DATA } from "@/data/projectsData";
 import { 
   Award, 
-  ArrowDown, 
   CheckCircle2, 
   BrainCircuit, 
   Sparkles,
-  ArrowUp
+  ChevronDown
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { sound } from "@/lib/sound";
@@ -220,43 +219,33 @@ export function EducationCard() {
 
         </div>
 
-        {/* Barra de Navegación Rápida: Volver al Perfil o Continuar a Proyectos */}
+        {/* Indicación a la derecha con flechitas animadas para indicar al usuario bajar */}
         <motion.div 
           variants={itemVariants}
-          className="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-indigo-950/70 via-slate-900/80 to-sky-950/70 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg"
+          className="flex justify-end items-center pt-1"
         >
-          <div className="text-left space-y-0.5">
-            <span className="text-xs font-bold text-white block">
-              ¿Listo para explorar el trabajo realizado?
+          <button
+            onClick={() => {
+              sound.playSwitch();
+              scrollToSection("projects-hub");
+            }}
+            className="flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-indigo-500/30 hover:border-indigo-400 bg-slate-950/70 shadow-lg hover:shadow-indigo-500/25 backdrop-blur-md transition-all hover:scale-105 group cursor-pointer"
+            aria-label="Bajar a proyectos"
+            title="Deslizar hacia abajo"
+          >
+            <span className="text-[11px] sm:text-xs font-mono font-medium tracking-wider text-slate-300 group-hover:text-white transition-colors">
+              Deslizar hacia abajo
             </span>
-            <span className="text-[11px] text-slate-400 block">
-              Conocé las plataformas interactivas desarrolladas en producción.
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 w-full sm:w-auto">
-            <button
-              onClick={() => {
-                sound.playSwitch();
-                scrollToSection("profile");
-              }}
-              className="px-3.5 py-2 rounded-xl font-semibold text-xs text-slate-300 glass-panel border border-white/10 hover:border-white/20 hover:text-white transition-all flex items-center justify-center gap-1.5"
+            <motion.div 
+              animate={{ y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 1.3, ease: "easeInOut" }}
+              className="flex flex-col items-center -space-y-2.5"
             >
-              <ArrowUp className="w-3.5 h-3.5" />
-              <span>Volver a Perfil</span>
-            </button>
-
-            <button
-              onClick={() => {
-                sound.playSuccess();
-                scrollToSection("projects-hub");
-              }}
-              className="flex-1 sm:flex-initial px-4 py-2 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-sky-400 to-teal-300 hover:shadow-lg hover:shadow-sky-400/25 hover:scale-105 transition-all flex items-center justify-center gap-1.5 shrink-0"
-            >
-              <span>Explorar Proyectos</span>
-              <ArrowDown className="w-3.5 h-3.5" />
-            </button>
-          </div>
+              <ChevronDown className="w-4 h-4 text-sky-400 group-hover:text-sky-300" />
+              <ChevronDown className="w-4 h-4 text-indigo-400 group-hover:text-indigo-300" />
+              <ChevronDown className="w-4 h-4 text-indigo-500/70 group-hover:text-indigo-400/90" />
+            </motion.div>
+          </button>
         </motion.div>
 
       </motion.div>
