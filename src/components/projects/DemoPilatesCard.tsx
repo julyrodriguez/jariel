@@ -79,11 +79,15 @@ export function DemoPilatesCard() {
       id="demoPilates"
       className="snap-section relative justify-center px-4 sm:px-8 py-16 md:py-20 overflow-hidden"
     >
-      {/* Mindful Lilac / Violet Wellness Glow Background */}
+      {/* Mindful Lilac / Violet Wellness Glow Background with Feathered Mask */}
       <div
-        className="absolute inset-0 pointer-events-none transition-all duration-700 opacity-60"
+        className="absolute inset-0 pointer-events-none transition-all duration-700 opacity-60 section-ambient-mask"
         style={{ background: project.theme.bgGradient }}
       />
+
+      {/* Seamless Transition Vignettes */}
+      <div className="section-vignette-top" />
+      <div className="section-vignette-bottom" />
 
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         

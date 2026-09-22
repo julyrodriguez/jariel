@@ -148,7 +148,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       accent: "#34d399",
       glow: "rgba(16, 185, 129, 0.25)",
       border: "rgba(16, 185, 129, 0.4)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(16, 185, 129, 0.15) 0%, rgba(139, 92, 246, 0.08) 40%, rgba(10, 15, 20, 0.95) 100%)",
+      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(16, 185, 129, 0.16) 0%, rgba(139, 92, 246, 0.05) 50%, #07090e 100%)",
       badgeBg: "rgba(16, 185, 129, 0.15)",
       badgeText: "#34d399",
       tag: "SPORTS TECH & GAMING"
@@ -224,7 +224,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       accent: "#c084fc",
       glow: "rgba(168, 85, 247, 0.3)",
       border: "rgba(168, 85, 247, 0.45)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.1) 45%, rgba(15, 10, 22, 0.98) 100%)",
+      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(168, 85, 247, 0.18) 0%, rgba(236, 72, 153, 0.05) 50%, #07090e 100%)",
       badgeBg: "rgba(168, 85, 247, 0.18)",
       badgeText: "#d8b4fe",
       tag: "WELLNESS & SAAS MANAGEMENT"
@@ -298,7 +298,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       accent: "#fef3c7",
       glow: "rgba(245, 230, 211, 0.35)",
       border: "rgba(245, 230, 211, 0.45)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(245, 230, 211, 0.22) 0%, rgba(217, 119, 6, 0.12) 45%, rgba(18, 15, 12, 0.98) 100%)",
+      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(245, 230, 211, 0.18) 0%, rgba(217, 119, 6, 0.05) 50%, #07090e 100%)",
       badgeBg: "rgba(245, 230, 211, 0.18)",
       badgeText: "#fef3c7",
       tag: "AURA LUXURY CREAM & COMMERCE"
@@ -372,7 +372,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       accent: "#f87171",
       glow: "rgba(229, 9, 20, 0.28)",
       border: "rgba(229, 9, 20, 0.4)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(229, 9, 20, 0.16) 0%, rgba(245, 158, 11, 0.06) 45%, rgba(12, 10, 11, 0.95) 100%)",
+      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(229, 9, 20, 0.16) 0%, rgba(245, 158, 11, 0.04) 50%, #07090e 100%)",
       badgeBg: "rgba(229, 9, 20, 0.15)",
       badgeText: "#f87171",
       tag: "CINEMA OPERATIONS & IOT"
@@ -447,7 +447,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       accent: "#60a5fa",
       glow: "rgba(37, 99, 235, 0.35)",
       border: "rgba(37, 99, 235, 0.45)",
-      bgGradient: "radial-gradient(ellipse at 50% 20%, rgba(37, 99, 235, 0.22) 0%, rgba(245, 158, 11, 0.1) 45%, rgba(10, 14, 28, 0.98) 100%)",
+      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(37, 99, 235, 0.18) 0%, rgba(245, 158, 11, 0.04) 50%, #07090e 100%)",
       badgeBg: "rgba(37, 99, 235, 0.18)",
       badgeText: "#93c5fd",
       tag: "ROYAL FINTECH & TREASURY"

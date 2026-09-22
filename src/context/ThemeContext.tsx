@@ -11,7 +11,7 @@ const DEFAULT_THEME: ProjectTheme = {
   accent: "#0ea5e9",
   glow: "rgba(56, 189, 248, 0.2)",
   border: "rgba(56, 189, 248, 0.3)",
-  bgGradient: "radial-gradient(ellipse at 50% 25%, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, rgba(8, 10, 15, 0.98) 100%)",
+  bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(56, 189, 248, 0.14) 0%, rgba(99, 102, 241, 0.04) 50%, #07090e 100%)",
   badgeBg: "rgba(56, 189, 248, 0.12)",
   badgeText: "#38bdf8",
   tag: "FULL STACK ARCHITECT"

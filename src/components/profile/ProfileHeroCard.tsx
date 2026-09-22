@@ -63,22 +63,25 @@ export function ProfileHeroCard() {
       id="profile"
       className="snap-section relative justify-center px-4 sm:px-8 py-16 md:py-20 overflow-hidden"
     >
-      {/* Dynamic Ambient Background */}
+      {/* Dynamic Ambient Background with Feathered Mask */}
       <div 
-        className="absolute inset-0 pointer-events-none transition-all duration-1000 opacity-60"
+        className="absolute inset-0 pointer-events-none transition-all duration-1000 opacity-60 section-ambient-mask"
         style={{
-          background: "radial-gradient(ellipse at 50% 25%, rgba(56, 189, 248, 0.14) 0%, rgba(99, 102, 241, 0.08) 40%, rgba(7, 9, 14, 0.98) 85%)"
+          background: "radial-gradient(ellipse at 50% 35%, rgba(56, 189, 248, 0.16) 0%, rgba(99, 102, 241, 0.05) 50%, #07090e 100%)"
         }}
       />
 
-      {/* Grid Pattern */}
+      {/* Grid Pattern with Feathered Mask */}
       <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none section-ambient-mask"
         style={{
           backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
           backgroundSize: "44px 44px"
         }}
       />
+
+      {/* Seamless Transition Vignette */}
+      <div className="section-vignette-bottom" />
 
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         

@@ -25,7 +25,7 @@ const SECTION_IDS: SectionId[] = [
 ];
 
 export default function Home() {
-  const { setActiveSection } = useTheme();
+  const { currentTheme, setActiveSection } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -61,6 +61,14 @@ export default function Home() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-[#07090e]">
+      {/* Global Soft Ambient Lighting Bloom (morphs smoothly across sections) */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 transition-all duration-1000 ease-out opacity-35 blur-[130px]"
+        style={{
+          background: `radial-gradient(ellipse 70% 55% at 50% 45%, ${currentTheme.glow} 0%, transparent 80%)`
+        }}
+      />
+
       {/* Global Persistent Navigation Controls */}
       <Navbar />
       <ScrollIndicator />
