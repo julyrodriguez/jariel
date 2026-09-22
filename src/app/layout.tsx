@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jariel.com.ar"),
-  title: "Julian ariel rodriguez",
+  title: "Julian Ariel Rodriguez",
   description:
-    "Portafolio profesional de Julian ariel rodriguez. Arquitecturas web inmersivas, aplicaciones en tiempo real, plataformas empresariales y sistemas con Next.js, React 19, TypeScript, Firebase y Node.js.",
+    "Portafolio profesional de Julian Ariel Rodriguez. Arquitecturas web inmersivas, aplicaciones en tiempo real, plataformas empresariales y sistemas con Next.js, React 19, TypeScript, Firebase y Node.js.",
   keywords: [
-    "Julian ariel rodriguez",
+    "Julian Ariel Rodriguez",
     "Portafolio",
     "Prode",
     "Pilates Studio",
@@ -27,20 +27,20 @@ export const metadata: Metadata = {
     "Cinemark",
     "Finanzas"
   ],
-  authors: [{ name: "Julian ariel rodriguez", url: "https://github.com/julyrodriguez" }],
-  creator: "Julian ariel rodriguez",
+  authors: [{ name: "Julian Ariel Rodriguez", url: "https://github.com/julyrodriguez" }],
+  creator: "Julian Ariel Rodriguez",
   openGraph: {
     type: "website",
     locale: "es_AR",
     url: "https://jariel.com.ar",
-    siteName: "Julian ariel rodriguez",
-    title: "Julian ariel rodriguez",
+    siteName: "Julian Ariel Rodriguez",
+    title: "Julian Ariel Rodriguez",
     description:
       "Diseño, arquitectura y desarrollo de sistemas de alto impacto. Explora demos interactivas y código en producción.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Julian ariel rodriguez",
+    title: "Julian Ariel Rodriguez",
     description:
       "Diseño, arquitectura y desarrollo de sistemas de alto impacto. Explora demos interactivas y código en producción.",
   },

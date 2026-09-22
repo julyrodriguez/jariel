@@ -551,7 +551,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 ];
 
 export const PROFILE_INFO = {
-  name: "Julian ariel rodriguez",
+  name: "Julian Ariel Rodriguez",
   shortName: "Julian Rodriguez",
   title: "Desarrollador Full Stack & Creador de Soluciones Digitales",
   tagline: "Creo plataformas web, tiendas online y herramientas a medida para que tu negocio funcione mejor y ahorres tiempo.",
