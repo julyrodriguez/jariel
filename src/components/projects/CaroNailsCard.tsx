@@ -141,7 +141,7 @@ export function CaroNailsCard() {
                 className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-rose-500/30 hover:border-rose-400 hover:scale-105 transition-all shadow-lg"
               >
                 <GithubIcon className="w-4 h-4 text-rose-400" />
-                <span>Ver Código en GitHub</span>
+                <span>Ver Repositorio</span>
               </a>
             )}
           </div>

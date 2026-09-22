@@ -144,7 +144,7 @@ export function DemoPilatesCard() {
                 className="flex items-center gap-2 px-3.5 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-purple-500/30 hover:border-purple-400 hover:scale-105 transition-all"
               >
                 <GithubIcon className="w-4 h-4 text-purple-400" />
-                <span>Código</span>
+                <span>Ver Repositorio</span>
               </a>
             )}
           </div>
