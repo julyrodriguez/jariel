@@ -444,10 +444,12 @@ export function FinanzasCard() {
 
             {/* Interactive Orders Table */}
             <div className="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 space-y-1.5">
-              <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pb-1 border-b border-white/5">
-                <span>Orden / Proveedor</span>
-                <span>Monto USD / ARS</span>
-                <span>Estado (Clic para avanzar)</span>
+              <div className="grid grid-cols-12 items-center gap-2 text-[10px] font-mono text-slate-400 px-2 pb-1 border-b border-white/5">
+                <span className="col-span-5 text-left">Orden / Proveedor</span>
+                <span className="col-span-4 text-center">Monto USD / ARS</span>
+                <span className="col-span-3 text-right truncate">
+                  Estado <span className="hidden sm:inline">(Clic para avanzar)</span>
+                </span>
               </div>
 
               <div className="space-y-1">
@@ -459,19 +461,19 @@ export function FinanzasCard() {
                   return (
                     <div
                       key={order.id}
-                      className="p-2 rounded-lg bg-slate-900/90 border border-white/5 flex items-center justify-between gap-2 hover:border-blue-500/30 transition-all text-xs"
+                      className="p-2 rounded-lg bg-slate-900/90 border border-white/5 grid grid-cols-12 items-center gap-2 hover:border-blue-500/30 transition-all text-xs"
                     >
-                      <div>
-                        <div className="font-bold text-white flex items-center gap-1.5 text-[11px]">
-                          <span className="font-mono text-blue-400">{order.id}</span>
-                          <span>{order.provider}</span>
+                      <div className="col-span-5 text-left min-w-0">
+                        <div className="font-bold text-white flex items-center gap-1.5 text-[11px] truncate">
+                          <span className="font-mono text-blue-400 shrink-0">{order.id}</span>
+                          <span className="truncate">{order.provider}</span>
                         </div>
-                        <span className="text-[9px] text-slate-400 block mt-0.5">
+                        <span className="text-[9px] text-slate-400 block mt-0.5 truncate">
                           {order.concept}
                         </span>
                       </div>
 
-                      <div className="text-right font-mono">
+                      <div className="col-span-4 text-center font-mono">
                         <span className="font-bold text-white block text-[11px]">
                           ${order.amountUsd.toLocaleString("en-US")} USD
                         </span>
@@ -480,13 +482,15 @@ export function FinanzasCard() {
                         </span>
                       </div>
 
-                      <button
-                        onClick={() => handleAdvanceStatus(order.id)}
-                        className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold border transition-all hover:scale-105 ${statusColor}`}
-                        title="Haz clic para avanzar estado"
-                      >
-                        {order.status} →
-                      </button>
+                      <div className="col-span-3 flex justify-end">
+                        <button
+                          onClick={() => handleAdvanceStatus(order.id)}
+                          className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold border transition-all hover:scale-105 whitespace-nowrap ${statusColor}`}
+                          title="Haz clic para avanzar estado"
+                        >
+                          {order.status} →
+                        </button>
+                      </div>
                     </div>
                   );
                 })}
