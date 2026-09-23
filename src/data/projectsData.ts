@@ -150,7 +150,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 70%)",
       badgeBg: "rgba(16, 185, 129, 0.1)",
       badgeText: "#34d399",
-      tag: "PRODE // FOOTBALL TECH"
+      tag: "PRODE"
     }
   },
 
@@ -226,7 +226,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 70%)",
       badgeBg: "rgba(168, 85, 247, 0.1)",
       badgeText: "#c084fc",
-      tag: "PILATES STUDIO // BOOKING SAAS"
+      tag: "PILATES STUDIO"
     }
   },
 
@@ -301,7 +301,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(245, 230, 211, 0.05) 0%, transparent 70%)",
       badgeBg: "rgba(245, 230, 211, 0.1)",
       badgeText: "#f5e6d3",
-      tag: "AURA TM // HEADLESS COMMERCE"
+      tag: "AURA TM"
     }
   },
 
@@ -375,7 +375,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(239, 68, 68, 0.06) 0%, transparent 70%)",
       badgeBg: "rgba(239, 68, 68, 0.1)",
       badgeText: "#f87171",
-      tag: "CINEMARK // ENTERPRISE OPS"
+      tag: "CINEMARK"
     }
   },
 
@@ -450,7 +450,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 70%)",
       badgeBg: "rgba(59, 130, 246, 0.1)",
       badgeText: "#60a5fa",
-      tag: "FINANZAS // TREASURY PLATFORM"
+      tag: "FINANZAS"
     }
   },
 
@@ -524,7 +524,7 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(251, 113, 133, 0.06) 0%, transparent 70%)",
       badgeBg: "rgba(251, 113, 133, 0.1)",
       badgeText: "#fda4af",
-      tag: "CARO NAILS // STUDIO MANAGEMENT"
+      tag: "CARO NAILS"
     }
   }
 };

@@ -165,15 +165,10 @@ export function ProjectsHubCard() {
                   )}
                 </div>
 
-                {/* Title & Solution highlight */}
-                <div className="space-y-1">
-                  <h3 className="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-white transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                    {item.highlight}
-                  </p>
-                </div>
+                {/* Solution highlight */}
+                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  {item.highlight}
+                </p>
 
                 {/* Tech chips snippet */}
                 <div className="flex flex-wrap gap-1">
