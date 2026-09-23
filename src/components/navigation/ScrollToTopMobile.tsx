@@ -45,18 +45,14 @@ export function ScrollToTopMobile() {
           exit={{ opacity: 0, scale: 0.7, y: 18 }}
           transition={{ duration: 0.22, ease: "easeOut" }}
           onClick={handleScrollTop}
-          className="fixed bottom-5 right-5 z-50 md:hidden flex items-center gap-1.5 px-3.5 py-2.5 rounded-full glass-panel border shadow-2xl backdrop-blur-xl group cursor-pointer"
-          style={{
-            borderColor: `${currentTheme.primary}70`,
-            boxShadow: `0 8px 30px rgba(0, 0, 0, 0.65), 0 0 18px ${currentTheme.glow}`
-          }}
+          className="fixed bottom-5 right-5 z-50 md:hidden flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#0d0f17]/95 border border-white/[0.15] shadow-2xl backdrop-blur-md group cursor-pointer text-white"
           aria-label="Volver arriba"
         >
           <ArrowUp 
-            className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" 
+            className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" 
             style={{ color: currentTheme.primary }} 
           />
-          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-white">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-200">
             Arriba
           </span>
         </motion.button>

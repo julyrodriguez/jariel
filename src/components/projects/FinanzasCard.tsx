@@ -105,10 +105,10 @@ export function FinanzasCard() {
         
         {/* Top Header & Badges */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span
-                className="px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider border shadow-sm"
+                className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider border"
                 style={{
                   backgroundColor: project.theme.badgeBg,
                   color: project.theme.badgeText,
@@ -117,7 +117,7 @@ export function FinanzasCard() {
               >
                 {project.theme.tag}
               </span>
-              <span className="px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-400/60 text-emerald-300 text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-[0_0_14px_rgba(52,211,153,0.45)] animate-pulse">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 border border-emerald-500/40 text-emerald-400 font-bold flex items-center gap-1.5 shrink-0">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
@@ -125,10 +125,10 @@ export function FinanzasCard() {
                 <span>En uso por clientes</span>
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.035em] text-white">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
               {project.subtitle}
             </p>
           </div>
@@ -141,7 +141,7 @@ export function FinanzasCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-blue-500/30 hover:border-blue-400 hover:scale-105 transition-all shadow-lg"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
               >
                 <GithubIcon className="w-4 h-4 text-blue-400" />
                 <span>Ver Repositorio</span>
@@ -151,15 +151,15 @@ export function FinanzasCard() {
         </div>
 
         {/* Mobile Segmented View Switcher */}
-        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/85 border border-blue-500/20 shadow-lg mb-2">
+        <div className="lg:hidden flex items-center p-1 rounded-lg bg-[#0d0f17] border border-white/[0.08] shadow-lg mb-2">
           <button
             onClick={() => {
               sound.playClick();
               setMobileView("specs");
             }}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+            className={`flex-1 py-1.5 px-3 rounded-md text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "specs"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                ? "bg-white text-black shadow-sm"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -171,9 +171,9 @@ export function FinanzasCard() {
               sound.playClick();
               setMobileView("sandbox");
             }}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+            className={`flex-1 py-1.5 px-3 rounded-md text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "sandbox"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                ? "bg-white text-black shadow-sm"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -189,17 +189,17 @@ export function FinanzasCard() {
           <div className={`${mobileView === "specs" ? "flex" : "hidden lg:flex"} lg:col-span-5 flex-col justify-between space-y-3.5`}>
             
             {/* Interactive Tabs */}
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-blue-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+            <div className="p-5 rounded-xl bg-[#0d0f17] border border-white/[0.08] space-y-3 shadow-xl flex-1 flex flex-col justify-between">
               
-              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
+              <div className="flex items-center gap-1 p-1 rounded-lg bg-[#08090f] border border-white/[0.06]">
                 <button
                   onClick={() => {
                     sound.playClick();
                     setTechTab("whatItDoes");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "whatItDoes"
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -210,9 +210,9 @@ export function FinanzasCard() {
                     sound.playClick();
                     setTechTab("solution");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "solution"
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -223,13 +223,13 @@ export function FinanzasCard() {
                     sound.playClick();
                     setTechTab("deepTech");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "deepTech"
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Datos Técnicos
+                  Arquitectura
                 </button>
               </div>
 
@@ -240,16 +240,16 @@ export function FinanzasCard() {
                     <span className="text-blue-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Tesorería & Pipeline de Compras
                     </span>
-                    <p className="text-slate-200 leading-relaxed">
+                    <p className="text-slate-200 leading-relaxed text-xs">
                       {project.whatItDoes}
                     </p>
-                    <div className="pt-2 border-t border-white/5 space-y-1.5 text-slate-300">
+                    <div className="pt-2 border-t border-white/[0.06] space-y-1.5 text-slate-300">
                       {project.keyModules.map((m, idx) => (
-                        <div key={idx} className="flex items-start gap-1.5">
+                        <div key={idx} className="flex items-start gap-1.5 p-2 rounded-lg bg-[#08090f] border border-white/[0.04]">
                           <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
                           <div>
-                            <strong className="text-white">{m.title}:</strong>{" "}
-                            <span className="text-slate-400 text-[11px]">{m.description}</span>
+                            <strong className="text-white text-xs">{m.title}:</strong>{" "}
+                            <span className="text-slate-400 text-[11px] leading-tight block">{m.description}</span>
                           </div>
                         </div>
                       ))}
@@ -262,11 +262,11 @@ export function FinanzasCard() {
                     <span className="text-blue-400 font-mono text-[10px] font-bold uppercase tracking-wider block">
                       Firma de Lotes & Eliminación de Cuellos de Botella
                     </span>
-                    <p className="text-slate-200 leading-relaxed">
+                    <p className="text-slate-200 leading-relaxed text-xs">
                       {project.solutionProvided}
                     </p>
-                    <div className="p-2.5 rounded-xl bg-slate-950/70 border border-blue-500/20 text-[11px] text-slate-300 space-y-1">
-                      <strong className="text-blue-400 block font-mono">
+                    <div className="p-3 rounded-lg bg-[#08090f] border border-white/[0.06] text-[11px] text-slate-300 space-y-1.5">
+                      <strong className="text-blue-400 block font-mono text-[10px] uppercase tracking-wider">
                         Desafíos Corporativos Superados:
                       </strong>
                       <ul className="list-disc pl-4 space-y-1 text-slate-400">
@@ -284,38 +284,38 @@ export function FinanzasCard() {
                       Auditoría Inmutable & Conciliación Bancaria
                     </span>
                     
-                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
+                    <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1.5">
                         <Layers className="w-3 h-3" /> Next.js 16 + Firestore + SheetJS (XLSX)
                       </span>
-                      <p className="text-[11px] text-slate-400 leading-tight">
+                      <p className="text-[11px] text-slate-400 leading-relaxed">
                         {project.deepTechnicalData.architecture}
                       </p>
                     </div>
 
-                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
+                    <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1.5">
                         <Cpu className="w-3 h-3" /> Conciliación Multimoneda & Bloqueo Optimista
                       </span>
-                      <p className="text-[11px] text-slate-400 leading-tight">
+                      <p className="text-[11px] text-slate-400 leading-relaxed">
                         {project.deepTechnicalData.algorithmsAndConcurrency}
                       </p>
                     </div>
 
-                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
+                    <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1.5">
                         <Database className="w-3 h-3" /> Trazabilidad de Auditoría Inmutable
                       </span>
-                      <p className="text-[11px] text-slate-400 leading-tight">
+                      <p className="text-[11px] text-slate-400 leading-relaxed">
                         {project.deepTechnicalData.databaseAndTelemetry}
                       </p>
                     </div>
 
-                    <div className="p-2 rounded-lg bg-slate-950 border border-white/5 space-y-0.5">
-                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1">
+                    <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1">
+                      <span className="font-mono text-blue-400 text-[10px] font-bold flex items-center gap-1.5">
                         <ShieldCheck className="w-3 h-3" /> PIN de Tesorería & Batch Signing
                       </span>
-                      <p className="text-[11px] text-slate-400 leading-tight">
+                      <p className="text-[11px] text-slate-400 leading-relaxed">
                         {project.deepTechnicalData.securityAndPerformance}
                       </p>
                     </div>
@@ -324,13 +324,13 @@ export function FinanzasCard() {
               </div>
 
               {/* Metrics Ribbon */}
-              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/[0.06]">
                 {project.metrics.map((m, idx) => (
-                  <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
-                    <span className="block text-xs sm:text-sm font-black text-blue-400 font-mono">
+                  <div key={idx} className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] text-center">
+                    <span className="block text-xs sm:text-sm font-bold text-white font-mono">
                       {m.value}
                     </span>
-                    <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
+                    <span className="block text-[8px] text-slate-500 uppercase tracking-wider mt-0.5 font-mono">
                       {m.label}
                     </span>
                   </div>
@@ -343,7 +343,7 @@ export function FinanzasCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-blue-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded text-[9px] font-mono bg-[#08090f] border border-white/[0.06] text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -356,7 +356,7 @@ export function FinanzasCard() {
                 sound.playSuccess();
                 setMobileView("sandbox");
               }}
-              className="lg:hidden w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:shadow-lg hover:shadow-blue-600/30 transition-all flex items-center justify-center gap-2 shadow-lg font-bold"
+              className="lg:hidden w-full py-2.5 px-4 rounded-lg text-xs font-mono font-bold text-black bg-white hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-lg"
             >
               <span>Probar Ticker Cambiario & Órdenes</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -364,12 +364,12 @@ export function FinanzasCard() {
           </div>
 
           {/* Right Column: Interactive Financial Analytics & Batch Sandbox (7 cols) */}
-          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 glass-panel p-5 rounded-2xl border border-blue-500/30 flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden`}>
+          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 p-5 rounded-xl bg-[#0d0f17] border border-white/[0.08] flex-col justify-between space-y-3.5 shadow-2xl relative overflow-hidden`}>
             
             {/* Header with Live Currency Ticker */}
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2.5">
-              <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-blue-500/20 text-blue-400">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
                   <TrendingUp className="w-4 h-4" />
                 </div>
                 <div>
@@ -383,7 +383,7 @@ export function FinanzasCard() {
               </div>
 
               {/* Currency Selector */}
-              <div className="flex items-center gap-1 p-0.5 rounded-lg bg-slate-950/80 border border-white/10 text-[10px] font-mono">
+              <div className="flex items-center gap-1 p-1 rounded-md bg-[#08090f] border border-white/[0.06] text-[10px] font-mono">
                 {(Object.keys(exchangeRates) as Array<keyof typeof exchangeRates>).map((cur) => (
                   <button
                     key={cur}
@@ -391,9 +391,9 @@ export function FinanzasCard() {
                       sound.playClick();
                       setSelectedCurrency(cur);
                     }}
-                    className={`px-2 py-1 rounded transition-colors ${
+                    className={`px-2 py-0.5 rounded transition-colors ${
                       selectedCurrency === cur
-                        ? "bg-blue-600 text-white font-bold"
+                        ? "bg-white text-black font-bold shadow-sm"
                         : "text-slate-400 hover:text-white"
                     }`}
                   >
@@ -405,11 +405,11 @@ export function FinanzasCard() {
 
             {/* Live Financial Totals Card */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5">
-                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider block">
+              <div className="p-3 rounded-lg bg-[#08090f] border border-white/[0.06]">
+                <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider block">
                   Cotización {exchangeRates[selectedCurrency].name}
                 </span>
-                <span className="text-base font-black text-white font-mono block mt-0.5">
+                <span className="text-base font-bold text-white font-mono block mt-0.5">
                   ${activeRate.toLocaleString("es-AR")}
                 </span>
                 <span className="text-[9px] text-emerald-400 font-mono">
@@ -417,11 +417,11 @@ export function FinanzasCard() {
                 </span>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5">
-                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider block">
+              <div className="p-3 rounded-lg bg-[#08090f] border border-white/[0.06]">
+                <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider block">
                   Total Lote en USD
                 </span>
-                <span className="text-base font-black text-blue-400 font-mono block mt-0.5">
+                <span className="text-base font-bold text-blue-400 font-mono block mt-0.5">
                   ${totalUsd.toLocaleString("en-US")} USD
                 </span>
                 <span className="text-[9px] text-slate-400 font-mono">
@@ -429,22 +429,22 @@ export function FinanzasCard() {
                 </span>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/5">
-                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider block">
+              <div className="p-3 rounded-lg bg-[#08090f] border border-white/[0.06]">
+                <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider block">
                   Conversión Liquidación ARS
                 </span>
-                <span className="text-base font-black text-emerald-400 font-mono block mt-0.5">
+                <span className="text-base font-bold text-emerald-400 font-mono block mt-0.5">
                   ${totalArs.toLocaleString("es-AR")}
                 </span>
-                <span className="text-[9px] text-emerald-300 font-mono">
+                <span className="text-[9px] text-emerald-400/80 font-mono">
                   Conciliado 100%
                 </span>
               </div>
             </div>
 
             {/* Interactive Orders Table */}
-            <div className="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 space-y-1.5">
-              <div className="grid grid-cols-12 items-center gap-2 text-[10px] font-mono text-slate-400 px-2 pb-1 border-b border-white/5">
+            <div className="p-3 rounded-xl bg-[#08090f] border border-white/[0.06] space-y-1.5">
+              <div className="grid grid-cols-12 items-center gap-2 text-[10px] font-mono text-slate-500 px-2 pb-1 border-b border-white/[0.06]">
                 <span className="col-span-5 text-left">Orden / Proveedor</span>
                 <span className="col-span-4 text-center">Monto USD / ARS</span>
                 <span className="col-span-3 text-right truncate">
@@ -454,21 +454,21 @@ export function FinanzasCard() {
 
               <div className="space-y-1">
                 {orders.map((order) => {
-                  let statusColor = "bg-amber-500/20 text-amber-300 border-amber-500/40";
-                  if (order.status === "Firmado") statusColor = "bg-blue-500/20 text-blue-300 border-blue-500/40";
-                  if (order.status === "Liberado") statusColor = "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
+                  let statusColor = "bg-amber-500/10 text-amber-300 border-amber-500/30";
+                  if (order.status === "Firmado") statusColor = "bg-blue-500/10 text-blue-300 border-blue-500/30";
+                  if (order.status === "Liberado") statusColor = "bg-emerald-500/10 text-emerald-300 border-emerald-500/30";
 
                   return (
                     <div
                       key={order.id}
-                      className="p-2 rounded-lg bg-slate-900/90 border border-white/5 grid grid-cols-12 items-center gap-2 hover:border-blue-500/30 transition-all text-xs"
+                      className="p-2.5 rounded-lg bg-[#0d0f17] border border-white/[0.06] grid grid-cols-12 items-center gap-2 hover:border-white/[0.15] transition-all text-xs"
                     >
                       <div className="col-span-5 text-left min-w-0">
                         <div className="font-bold text-white flex items-center gap-1.5 text-[11px] truncate">
                           <span className="font-mono text-blue-400 shrink-0">{order.id}</span>
                           <span className="truncate">{order.provider}</span>
                         </div>
-                        <span className="text-[9px] text-slate-400 block mt-0.5 truncate">
+                        <span className="text-[9px] text-slate-500 block mt-0.5 truncate font-mono">
                           {order.concept}
                         </span>
                       </div>
@@ -498,7 +498,7 @@ export function FinanzasCard() {
             </div>
 
             {/* Batch Release Action Strip */}
-            <div className="p-2.5 rounded-xl bg-slate-950/90 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="p-3 rounded-xl bg-[#08090f] border border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-2.5">
               {batchActionFeedback ? (
                 <div className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 animate-fadeIn">
                   <CheckCircle2 className="w-4 h-4" />
@@ -509,7 +509,7 @@ export function FinanzasCard() {
                   <span className="font-semibold text-white block text-[11px]">
                     Acciones Masivas de Tesorería
                   </span>
-                  <span className="text-[10px] text-slate-400">
+                  <span className="text-[10px] text-slate-400 font-mono">
                     Firma digital múltiple y exportación bancaria en un solo clic
                   </span>
                 </div>
@@ -517,7 +517,7 @@ export function FinanzasCard() {
 
               <button
                 onClick={handleBatchLiberate}
-                className="w-full sm:w-auto px-3.5 py-1.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all flex items-center justify-center gap-1.5 border border-blue-400/30"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg font-bold text-xs font-mono text-black bg-white hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-sm"
               >
                 <FileSpreadsheet className="w-3.5 h-3.5" />
                 <span>Liberar Lote en Interbanking</span>
@@ -525,9 +525,9 @@ export function FinanzasCard() {
             </div>
 
             {/* Footer Stack Note */}
-            <div className="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-white/5">
+            <div className="flex items-center justify-between text-xs text-slate-500 pt-1 border-t border-white/[0.06] font-mono text-[10px]">
               <span>Stack: Next.js 16 + Firebase Firestore + SheetJS (XLSX)</span>
-              <span className="text-blue-400 font-mono text-[10px]">Finanzas Treasury Suite</span>
+              <span className="text-blue-400">Finanzas Treasury Suite</span>
             </div>
 
             {/* Mobile Return to Specs Button */}
@@ -536,7 +536,7 @@ export function FinanzasCard() {
                 sound.playPop();
                 setMobileView("specs");
               }}
-              className="lg:hidden w-full py-2 px-3 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
+              className="lg:hidden w-full py-2 px-3 rounded-lg text-xs font-semibold bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1 font-mono"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>← Volver a Ficha Técnica & Arquitectura</span>

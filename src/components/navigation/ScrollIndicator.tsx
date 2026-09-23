@@ -61,7 +61,7 @@ export function ScrollIndicator() {
       aria-label="Navegación de secciones"
       className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-end gap-3 pointer-events-auto"
     >
-      <div className="p-2 rounded-2xl glass-panel border border-white/10 flex flex-col items-center gap-2.5 shadow-2xl backdrop-blur-xl">
+      <div className="p-1.5 rounded-xl bg-[#0d0f17]/90 border border-white/[0.08] flex flex-col items-center gap-2 shadow-2xl backdrop-blur-md">
         {SECTIONS.map((section) => {
           const isActive = activeSection === section.id;
           return (
@@ -71,22 +71,19 @@ export function ScrollIndicator() {
                 sound.playPop();
                 scrollToSection(section.id);
               }}
-              className="group relative flex items-center justify-center p-1.5 focus:outline-none"
+              className="group relative flex items-center justify-center p-1 focus:outline-none"
               aria-label={`Ir a ${section.label}`}
             >
               {/* Tooltip on left */}
               <div 
-                className={`absolute right-9 px-2.5 py-1 rounded-lg text-[11px] font-medium tracking-wide whitespace-nowrap transition-all duration-300 pointer-events-none glass-panel border border-white/10 shadow-lg ${
+                className={`absolute right-8 px-2.5 py-1 rounded-md text-[11px] font-mono tracking-wide whitespace-nowrap transition-all duration-200 pointer-events-none bg-[#090b10] border shadow-xl ${
                   isActive
-                    ? "opacity-100 translate-x-0 text-white font-semibold"
-                    : "opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-slate-300"
+                    ? "opacity-100 translate-x-0 text-white font-semibold border-white/20"
+                    : "opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 text-slate-400 border-white/10"
                 }`}
-                style={{
-                  borderColor: isActive ? `${currentTheme.primary}40` : "rgba(255, 255, 255, 0.1)"
-                }}
               >
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[9px] font-mono text-slate-400">{section.badge}</span>
+                  <span className="text-[9px] text-slate-500 font-mono">[{section.badge}]</span>
                   <span>{section.label}</span>
                 </div>
               </div>
@@ -95,12 +92,12 @@ export function ScrollIndicator() {
               <div
                 className={`transition-all duration-300 rounded-full ${
                   isActive
-                    ? "w-2.5 h-6 rounded-full"
-                    : "w-2 h-2 rounded-full bg-slate-600 group-hover:bg-slate-300 group-hover:scale-125"
+                    ? "w-2 h-5 rounded-full"
+                    : "w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-slate-400 group-hover:scale-125"
                 }`}
                 style={{
                   backgroundColor: isActive ? currentTheme.primary : undefined,
-                  boxShadow: isActive ? `0 0 10px ${currentTheme.glow}` : "none"
+                  boxShadow: isActive ? `0 0 8px ${currentTheme.glow}` : "none"
                 }}
               />
             </button>
@@ -109,10 +106,10 @@ export function ScrollIndicator() {
       </div>
 
       {/* Keyboard hint */}
-      <div className="hidden lg:flex items-center gap-1 text-[10px] text-slate-500 font-mono tracking-tighter pr-1 select-none">
-        <span className="px-1 py-0.5 rounded bg-slate-800/80 border border-white/5">↑</span>
-        <span className="px-1 py-0.5 rounded bg-slate-800/80 border border-white/5">↓</span>
-        <span>navegar</span>
+      <div className="hidden lg:flex items-center gap-1 text-[9px] text-slate-500 font-mono tracking-wider pr-1 select-none uppercase">
+        <span className="px-1 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">↑</span>
+        <span className="px-1 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">↓</span>
+        <span>Nav</span>
       </div>
     </nav>
   );

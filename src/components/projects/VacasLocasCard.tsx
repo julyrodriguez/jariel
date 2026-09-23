@@ -71,24 +71,17 @@ export function VacasLocasCard() {
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span
-                className="px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider border shadow-sm"
-                style={{
-                  backgroundColor: project.theme.badgeBg,
-                  color: project.theme.badgeText,
-                  borderColor: project.theme.border
-                }}
-              >
+              <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-white/[0.04] text-emerald-400 border border-emerald-500/30">
                 {project.theme.tag}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.035em] text-white">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
               {project.subtitle}
             </p>
           </div>
@@ -101,7 +94,7 @@ export function VacasLocasCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-emerald-500/30 hover:border-emerald-400 hover:scale-105 transition-all shadow-lg"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
               >
                 <GithubIcon className="w-4 h-4 text-emerald-400" />
                 <span>Ver Repositorio</span>
@@ -111,7 +104,7 @@ export function VacasLocasCard() {
         </div>
 
         {/* Mobile Segmented View Switcher */}
-        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/85 border border-white/10 shadow-lg mb-2">
+        <div className="lg:hidden flex items-center p-1 rounded-xl bg-[#0d0f17] border border-white/[0.08] shadow-lg mb-2">
           <button
             onClick={() => {
               sound.playClick();
@@ -119,7 +112,7 @@ export function VacasLocasCard() {
             }}
             className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "specs"
-                ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                ? "bg-white text-black shadow-sm"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -133,7 +126,7 @@ export function VacasLocasCard() {
             }}
             className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "sandbox"
-                ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                ? "bg-white text-black shadow-sm"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -149,17 +142,17 @@ export function VacasLocasCard() {
           <div className={`${mobileView === "specs" ? "flex" : "hidden lg:flex"} lg:col-span-5 flex-col justify-between space-y-3.5`}>
             
             {/* Interactive Tabs: ¿Qué hace? / ¿Qué solución brindó? / Datos Técnicos Profundos */}
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-emerald-500/30 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+            <div className="p-5 rounded-xl bg-[#0d0f17] border border-white/[0.08] space-y-3 shadow-xl flex-1 flex flex-col justify-between">
               
-              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
+              <div className="flex items-center gap-1 p-1 rounded-lg bg-[#08090f] border border-white/[0.06]">
                 <button
                   onClick={() => {
                     sound.playClick();
                     setTechTab("whatItDoes");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "whatItDoes"
-                      ? "bg-emerald-500 text-slate-950"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -170,9 +163,9 @@ export function VacasLocasCard() {
                     sound.playClick();
                     setTechTab("solution");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "solution"
-                      ? "bg-emerald-500 text-slate-950"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -183,13 +176,13 @@ export function VacasLocasCard() {
                     sound.playClick();
                     setTechTab("deepTech");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "deepTech"
-                      ? "bg-emerald-500 text-slate-950"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Datos Técnicos
+                  Arquitectura
                 </button>
               </div>
 
@@ -284,13 +277,13 @@ export function VacasLocasCard() {
               </div>
 
               {/* Metrics Ribbon */}
-              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+              <div className="grid grid-cols-4 gap-2 pt-2.5 border-t border-white/[0.06]">
                 {project.metrics.map((m, idx) => (
-                  <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
-                    <span className="block text-xs sm:text-sm font-black text-emerald-400 font-mono">
+                  <div key={idx} className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] text-center">
+                    <span className="block text-xs sm:text-sm font-bold text-white font-mono">
                       {m.value}
                     </span>
-                    <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
+                    <span className="block text-[8px] text-slate-500 uppercase tracking-wider mt-0.5 font-mono">
                       {m.label}
                     </span>
                   </div>
@@ -303,7 +296,7 @@ export function VacasLocasCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-emerald-500/20 text-slate-300"
+                  className="px-2 py-0.5 rounded text-[9px] font-mono bg-[#08090f] border border-white/[0.06] text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -316,42 +309,42 @@ export function VacasLocasCard() {
                 sound.playSuccess();
                 setMobileView("sandbox");
               }}
-              className="lg:hidden w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 transition-all flex items-center justify-center gap-2 shadow-lg"
+              className="lg:hidden w-full py-2.5 px-4 rounded-lg text-xs font-mono font-bold text-black bg-white hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-lg"
             >
-              <span>Probar Simulador de Pronósticos</span>
+              <span>PROBAR SIMULADOR DE PRONÓSTICOS</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
           {/* Right Column: Live Interactive Sandbox (7 cols) */}
-          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 glass-panel p-5 rounded-2xl border border-emerald-500/30 flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden`}>
+          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 rounded-xl bg-[#0d0f17] border border-white/[0.08] p-5 flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden`}>
             
-            {/* Sandbox Header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+            {/* Sandbox Console Header */}
+            <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400">
-                  <Gamepad2 className="w-4 h-4" />
+                <div className="p-1.5 rounded bg-[#08090f] border border-white/[0.05] text-emerald-400">
+                  <Gamepad2 className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-white block">
-                    Sandbox Interactivo: Simulador de Pronósticos & Algoritmo de Puntuación
+                  <span className="text-xs font-bold text-white block tracking-tight">
+                    Simulador de Pronósticos & Puntuación
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400 block">
-                    Prueba en vivo la lógica de cálculo ponderado de Prode
+                  <span className="text-[10px] font-mono text-slate-500 block">
+                    Cálculo reactivo en vivo · Engine O(N log N)
                   </span>
                 </div>
               </div>
 
               {/* Tournament Switcher */}
-              <div className="flex items-center p-0.5 rounded-lg bg-slate-950/80 border border-white/10 text-[10px] font-mono">
+              <div className="flex items-center p-0.5 rounded-lg bg-[#08090f] border border-white/[0.08] text-[10px] font-mono">
                 <button
                   onClick={() => {
                     sound.playClick();
                     setActiveTournament("copa");
                   }}
-                  className={`px-2 py-1 rounded-md transition-colors ${
+                  className={`px-2.5 py-1 rounded transition-colors ${
                     activeTournament === "copa"
-                      ? "bg-emerald-500 text-slate-950 font-bold"
+                      ? "bg-white/[0.1] text-white font-bold"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -374,7 +367,7 @@ export function VacasLocasCard() {
             </div>
 
             {/* Simulated Match Arena */}
-            <div className="p-3.5 rounded-xl bg-slate-950/60 border border-white/5 space-y-3">
+            <div className="p-3.5 rounded-xl bg-[#08090f] border border-white/[0.06] space-y-3">
               
               {/* Actual Final Score (Simulation) */}
               <div>
@@ -386,12 +379,12 @@ export function VacasLocasCard() {
                   <span className="text-[10px]">Ajusta los goles reales:</span>
                 </div>
 
-                <div className="grid grid-cols-5 items-center bg-slate-900/90 p-2.5 rounded-xl border border-white/5">
+                <div className="grid grid-cols-5 items-center bg-[#0b0d14] p-2.5 rounded-lg border border-white/[0.06]">
                   <div className="col-span-2 text-left">
                     <span className="font-bold text-white text-xs sm:text-sm block">
                       {activeTournament === "copa" ? "Boca Juniors" : "Team Vitality"}
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">Local</span>
+                    <span className="text-[9px] text-slate-500 font-mono">Local</span>
                   </div>
 
                   <div className="col-span-1 flex items-center justify-center gap-1.5 font-mono">
@@ -401,11 +394,11 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setTeam1Score(Math.min(9, team1Score + 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-lg font-black text-white px-2 py-0.5 rounded bg-slate-800 border border-white/10">
+                      <span className="text-base font-bold text-white px-2 py-0.5 rounded bg-black/60 border border-white/[0.08]">
                         {team1Score}
                       </span>
                       <button
@@ -413,13 +406,13 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setTeam1Score(Math.max(0, team1Score - 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▼
                       </button>
                     </div>
 
-                    <span className="text-slate-500 font-bold">:</span>
+                    <span className="text-slate-600 font-bold">:</span>
 
                     <div className="flex flex-col items-center">
                       <button
@@ -427,11 +420,11 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setTeam2Score(Math.min(9, team2Score + 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-lg font-black text-white px-2 py-0.5 rounded bg-slate-800 border border-white/10">
+                      <span className="text-base font-bold text-white px-2 py-0.5 rounded bg-black/60 border border-white/[0.08]">
                         {team2Score}
                       </span>
                       <button
@@ -439,7 +432,7 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setTeam2Score(Math.max(0, team2Score - 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-emerald-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▼
                       </button>
@@ -450,7 +443,7 @@ export function VacasLocasCard() {
                     <span className="font-bold text-white text-xs sm:text-sm block">
                       {activeTournament === "copa" ? "River Plate" : "Natus Vincere"}
                     </span>
-                    <span className="text-[9px] text-slate-400 font-mono">Visitante</span>
+                    <span className="text-[9px] text-slate-500 font-mono">Visitante</span>
                   </div>
                 </div>
               </div>
@@ -458,14 +451,14 @@ export function VacasLocasCard() {
               {/* User Prediction Interactive Selector */}
               <div>
                 <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
-                  <span className="text-purple-300 font-semibold flex items-center gap-1">
-                    <Trophy className="w-3.5 h-3.5" />
+                  <span className="text-slate-300 font-semibold flex items-center gap-1">
+                    <Trophy className="w-3.5 h-3.5 text-amber-400" />
                     Tu Pronóstico Cargado en la Plataforma
                   </span>
                   <span className="text-[10px]">Ajusta tu pronóstico:</span>
                 </div>
 
-                <div className="grid grid-cols-5 items-center bg-slate-900/90 p-2.5 rounded-xl border border-purple-500/20">
+                <div className="grid grid-cols-5 items-center bg-[#0b0d14] p-2.5 rounded-lg border border-white/[0.06]">
                   <div className="col-span-2 text-left">
                     <span className="text-xs font-semibold text-slate-200 block">
                       {activeTournament === "copa" ? "Pronóstico Boca" : "Pronóstico Vitality"}
@@ -479,11 +472,11 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setUserPick1(Math.min(9, userPick1 + 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-lg font-black text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/30">
+                      <span className="text-base font-bold text-white px-2 py-0.5 rounded bg-black/60 border border-white/[0.08]">
                         {userPick1}
                       </span>
                       <button
@@ -491,13 +484,13 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setUserPick1(Math.max(0, userPick1 - 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▼
                       </button>
                     </div>
 
-                    <span className="text-purple-400 font-bold">:</span>
+                    <span className="text-slate-600 font-bold">:</span>
 
                     <div className="flex flex-col items-center">
                       <button
@@ -505,11 +498,11 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setUserPick2(Math.min(9, userPick2 + 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▲
                       </button>
-                      <span className="text-lg font-black text-purple-300 px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/30">
+                      <span className="text-base font-bold text-white px-2 py-0.5 rounded bg-black/60 border border-white/[0.08]">
                         {userPick2}
                       </span>
                       <button
@@ -517,7 +510,7 @@ export function VacasLocasCard() {
                           sound.playClick();
                           setUserPick2(Math.max(0, userPick2 - 1));
                         }}
-                        className="text-[10px] text-slate-400 hover:text-purple-400 p-0.5"
+                        className="text-[10px] text-slate-400 hover:text-white p-0.5"
                       >
                         ▼
                       </button>
@@ -533,7 +526,7 @@ export function VacasLocasCard() {
               </div>
 
               {/* Dynamic Calculation Evaluation Banner */}
-              <div className={`p-2.5 rounded-xl border flex items-center justify-between transition-all ${result.badge}`}>
+              <div className={`p-2.5 rounded-lg border flex items-center justify-between transition-all ${result.badge}`}>
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 shrink-0" />
                   <span className="text-xs font-bold">{result.label}</span>
@@ -546,29 +539,29 @@ export function VacasLocasCard() {
             </div>
 
             {/* Leaderboard Micro-Widget (Simulated real community) */}
-            <div className="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 space-y-1.5 text-xs">
+            <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1.5 text-xs">
               <div className="flex items-center justify-between text-slate-400 font-mono text-[9px]">
                 <span className="flex items-center gap-1 text-emerald-400">
                   <Users className="w-3 h-3" />
                   Ranking Global de la Comunidad (Top 3)
                 </span>
-                <span>API en vivo • apivacas.jariel.com.ar</span>
+                <span className="text-slate-500">API EN VIVO · PUNTUACIÓN AUTOMÁTICA</span>
               </div>
               <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="p-1.5 rounded-lg bg-slate-900 border border-amber-500/30 flex flex-col items-center">
+                <div className="p-2 rounded bg-[#0b0d14] border border-amber-500/20 flex flex-col items-center">
                   <span className="text-amber-400 font-mono text-[11px] font-bold">🥇 #1 Julián R.</span>
                   <span className="text-slate-300 font-mono text-[10px] font-semibold">84 pts</span>
-                  <span className="text-[8px] text-emerald-400">Racha: 5 aciertos</span>
+                  <span className="text-[8px] text-emerald-400 font-mono">Racha: 5 aciertos</span>
                 </div>
-                <div className="p-1.5 rounded-lg bg-slate-900 border border-slate-700 flex flex-col items-center">
+                <div className="p-2 rounded bg-[#0b0d14] border border-white/[0.05] flex flex-col items-center">
                   <span className="text-slate-300 font-mono text-[11px] font-bold">🥈 #2 Mateo C.</span>
                   <span className="text-slate-300 font-mono text-[10px] font-semibold">79 pts</span>
-                  <span className="text-[8px] text-slate-400">Racha: 3 aciertos</span>
+                  <span className="text-[8px] text-slate-500 font-mono">Racha: 3 aciertos</span>
                 </div>
-                <div className="p-1.5 rounded-lg bg-slate-900 border border-amber-700/40 flex flex-col items-center">
-                  <span className="text-amber-600 font-mono text-[11px] font-bold">🥉 #3 Lucas V.</span>
+                <div className="p-2 rounded bg-[#0b0d14] border border-white/[0.05] flex flex-col items-center">
+                  <span className="text-slate-400 font-mono text-[11px] font-bold">🥉 #3 Lucas V.</span>
                   <span className="text-slate-300 font-mono text-[10px] font-semibold">76 pts</span>
-                  <span className="text-[8px] text-slate-400">Racha: 2 aciertos</span>
+                  <span className="text-[8px] text-slate-500 font-mono">Racha: 2 aciertos</span>
                 </div>
               </div>
             </div>
@@ -579,7 +572,7 @@ export function VacasLocasCard() {
                 sound.playPop();
                 setMobileView("specs");
               }}
-              className="lg:hidden w-full py-2 px-3 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
+              className="lg:hidden w-full py-2 px-3 rounded-lg text-xs font-mono font-semibold bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>← Volver a Ficha Técnica & Arquitectura</span>

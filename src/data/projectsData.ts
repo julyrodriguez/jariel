@@ -143,14 +143,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     theme: {
       primary: "#10b981",
-      secondary: "#8b5cf6",
+      secondary: "#34d399",
       accent: "#34d399",
-      glow: "rgba(16, 185, 129, 0.25)",
-      border: "rgba(16, 185, 129, 0.4)",
-      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(16, 185, 129, 0.16) 0%, rgba(139, 92, 246, 0.05) 50%, #07090e 100%)",
-      badgeBg: "rgba(16, 185, 129, 0.15)",
+      glow: "rgba(16, 185, 129, 0.12)",
+      border: "rgba(255, 255, 255, 0.08)",
+      bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 70%)",
+      badgeBg: "rgba(16, 185, 129, 0.1)",
       badgeText: "#34d399",
-      tag: "PRODE"
+      tag: "PRODE // FOOTBALL TECH"
     }
   },
 
@@ -219,14 +219,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     theme: {
       primary: "#a855f7",
-      secondary: "#ec4899",
+      secondary: "#c084fc",
       accent: "#c084fc",
-      glow: "rgba(168, 85, 247, 0.3)",
-      border: "rgba(168, 85, 247, 0.45)",
-      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(168, 85, 247, 0.18) 0%, rgba(236, 72, 153, 0.05) 50%, #07090e 100%)",
-      badgeBg: "rgba(168, 85, 247, 0.18)",
-      badgeText: "#d8b4fe",
-      tag: "PILATES STUDIO"
+      glow: "rgba(168, 85, 247, 0.12)",
+      border: "rgba(255, 255, 255, 0.08)",
+      bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 70%)",
+      badgeBg: "rgba(168, 85, 247, 0.1)",
+      badgeText: "#c084fc",
+      tag: "PILATES STUDIO // BOOKING SAAS"
     }
   },
 
@@ -294,14 +294,14 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     theme: {
       primary: "#f5e6d3",
-      secondary: "#d97706",
+      secondary: "#e2c9a5",
       accent: "#fef3c7",
-      glow: "rgba(245, 230, 211, 0.35)",
-      border: "rgba(245, 230, 211, 0.45)",
-      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(245, 230, 211, 0.18) 0%, rgba(217, 119, 6, 0.05) 50%, #07090e 100%)",
-      badgeBg: "rgba(245, 230, 211, 0.18)",
-      badgeText: "#fef3c7",
-      tag: "AURA TM"
+      glow: "rgba(245, 230, 211, 0.12)",
+      border: "rgba(255, 255, 255, 0.08)",
+      bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(245, 230, 211, 0.05) 0%, transparent 70%)",
+      badgeBg: "rgba(245, 230, 211, 0.1)",
+      badgeText: "#f5e6d3",
+      tag: "AURA TM // HEADLESS COMMERCE"
     }
   },
 
@@ -367,15 +367,15 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { label: "Reducción de Incidentes Técnicos", value: "-65%" }
     ],
     theme: {
-      primary: "#e50914",
-      secondary: "#f59e0b",
+      primary: "#ef4444",
+      secondary: "#f87171",
       accent: "#f87171",
-      glow: "rgba(229, 9, 20, 0.28)",
-      border: "rgba(229, 9, 20, 0.4)",
-      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(229, 9, 20, 0.16) 0%, rgba(245, 158, 11, 0.04) 50%, #07090e 100%)",
-      badgeBg: "rgba(229, 9, 20, 0.15)",
+      glow: "rgba(239, 68, 68, 0.12)",
+      border: "rgba(255, 255, 255, 0.08)",
+      bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(239, 68, 68, 0.06) 0%, transparent 70%)",
+      badgeBg: "rgba(239, 68, 68, 0.1)",
       badgeText: "#f87171",
-      tag: "CINEMARK"
+      tag: "CINEMARK // ENTERPRISE OPS"
     }
   },
 
@@ -442,15 +442,15 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { label: "Tiempo de Generación Interbanking", value: "< 2 seg" }
     ],
     theme: {
-      primary: "#2563eb",
-      secondary: "#f59e0b",
+      primary: "#3b82f6",
+      secondary: "#60a5fa",
       accent: "#60a5fa",
-      glow: "rgba(37, 99, 235, 0.35)",
-      border: "rgba(37, 99, 235, 0.45)",
-      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(37, 99, 235, 0.18) 0%, rgba(245, 158, 11, 0.04) 50%, #07090e 100%)",
-      badgeBg: "rgba(37, 99, 235, 0.18)",
-      badgeText: "#93c5fd",
-      tag: "FINANZAS"
+      glow: "rgba(59, 130, 246, 0.12)",
+      border: "rgba(255, 255, 255, 0.08)",
+      bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 70%)",
+      badgeBg: "rgba(59, 130, 246, 0.1)",
+      badgeText: "#60a5fa",
+      tag: "FINANZAS // TREASURY PLATFORM"
     }
   },
 
@@ -516,15 +516,15 @@ export const PROJECTS_DATA: Record<string, ProjectData> = {
       { label: "Sincronización de Agenda", value: "En Vivo" }
     ],
     theme: {
-      primary: "#f43f5e",
-      secondary: "#d946ef",
-      accent: "#fb7185",
-      glow: "rgba(244, 63, 94, 0.3)",
-      border: "rgba(244, 63, 94, 0.45)",
-      bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(244, 63, 94, 0.18) 0%, rgba(217, 70, 239, 0.05) 50%, #07090e 100%)",
-      badgeBg: "rgba(244, 63, 94, 0.18)",
+      primary: "#fb7185",
+      secondary: "#fda4af",
+      accent: "#fda4af",
+      glow: "rgba(251, 113, 133, 0.12)",
+      border: "rgba(255, 255, 255, 0.08)",
+      bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(251, 113, 133, 0.06) 0%, transparent 70%)",
+      badgeBg: "rgba(251, 113, 133, 0.1)",
       badgeText: "#fda4af",
-      tag: "CARO NAILS"
+      tag: "CARO NAILS // STUDIO MANAGEMENT"
     }
   }
 };

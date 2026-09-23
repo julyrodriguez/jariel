@@ -76,24 +76,17 @@ export function TiendaCard() {
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span
-                className="px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider border shadow-sm"
-                style={{
-                  backgroundColor: project.theme.badgeBg,
-                  color: project.theme.badgeText,
-                  borderColor: project.theme.border
-                }}
-              >
+              <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-white/[0.04] text-[#f5e6d3] border border-[#f5e6d3]/30">
                 {project.theme.tag}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.035em] text-white">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
               {project.subtitle}
             </p>
           </div>
@@ -106,9 +99,9 @@ export function TiendaCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playSuccess()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-stone-950 bg-gradient-to-r from-[#f5e6d3] to-[#e6d0b8] hover:shadow-lg hover:shadow-[#f5e6d3]/25 hover:scale-105 transition-all shadow-md"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold text-stone-950 bg-[#f5e6d3] hover:bg-white transition-all shadow-md"
               >
-                <ExternalLink className="w-4 h-4 text-stone-950" />
+                <ExternalLink className="w-3.5 h-3.5 text-stone-950" />
                 <span>Abrir Demo</span>
               </a>
             )}
@@ -119,9 +112,9 @@ export function TiendaCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-[#f5e6d3]/40 hover:border-[#f5e6d3] hover:scale-105 transition-all shadow-lg"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
               >
-                <GithubIcon className="w-4 h-4 text-[#fef3c7]" />
+                <GithubIcon className="w-3.5 h-3.5 text-[#f5e6d3]" />
                 <span>Ver Repositorio</span>
               </a>
             )}
@@ -129,7 +122,7 @@ export function TiendaCard() {
         </div>
 
         {/* Mobile Segmented View Switcher */}
-        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/85 border border-[#f5e6d3]/20 shadow-lg mb-2">
+        <div className="lg:hidden flex items-center p-1 rounded-xl bg-[#0d0f17] border border-white/[0.08] shadow-lg mb-2">
           <button
             onClick={() => {
               sound.playClick();
@@ -137,7 +130,7 @@ export function TiendaCard() {
             }}
             className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "specs"
-                ? "bg-[#f5e6d3] text-stone-950 shadow-md shadow-[#f5e6d3]/25 font-bold"
+                ? "bg-white text-black shadow-sm font-bold"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -151,12 +144,12 @@ export function TiendaCard() {
             }}
             className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "sandbox"
-                ? "bg-[#f5e6d3] text-stone-950 shadow-md shadow-[#f5e6d3]/25 font-bold"
+                ? "bg-white text-black shadow-sm font-bold"
                 : "text-slate-400 hover:text-white"
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Catálogo Cremita & Cart</span>
+            <span>Catálogo & Carrito</span>
           </button>
         </div>
 
@@ -167,17 +160,17 @@ export function TiendaCard() {
           <div className={`${mobileView === "specs" ? "flex" : "hidden lg:flex"} lg:col-span-5 flex-col justify-between space-y-3.5`}>
             
             {/* Interactive Tabs */}
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-[#f5e6d3]/35 space-y-3 shadow-xl flex-1 flex flex-col justify-between">
+            <div className="p-5 rounded-xl bg-[#0d0f17] border border-white/[0.08] space-y-3 shadow-xl flex-1 flex flex-col justify-between">
               
-              <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-950/80 border border-white/5">
+              <div className="flex items-center gap-1 p-1 rounded-lg bg-[#08090f] border border-white/[0.06]">
                 <button
                   onClick={() => {
                     sound.playClick();
                     setTechTab("whatItDoes");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "whatItDoes"
-                      ? "bg-[#f5e6d3] text-stone-950 font-bold"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -188,9 +181,9 @@ export function TiendaCard() {
                     sound.playClick();
                     setTechTab("solution");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "solution"
-                      ? "bg-[#f5e6d3] text-stone-950 font-bold"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
@@ -201,13 +194,13 @@ export function TiendaCard() {
                     sound.playClick();
                     setTechTab("deepTech");
                   }}
-                  className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "deepTech"
-                      ? "bg-[#f5e6d3] text-stone-950 font-bold"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Datos Técnicos
+                  Arquitectura
                 </button>
               </div>
 
@@ -302,13 +295,13 @@ export function TiendaCard() {
               </div>
 
               {/* Metrics Ribbon */}
-              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+              <div className="grid grid-cols-4 gap-2 pt-2.5 border-t border-white/[0.06]">
                 {project.metrics.map((m, idx) => (
-                  <div key={idx} className="p-2 rounded-xl glass-card border border-white/5 text-center">
-                    <span className="block text-xs sm:text-sm font-black text-[#fef3c7] font-mono">
+                  <div key={idx} className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] text-center">
+                    <span className="block text-xs sm:text-sm font-bold text-white font-mono">
                       {m.value}
                     </span>
-                    <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">
+                    <span className="block text-[8px] text-slate-500 uppercase tracking-wider mt-0.5 font-mono">
                       {m.label}
                     </span>
                   </div>
@@ -321,7 +314,7 @@ export function TiendaCard() {
               {project.techStack.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-slate-900/80 border border-[#f5e6d3]/20 text-slate-300"
+                  className="px-2 py-0.5 rounded text-[9px] font-mono bg-[#08090f] border border-white/[0.06] text-slate-300"
                 >
                   {tech.name}
                 </span>
@@ -334,28 +327,28 @@ export function TiendaCard() {
                 sound.playSuccess();
                 setMobileView("sandbox");
               }}
-              className="lg:hidden w-full py-2.5 px-4 rounded-xl text-xs font-bold text-stone-950 bg-gradient-to-r from-[#f5e6d3] via-[#fef3c7] to-[#e2d9c8] hover:shadow-lg hover:shadow-[#f5e6d3]/30 transition-all flex items-center justify-center gap-2 shadow-lg font-bold"
+              className="lg:hidden w-full py-2.5 px-4 rounded-lg text-xs font-mono font-bold text-black bg-white hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-lg"
             >
-              <span>Probar Catálogo Cremita & Carrito</span>
+              <span>PROBAR CATÁLOGO & CARRITO</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
           {/* Right Column: Interactive Product Card & Slide-Over Cart Simulator (7 cols) */}
-          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 glass-panel p-5 rounded-2xl border border-[#f5e6d3]/40 flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden`}>
+          <div className={`${mobileView === "sandbox" ? "flex" : "hidden lg:flex"} lg:col-span-7 rounded-xl bg-[#0d0f17] border border-white/[0.08] p-5 flex-col justify-between space-y-4 shadow-2xl relative overflow-hidden`}>
             
-            {/* Sandbox Header */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+            {/* Console Header */}
+            <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-[#f5e6d3]/20 text-[#fef3c7]">
-                  <ShoppingBag className="w-4 h-4" />
+                <div className="p-1.5 rounded bg-[#08090f] border border-white/[0.05] text-[#f5e6d3]">
+                  <ShoppingBag className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-white block">
-                    Sandbox Interactivo: Flagship Product AURA Cremita & Checkout
+                  <span className="text-xs font-bold text-white block tracking-tight">
+                    Flagship Product AURA & Checkout Desacoplado
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400 block">
-                    Interactúa con tonos cremita, cálculo de cuotas y carrito deslizable
+                  <span className="text-[10px] font-mono text-slate-500 block">
+                    Cálculo reactivo de cuotas · Spring Physics
                   </span>
                 </div>
               </div>
@@ -365,7 +358,7 @@ export function TiendaCard() {
                   sound.playPop();
                   setShowCartDrawer(!showCartDrawer);
                 }}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#29221b] border border-[#f5e6d3]/40 text-[#fef3c7] text-[11px] font-mono hover:bg-[#3d3328] transition-colors"
+                className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#08090f] border border-white/[0.08] text-slate-300 text-[11px] font-mono hover:text-white transition-colors cursor-pointer"
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
                 <span>Carrito ({cartCount})</span>
@@ -377,45 +370,39 @@ export function TiendaCard() {
               
               {/* Product Visual Mockup */}
               <div 
-                className="sm:col-span-5 p-4 rounded-2xl bg-gradient-to-b from-[#1c1815] to-[#120f0d] border border-[#f5e6d3]/20 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-500"
-                style={{
-                  boxShadow: `0 0 30px ${colors[selectedColor].glow}`
-                }}
+                className="sm:col-span-5 p-4 rounded-xl bg-[#08090f] border border-white/[0.06] flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-300"
               >
-                <div className="w-20 h-20 rounded-full blur-2xl absolute -top-4 -right-4 opacity-40" style={{ backgroundColor: colors[selectedColor].hex }} />
-
                 <div 
-                  className="w-24 h-24 rounded-2xl border flex items-center justify-center mb-2 transition-all duration-300 shadow-xl"
+                  className="w-20 h-20 rounded-xl border border-white/[0.1] flex items-center justify-center mb-2 transition-all duration-300 shadow-xl"
                   style={{
-                    backgroundColor: colors[selectedColor].hex,
-                    borderColor: "rgba(245, 230, 211, 0.3)"
+                    backgroundColor: colors[selectedColor].hex
                   }}
                 >
-                  <Sparkles className="w-8 h-8 text-[#fef3c7] opacity-90" />
+                  <Sparkles className="w-7 h-7 text-[#fef3c7] opacity-90" />
                 </div>
 
-                <span className="text-[11px] font-mono font-bold text-[#fef3c7] tracking-wider uppercase">
+                <span className="text-[11px] font-mono font-bold text-white tracking-wider uppercase">
                   AURA-1 {selectedColor === "obsidian" ? "MOCA" : selectedColor === "champagne" ? "ORO" : "CREAM"}
                 </span>
-                <span className="text-[9px] text-amber-200 font-mono mt-0.5">
+                <span className="text-[9px] text-slate-400 font-mono mt-0.5">
                   {colors[selectedColor].name} & ANC
                 </span>
                 
-                <span className="mt-1.5 text-[9px] px-2 py-0.5 rounded-full bg-[#f5e6d3]/20 text-[#fef3c7] border border-[#f5e6d3]/30 font-semibold">
-                  ¡Edición Limitada Alabaster!
+                <span className="mt-1.5 text-[9px] px-2 py-0.5 rounded bg-white/[0.04] text-[#f5e6d3] border border-white/[0.08] font-mono font-semibold">
+                  EDICIÓN LIMITADA
                 </span>
               </div>
 
               {/* Product Configurator & Calculators */}
               <div className="sm:col-span-7 space-y-2.5">
                 <div>
-                  <h4 className="text-sm sm:text-base font-bold text-white">Auriculares Inalámbricos AURA-1 Seda</h4>
+                  <h4 className="text-sm sm:text-base font-bold text-white tracking-tight">Auriculares Inalámbricos AURA-1 Seda</h4>
                   <div className="flex items-baseline gap-2 mt-0.5">
                     <span className="text-lg font-black text-white font-mono">
                       ${basePrice.toLocaleString("es-AR")}
                     </span>
-                    <span className="text-[11px] text-[#fef3c7] font-semibold">
-                      o ${transferDiscount.toLocaleString("es-AR")} con Transferencia (15% OFF)
+                    <span className="text-[11px] text-[#f5e6d3] font-mono">
+                      o ${transferDiscount.toLocaleString("es-AR")} con Transferencia (-15%)
                     </span>
                   </div>
                 </div>
@@ -423,7 +410,7 @@ export function TiendaCard() {
                 {/* Color Variant Selector */}
                 <div className="space-y-1">
                   <span className="text-[10px] font-mono text-slate-400 block">
-                    Variante de Color: <strong className="text-[#fef3c7]">{colors[selectedColor].name}</strong>
+                    Variante de Color: <strong className="text-white">{colors[selectedColor].name}</strong>
                   </span>
                   <div className="flex items-center gap-2">
                     {(Object.keys(colors) as Array<keyof typeof colors>).map((col) => (
@@ -433,8 +420,8 @@ export function TiendaCard() {
                           sound.playClick();
                           setSelectedColor(col);
                         }}
-                        className={`w-6 h-6 rounded-full border-2 transition-all duration-200 flex items-center justify-center ${
-                          selectedColor === col ? "border-[#fef3c7] scale-110 shadow-lg shadow-[#f5e6d3]/30" : "border-slate-700 opacity-70 hover:opacity-100"
+                        className={`w-6 h-6 rounded-full border-2 transition-all duration-200 flex items-center justify-center cursor-pointer ${
+                          selectedColor === col ? "border-white scale-110 shadow-lg shadow-white/10" : "border-white/20 opacity-70 hover:opacity-100"
                         }`}
                         style={{ backgroundColor: colors[col].hex }}
                         title={colors[col].name}
@@ -458,10 +445,10 @@ export function TiendaCard() {
                           sound.playClick();
                           setInstallmentPlan(plan as 3 | 6 | 12);
                         }}
-                        className={`py-1 px-1.5 rounded-lg text-center border text-[11px] font-mono transition-all ${
+                        className={`py-1 px-1.5 rounded-lg text-center border text-[11px] font-mono transition-all cursor-pointer ${
                           installmentPlan === plan
-                            ? "bg-[#2d241c] border-[#f5e6d3] text-[#fef3c7] font-bold"
-                            : "bg-slate-900 border-white/5 text-slate-400 hover:text-white"
+                            ? "bg-white/[0.1] border-white/40 text-white font-bold"
+                            : "bg-[#08090f] border-white/[0.05] text-slate-400 hover:text-white"
                         }`}
                       >
                         <span className="block text-[10px]">{plan} Cuotas</span>
@@ -476,32 +463,32 @@ export function TiendaCard() {
                 {/* Add to Cart CTA */}
                 <button
                   onClick={handleAddToCart}
-                  className="w-full py-2 rounded-xl font-bold text-xs text-stone-950 bg-gradient-to-r from-[#f5e6d3] via-[#fef3c7] to-[#e2d9c8] hover:shadow-lg hover:shadow-[#f5e6d3]/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-1.5 mt-1"
+                  className="w-full py-2.5 rounded-lg font-mono font-bold text-xs text-stone-950 bg-[#f5e6d3] hover:bg-white transition-all flex items-center justify-center gap-1.5 mt-1 cursor-pointer shadow-md"
                 >
                   <ShoppingBag className="w-3.5 h-3.5 text-stone-950" />
-                  <span>Agregar al Carrito • Envío Inmediato</span>
+                  <span>AGREGAR AL CARRITO • ENVÍO INMEDIATO</span>
                 </button>
               </div>
             </div>
 
-            {/* Slide-over Cart Drawer / Progress Preview (Interactive) */}
-            <div className="p-3 rounded-xl bg-slate-950/80 border border-[#f5e6d3]/20 space-y-1.5">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-300 font-semibold flex items-center gap-1 text-[11px]">
+            {/* Slide-over Cart Drawer / Progress Preview */}
+            <div className="p-3 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1.5">
+              <div className="flex items-center justify-between text-xs font-mono">
+                <span className="text-slate-300 font-medium flex items-center gap-1.5 text-[11px]">
                   <Truck className="w-3.5 h-3.5 text-[#f5e6d3]" />
                   {freeShippingDiff === 0
                     ? "¡Felicidades! Tienes Envío Gratis desbloqueado"
                     : `Agrega $${freeShippingDiff.toLocaleString("es-AR")} para desbloquear Envío Gratis`}
                 </span>
-                <span className="font-mono text-[#fef3c7] text-[10px] font-bold">
+                <span className="text-white text-[10px] font-bold">
                   Total: ${currentTotal.toLocaleString("es-AR")}
                 </span>
               </div>
 
               {/* Progress bar towards free shipping */}
-              <div className="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+              <div className="w-full h-1 bg-black/40 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-[#d97706] to-[#f5e6d3] transition-all duration-500"
+                  className="h-full bg-[#f5e6d3] transition-all duration-500"
                   style={{
                     width: `${Math.min(100, (currentTotal / freeShippingThreshold) * 100)}%`
                   }}
@@ -510,9 +497,9 @@ export function TiendaCard() {
             </div>
 
             {/* Footer Stack Note */}
-            <div className="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-white/5">
+            <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-white/[0.06]">
               <span>Stack: React 18 + Vite + Tailwind + Spring Physics</span>
-              <span className="text-[#fef3c7] font-mono text-[10px]">AURA Next-Gen Cream Engine</span>
+              <span className="text-[#f5e6d3] font-mono text-[10px]">AURA Next-Gen Headless</span>
             </div>
 
             {/* Mobile Return to Specs Button */}
@@ -521,7 +508,7 @@ export function TiendaCard() {
                 sound.playPop();
                 setMobileView("specs");
               }}
-              className="lg:hidden w-full py-2 px-3 rounded-xl text-xs font-semibold glass-panel border border-white/10 text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
+              className="lg:hidden w-full py-2 px-3 rounded-lg text-xs font-mono font-semibold bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>← Volver a Ficha Técnica & Arquitectura</span>

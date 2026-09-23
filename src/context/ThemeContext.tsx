@@ -8,25 +8,25 @@ import { sound } from "@/lib/sound";
 const DEFAULT_THEME: ProjectTheme = {
   primary: "#38bdf8",
   secondary: "#818cf8",
-  accent: "#0ea5e9",
-  glow: "rgba(56, 189, 248, 0.2)",
-  border: "rgba(56, 189, 248, 0.3)",
-  bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(56, 189, 248, 0.14) 0%, rgba(99, 102, 241, 0.04) 50%, #07090e 100%)",
-  badgeBg: "rgba(56, 189, 248, 0.12)",
-  badgeText: "#38bdf8",
-  tag: "FULL STACK ARCHITECT"
+  accent: "#38bdf8",
+  glow: "rgba(56, 189, 248, 0.12)",
+  border: "rgba(255, 255, 255, 0.08)",
+  bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(56, 189, 248, 0.06) 0%, transparent 70%)",
+  badgeBg: "rgba(255, 255, 255, 0.05)",
+  badgeText: "#f8fafc",
+  tag: "SYSTEMS ARCHITECT"
 };
 
 const EDUCATION_THEME: ProjectTheme = {
   primary: "#818cf8",
-  secondary: "#38bdf8",
-  accent: "#6366f1",
-  glow: "rgba(99, 102, 241, 0.22)",
-  border: "rgba(99, 102, 241, 0.3)",
-  bgGradient: "radial-gradient(ellipse at 50% 35%, rgba(99, 102, 241, 0.14) 0%, rgba(56, 189, 248, 0.04) 50%, #07090e 100%)",
-  badgeBg: "rgba(99, 102, 241, 0.12)",
-  badgeText: "#818cf8",
-  tag: "FORMACIÓN"
+  secondary: "#6366f1",
+  accent: "#a5b4fc",
+  glow: "rgba(99, 102, 241, 0.12)",
+  border: "rgba(255, 255, 255, 0.08)",
+  bgGradient: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(99, 102, 241, 0.06) 0%, transparent 70%)",
+  badgeBg: "rgba(255, 255, 255, 0.05)",
+  badgeText: "#a5b4fc",
+  tag: "FORMACIÓN & UTN"
 };
 
 interface ThemeContextType {

@@ -102,10 +102,10 @@ export function CaroNailsCard() {
         
         {/* Top Header & Badges */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span
-                className="px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider border shadow-sm"
+                className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider border"
                 style={{
                   backgroundColor: project.theme.badgeBg,
                   color: project.theme.badgeText,
@@ -114,7 +114,7 @@ export function CaroNailsCard() {
               >
                 {project.theme.tag}
               </span>
-              <span className="px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-400/60 text-emerald-300 text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-[0_0_14px_rgba(52,211,153,0.45)] animate-pulse">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 border border-emerald-500/40 text-emerald-400 font-bold flex items-center gap-1.5 shrink-0">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
@@ -122,10 +122,10 @@ export function CaroNailsCard() {
                 <span>En uso por clientes</span>
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.035em] text-white">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
               {project.subtitle}
             </p>
           </div>
@@ -138,7 +138,7 @@ export function CaroNailsCard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl glass-panel text-xs font-semibold text-white border border-rose-500/30 hover:border-rose-400 hover:scale-105 transition-all shadow-lg"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
               >
                 <GithubIcon className="w-4 h-4 text-rose-400" />
                 <span>Ver Repositorio</span>
@@ -148,15 +148,15 @@ export function CaroNailsCard() {
         </div>
 
         {/* Mobile Segmented View Switcher */}
-        <div className="lg:hidden flex items-center p-1 rounded-xl bg-slate-950/85 border border-rose-500/20 shadow-lg mb-2">
+        <div className="lg:hidden flex items-center p-1 rounded-lg bg-[#0d0f17] border border-white/[0.08] shadow-lg mb-2">
           <button
             onClick={() => {
               sound.playClick();
               setMobileView("specs");
             }}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+            className={`flex-1 py-1.5 px-3 rounded-md text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "specs"
-                ? "bg-rose-500 text-white shadow-md shadow-rose-500/25 font-bold"
+                ? "bg-white text-black shadow-sm"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -168,9 +168,9 @@ export function CaroNailsCard() {
               sound.playClick();
               setMobileView("sandbox");
             }}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
+            className={`flex-1 py-1.5 px-3 rounded-md text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all ${
               mobileView === "sandbox"
-                ? "bg-rose-500 text-white shadow-md shadow-rose-500/25 font-bold"
+                ? "bg-white text-black shadow-sm"
                 : "text-slate-400 hover:text-white"
             }`}
           >
@@ -184,22 +184,22 @@ export function CaroNailsCard() {
           
           {/* Left Column: System Architecture & Technical Specifications (6 cols) */}
           <div className={`lg:col-span-6 flex flex-col space-y-4 ${mobileView === "sandbox" ? "hidden lg:flex" : "flex"}`}>
-            <div className="glass-panel p-5 rounded-2xl border border-white/10 space-y-4 shadow-xl">
+            <div className="p-5 rounded-xl bg-[#0d0f17] border border-white/[0.08] space-y-3.5 shadow-xl">
               
               {/* Nav Tabs */}
-              <div className="flex items-center gap-1.5 border-b border-white/10 pb-3">
+              <div className="flex items-center gap-1 p-1 rounded-lg bg-[#08090f] border border-white/[0.06]">
                 <button
                   onClick={() => {
                     sound.playClick();
                     setTechTab("whatItDoes");
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "whatItDoes"
-                      ? "bg-rose-500/20 text-rose-300 border border-rose-500/40 font-bold"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  ¿Qué hace el sistema?
+                  ¿Qué hace?
                 </button>
 
                 <button
@@ -207,13 +207,13 @@ export function CaroNailsCard() {
                     sound.playClick();
                     setTechTab("solution");
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "solution"
-                      ? "bg-rose-500/20 text-rose-300 border border-rose-500/40 font-bold"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Solución & Operación
+                  Solución
                 </button>
 
                 <button
@@ -221,27 +221,27 @@ export function CaroNailsCard() {
                     sound.playClick();
                     setTechTab("deepTech");
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                  className={`flex-1 py-1.5 px-2 rounded text-[11px] font-mono font-bold transition-all ${
                     techTab === "deepTech"
-                      ? "bg-rose-500/20 text-rose-300 border border-rose-500/40 font-bold"
+                      ? "bg-white/[0.08] text-white border border-white/[0.1]"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Ingeniería PWA
+                  Arquitectura
                 </button>
               </div>
 
               {/* Tab 1: What it does */}
               {techTab === "whatItDoes" && (
-                <div className="space-y-3.5 text-xs text-slate-300 leading-relaxed">
-                  <p className="font-medium text-white text-xs sm:text-sm">
+                <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
+                  <p className="text-slate-200 text-xs sm:text-sm">
                     {project.whatItDoes}
                   </p>
 
-                  <div className="space-y-2.5 pt-1">
+                  <div className="space-y-2 pt-1">
                     {project.keyModules.map((m, idx) => (
-                      <div key={idx} className="p-3 rounded-xl bg-slate-900/80 border border-white/5 space-y-1">
-                        <div className="flex items-center gap-2 text-rose-300 font-bold">
+                      <div key={idx} className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.04] space-y-0.5">
+                        <div className="flex items-center gap-2 text-white font-bold text-xs">
                           <CheckCircle2 className="w-3.5 h-3.5 text-rose-400" />
                           <span>{m.title}</span>
                         </div>
@@ -256,17 +256,17 @@ export function CaroNailsCard() {
 
               {/* Tab 2: Solution & Operation */}
               {techTab === "solution" && (
-                <div className="space-y-3.5 text-xs text-slate-300 leading-relaxed">
-                  <p className="font-medium text-white text-xs sm:text-sm">
+                <div className="space-y-3 text-xs text-slate-300 leading-relaxed">
+                  <p className="text-slate-200 text-xs sm:text-sm">
                     {project.solutionProvided}
                   </p>
 
-                  <div className="space-y-2 pt-1">
-                    <span className="text-[11px] font-mono text-rose-300 font-bold uppercase tracking-wider block">
+                  <div className="p-3 rounded-lg bg-[#08090f] border border-white/[0.06] text-[11px] text-slate-300 space-y-1.5">
+                    <strong className="text-rose-400 block font-mono text-[10px] uppercase tracking-wider">
                       Desafíos de Negocio Resueltos:
-                    </span>
+                    </strong>
                     {project.challenges.map((c, idx) => (
-                      <div key={idx} className="flex items-start gap-2 p-2 rounded-lg bg-slate-900/60 border border-white/5">
+                      <div key={idx} className="flex items-start gap-2">
                         <span className="text-rose-400 font-mono font-bold text-xs mt-0.5">•</span>
                         <span className="text-[11px] text-slate-300">{c}</span>
                       </div>
@@ -277,33 +277,33 @@ export function CaroNailsCard() {
 
               {/* Tab 3: Deep Tech */}
               {techTab === "deepTech" && (
-                <div className="space-y-3 text-xs">
-                  <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5 space-y-1">
-                    <div className="flex items-center gap-1.5 text-rose-300 font-mono font-bold text-xs">
+                <div className="space-y-2.5 text-xs">
+                  <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1">
+                    <div className="flex items-center gap-1.5 text-rose-400 font-mono font-bold text-[10px]">
                       <Layers className="w-3.5 h-3.5 text-rose-400" />
                       <span>Arquitectura & Sincronización</span>
                     </div>
-                    <p className="text-[11px] text-slate-300 leading-snug">
+                    <p className="text-[11px] text-slate-400 leading-relaxed">
                       {project.deepTechnicalData.architecture}
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5 space-y-1">
-                    <div className="flex items-center gap-1.5 text-rose-300 font-mono font-bold text-xs">
+                  <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1">
+                    <div className="flex items-center gap-1.5 text-rose-400 font-mono font-bold text-[10px]">
                       <Cpu className="w-3.5 h-3.5 text-rose-400" />
                       <span>Indexación & No-Collisions</span>
                     </div>
-                    <p className="text-[11px] text-slate-300 leading-snug">
+                    <p className="text-[11px] text-slate-400 leading-relaxed">
                       {project.deepTechnicalData.algorithmsAndConcurrency}
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5 space-y-1">
-                    <div className="flex items-center gap-1.5 text-rose-300 font-mono font-bold text-xs">
+                  <div className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06] space-y-1">
+                    <div className="flex items-center gap-1.5 text-rose-400 font-mono font-bold text-[10px]">
                       <Database className="w-3.5 h-3.5 text-rose-400" />
                       <span>Seguridad & Push Notifications</span>
                     </div>
-                    <p className="text-[11px] text-slate-300 leading-snug">
+                    <p className="text-[11px] text-slate-400 leading-relaxed">
                       {project.deepTechnicalData.securityAndPerformance}
                     </p>
                   </div>
@@ -311,11 +311,11 @@ export function CaroNailsCard() {
               )}
 
               {/* Tech Stack Badges */}
-              <div className="pt-2 border-t border-white/10 flex flex-wrap gap-1.5">
+              <div className="pt-2 border-t border-white/[0.06] flex flex-wrap gap-1.5">
                 {project.techStack.map((tech, idx) => (
                   <span
                     key={idx}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-900 border border-white/5 text-slate-300"
+                    className="text-[9px] font-mono px-2 py-0.5 rounded bg-[#08090f] border border-white/[0.06] text-slate-300"
                   >
                     {tech.name}
                   </span>
@@ -323,60 +323,72 @@ export function CaroNailsCard() {
               </div>
 
               {/* Live Operational Metrics Ribbon */}
-              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5 text-center">
+              <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/[0.06] text-center">
                 {project.metrics.map((m, idx) => (
-                  <div key={idx} className="p-2 rounded-xl bg-slate-900/70 border border-white/5">
-                    <span className="block text-xs sm:text-sm font-black text-rose-400 font-mono">{m.value}</span>
-                    <span className="block text-[8px] sm:text-[9px] text-slate-400 uppercase font-medium mt-0.5">{m.label}</span>
+                  <div key={idx} className="p-2.5 rounded-lg bg-[#08090f] border border-white/[0.06]">
+                    <span className="block text-xs sm:text-sm font-bold text-white font-mono">{m.value}</span>
+                    <span className="block text-[8px] text-slate-500 uppercase font-mono mt-0.5">{m.label}</span>
                   </div>
                 ))}
               </div>
 
             </div>
+
+            {/* Mobile CTA to Sandbox */}
+            <button
+              onClick={() => {
+                sound.playSuccess();
+                setMobileView("sandbox");
+              }}
+              className="lg:hidden w-full py-2.5 px-4 rounded-lg text-xs font-mono font-bold text-black bg-white hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-lg"
+            >
+              <span>Abrir Simulador de Agenda & Turnos</span>
+            </button>
           </div>
 
           {/* Right Column: Interactive Caro Nails Studio Simulator (6 cols) */}
           <div className={`lg:col-span-6 flex flex-col space-y-4 ${mobileView === "specs" ? "hidden lg:flex" : "flex"}`}>
-            <div className="glass-panel p-5 rounded-2xl border border-rose-500/30 space-y-4 shadow-2xl relative overflow-hidden bg-gradient-to-br from-slate-950/90 via-rose-950/15 to-slate-950/90">
+            <div className="p-5 rounded-xl bg-[#0d0f17] border border-white/[0.08] space-y-4 shadow-2xl relative overflow-hidden">
               
               {/* Studio Sandbox Header */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="p-1.5 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/30">
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="p-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
                     <Heart className="w-4 h-4 text-rose-400" />
                   </div>
                   <div>
-                    <span className="text-xs font-mono font-bold text-white block">
+                    <span className="text-xs font-bold text-white block">
                       Panel Administrativo Studio Caro Nails
                     </span>
-                    <span className="text-[10px] text-rose-300/80 font-mono block">
+                    <span className="text-[10px] text-slate-400 font-mono block">
                       Simulador de Agenda, Turnos y Balance
                     </span>
                   </div>
                 </div>
 
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 border border-emerald-500/40 text-emerald-400 font-bold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                   Online
                 </span>
               </div>
 
               {/* Financial Balance Mini Widget */}
-              <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-slate-900/90 border border-white/5">
+              <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-[#08090f] border border-white/[0.06]">
                 <div>
-                  <span className="text-[9px] font-mono text-slate-400 block uppercase">Ingresos Mes</span>
-                  <span className="text-xs sm:text-sm font-black text-emerald-400 font-mono">
+                  <span className="text-[9px] font-mono text-slate-500 block uppercase">Ingresos Mes</span>
+                  <span className="text-xs sm:text-sm font-bold text-emerald-400 font-mono">
                     ${monthlyRevenue.toLocaleString("es-AR")}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[9px] font-mono text-slate-400 block uppercase">Insumos & Stock</span>
-                  <span className="text-xs sm:text-sm font-black text-rose-400 font-mono">
+                  <span className="text-[9px] font-mono text-slate-500 block uppercase">Insumos & Stock</span>
+                  <span className="text-xs sm:text-sm font-bold text-rose-400 font-mono">
                     -${suppliesCost.toLocaleString("es-AR")}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[9px] font-mono text-slate-400 block uppercase">Ganancia Neta</span>
-                  <span className="text-xs sm:text-sm font-black text-sky-400 font-mono">
+                  <span className="text-[9px] font-mono text-slate-500 block uppercase">Ganancia Neta</span>
+                  <span className="text-xs sm:text-sm font-bold text-white font-mono">
                     ${(monthlyRevenue - suppliesCost).toLocaleString("es-AR")}
                   </span>
                 </div>
@@ -386,7 +398,7 @@ export function CaroNailsCard() {
               <div className="space-y-2">
                 <span className="text-[11px] font-mono font-bold text-slate-300 flex items-center justify-between">
                   <span>1. Seleccionar Tratamiento:</span>
-                  <span className="text-rose-400">${selectedService.price.toLocaleString("es-AR")} ({selectedService.duration})</span>
+                  <span className="text-rose-400 font-mono">${selectedService.price.toLocaleString("es-AR")} ({selectedService.duration})</span>
                 </span>
                 <div className="grid grid-cols-2 gap-2">
                   {services.map((svc) => (
@@ -396,14 +408,14 @@ export function CaroNailsCard() {
                         sound.playClick();
                         setSelectedService(svc);
                       }}
-                      className={`p-2.5 rounded-xl text-left transition-all text-xs flex flex-col justify-between ${
+                      className={`p-2.5 rounded-lg text-left transition-all text-xs flex flex-col justify-between ${
                         selectedService.id === svc.id
-                          ? "bg-rose-500/20 border border-rose-400 text-white shadow-lg shadow-rose-500/10"
-                          : "bg-slate-900/70 border border-white/5 text-slate-300 hover:border-white/20"
+                          ? "bg-white/[0.08] border border-white/[0.25] text-white shadow-sm"
+                          : "bg-[#08090f] border border-white/[0.06] text-slate-300 hover:border-white/[0.15]"
                       }`}
                     >
-                      <span className="font-semibold text-[11px] leading-tight block text-white">{svc.name}</span>
-                      <span className="text-[10px] font-mono text-rose-300 mt-1 block">
+                      <span className="font-bold text-[11px] leading-tight block text-white">{svc.name}</span>
+                      <span className="text-[10px] font-mono text-slate-400 mt-1 block">
                         ${svc.price.toLocaleString("es-AR")} • {svc.duration}
                       </span>
                     </button>
@@ -425,12 +437,12 @@ export function CaroNailsCard() {
                         sound.playClick();
                         setSelectedTime(s.time);
                       }}
-                      className={`p-2 rounded-xl text-center text-xs font-mono transition-all ${
+                      className={`p-2 rounded-lg text-center text-xs font-mono transition-all border ${
                         s.status === "busy"
-                          ? "bg-slate-950/60 border border-white/5 text-slate-500 cursor-not-allowed line-through"
+                          ? "bg-white/[0.02] border-white/[0.04] text-slate-600 cursor-not-allowed line-through"
                           : selectedTime === s.time
-                          ? "bg-gradient-to-r from-rose-500 to-fuchsia-600 text-white font-bold shadow-md shadow-rose-500/25"
-                          : "bg-slate-900/80 border border-white/5 text-slate-300 hover:border-rose-400/40"
+                          ? "bg-white text-black font-bold border-white shadow-[0_0_12px_rgba(255,255,255,0.3)]"
+                          : "bg-[#08090f] border-white/[0.06] text-slate-300 hover:border-white/[0.2]"
                       }`}
                     >
                       <span className="block font-bold">{s.time} hs</span>
@@ -451,15 +463,15 @@ export function CaroNailsCard() {
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
                     placeholder="Nombre y Apellido"
-                    className="flex-1 px-3 py-2 rounded-xl bg-slate-900/90 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-rose-400 font-mono"
+                    className="flex-1 px-3 py-2 rounded-lg bg-[#08090f] border border-white/[0.08] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-white/[0.3] font-mono"
                   />
                   <button
                     onClick={handleBookTurno}
                     disabled={bookingDone}
-                    className={`px-4 py-2 rounded-xl font-bold text-xs text-white transition-all flex items-center gap-1.5 shrink-0 shadow-lg ${
+                    className={`px-4 py-2 rounded-lg font-bold text-xs font-mono transition-all flex items-center gap-1.5 shrink-0 shadow-sm ${
                       bookingDone
-                        ? "bg-slate-800 text-slate-400 cursor-not-allowed"
-                        : "bg-gradient-to-r from-rose-500 to-fuchsia-500 hover:shadow-rose-500/25 hover:scale-105"
+                        ? "bg-white/[0.05] text-slate-500 cursor-not-allowed border border-white/[0.05]"
+                        : "bg-white hover:bg-slate-200 text-black"
                     }`}
                   >
                     <Calendar className="w-3.5 h-3.5" />
@@ -470,7 +482,7 @@ export function CaroNailsCard() {
 
               {/* Confirmation Toast / Push Notification Preview */}
               {bookingDone && (
-                <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-500/40 space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="p-3.5 rounded-lg bg-[#08090f] border border-rose-500/30 space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2 text-rose-300">
                       <BellRing className="w-4 h-4 text-rose-400 animate-bounce" />
@@ -484,11 +496,22 @@ export function CaroNailsCard() {
                     </button>
                   </div>
 
-                  <p className="text-[11px] text-slate-200 leading-snug">
+                  <p className="text-[11px] text-slate-300 leading-snug">
                     Se registró a <strong>{clientName}</strong> para <strong>{selectedService.name}</strong> a las <strong>{selectedTime} hs</strong>. Se programó el recordatorio automático 30 min antes.
                   </p>
                 </div>
               )}
+
+              {/* Mobile Return to Specs Button */}
+              <button
+                onClick={() => {
+                  sound.playPop();
+                  setMobileView("specs");
+                }}
+                className="lg:hidden w-full py-2 px-3 rounded-lg text-xs font-semibold bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5 mt-1 font-mono"
+              >
+                <span>← Volver a Ficha Técnica & Arquitectura</span>
+              </button>
 
             </div>
           </div>

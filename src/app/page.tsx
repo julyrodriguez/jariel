@@ -64,12 +64,15 @@ export default function Home() {
   }, [setActiveSection]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-[#07090e]">
-      {/* Global Soft Ambient Lighting Bloom (morphs smoothly across sections) */}
+    <div className="relative w-full h-screen overflow-hidden bg-[#08090d]">
+      {/* Architectural Background Grid Texture */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-architectural-grid opacity-60" />
+
+      {/* Subtle Architectural Keylight (High-end Directional Atmosphere) */}
       <div 
-        className="fixed inset-0 pointer-events-none z-0 transition-all duration-1000 ease-out opacity-35 blur-[130px]"
+        className="fixed inset-0 pointer-events-none z-0 transition-all duration-1000 ease-out opacity-25 blur-[90px]"
         style={{
-          background: `radial-gradient(ellipse 70% 55% at 50% 45%, ${currentTheme.glow} 0%, transparent 80%)`
+          background: `radial-gradient(ellipse 60% 45% at 50% 30%, ${currentTheme.glow} 0%, transparent 75%)`
         }}
       />
 
