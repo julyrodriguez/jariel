@@ -104,37 +104,33 @@ export function FinanzasCard() {
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2">
-              <span
-                className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider border"
-                style={{
-                  backgroundColor: project.theme.badgeBg,
-                  color: project.theme.badgeText,
-                  borderColor: project.theme.border
-                }}
-              >
-                {project.theme.tag}
+        <div className="space-y-1.5 border-b border-white/[0.08] pb-4">
+          <div className="flex items-center gap-2">
+            <span
+              className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider border"
+              style={{
+                backgroundColor: project.theme.badgeBg,
+                color: project.theme.badgeText,
+                borderColor: project.theme.border
+              }}
+            >
+              {project.theme.tag}
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 border border-emerald-500/40 text-emerald-400 font-bold flex items-center gap-1.5 shrink-0">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 border border-emerald-500/40 text-emerald-400 font-bold flex items-center gap-1.5 shrink-0">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-                </span>
-                <span>En uso por clientes</span>
-              </span>
-            </div>
+              <span>En uso por clientes</span>
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.035em] text-white">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
-              {project.subtitle}
-            </p>
-          </div>
 
-          {/* External Code Links */}
-          <div className="flex items-center gap-2.5">
+            {/* External Code Links a la derecha del título */}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -148,6 +144,10 @@ export function FinanzasCard() {
               </a>
             )}
           </div>
+
+          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
+            {project.subtitle}
+          </p>
         </div>
 
         {/* Mobile Segmented View Switcher */}
@@ -522,12 +522,6 @@ export function FinanzasCard() {
                 <FileSpreadsheet className="w-3.5 h-3.5" />
                 <span>Liberar Lote en Interbanking</span>
               </button>
-            </div>
-
-            {/* Footer Stack Note */}
-            <div className="flex items-center justify-between text-xs text-slate-500 pt-1 border-t border-white/[0.06] font-mono text-[10px]">
-              <span>Stack: Next.js 16 + Firebase Firestore + SheetJS (XLSX)</span>
-              <span className="text-blue-400">Finanzas Treasury Suite</span>
             </div>
 
             {/* Mobile Return to Specs Button */}

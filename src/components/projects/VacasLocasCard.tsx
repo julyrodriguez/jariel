@@ -71,36 +71,36 @@ export function VacasLocasCard() {
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-white/[0.04] text-emerald-400 border border-emerald-500/30">
-                {project.theme.tag}
-              </span>
-            </div>
+        <div className="space-y-1.5 border-b border-white/[0.08] pb-4">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-white/[0.04] text-emerald-400 border border-emerald-500/30">
+              {project.theme.tag}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.035em] text-white">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
-              {project.subtitle}
-            </p>
-          </div>
 
-          {/* External Code Links */}
-          <div className="flex items-center gap-2">
+            {/* External Code Links a la derecha del título */}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
               >
                 <GithubIcon className="w-4 h-4 text-emerald-400" />
                 <span>Ver Repositorio</span>
               </a>
             )}
           </div>
+
+          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
+            {project.subtitle}
+          </p>
         </div>
 
         {/* Mobile Segmented View Switcher */}

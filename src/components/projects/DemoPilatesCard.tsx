@@ -92,55 +92,57 @@ export function DemoPilatesCard() {
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto space-y-5">
         
         {/* Top Header & Badges */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-white/[0.04] text-purple-400 border border-purple-500/30">
-                {project.theme.tag}
+        <div className="space-y-1.5 border-b border-white/[0.08] pb-4">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-white/[0.04] text-purple-400 border border-purple-500/30">
+              {project.theme.tag}
+            </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 border border-emerald-500/40 text-emerald-400 font-bold flex items-center gap-1.5 shrink-0">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/80 border border-emerald-500/40 text-emerald-400 font-bold flex items-center gap-1.5 shrink-0">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-                </span>
-                <span>En uso por clientes</span>
-              </span>
-            </div>
+              <span>En uso por clientes</span>
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.035em] text-white">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
-              {project.subtitle}
-            </p>
+
+            {/* External Links a la derecha del título */}
+            <div className="flex items-center gap-2.5 flex-wrap">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sound.playSuccess()}
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold text-black bg-white hover:bg-slate-200 transition-all shadow-md"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Ver Demo en Vivo</span>
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sound.playPop()}
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
+                >
+                  <GithubIcon className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Ver Repositorio</span>
+                </a>
+              )}
+            </div>
           </div>
 
-          {/* External Links */}
-          <div className="flex items-center gap-2.5">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => sound.playSuccess()}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold text-black bg-white hover:bg-slate-200 transition-all shadow-md"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Abrir Demo en Vivo</span>
-              </a>
-            )}
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => sound.playPop()}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-white bg-white/[0.04] hover:bg-white/[0.09] border border-white/[0.1] hover:border-white/[0.25] transition-all shadow-sm"
-              >
-                <GithubIcon className="w-3.5 h-3.5 text-purple-400" />
-                <span>Ver Repositorio</span>
-              </a>
-            )}
-          </div>
+          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-normal leading-relaxed">
+            {project.subtitle}
+          </p>
         </div>
 
         {/* Mobile Segmented View Switcher */}
@@ -500,20 +502,6 @@ export function DemoPilatesCard() {
                   </div>
                 </div>
               )}
-            </div>
-
-            {/* Quick Link Footer */}
-            <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1 border-t border-white/[0.06]">
-              <span>Stack: Next.js 16 + Tailwind CSS v4 + LocalCache</span>
-              <a
-                href="https://demopilates.jariel.com.ar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-purple-300 flex items-center gap-1 font-semibold"
-              >
-                <span>Explorar Demo</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
             </div>
 
             {/* Mobile Return to Specs Button */}
